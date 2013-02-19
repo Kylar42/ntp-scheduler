@@ -36,9 +36,10 @@ public class DefaultHttpServerHandler extends SimpleChannelUpstreamHandler {
     private boolean readingChunks;
     /** Buffer that stores the response content */
     private final StringBuilder buf = new StringBuilder();
-
+    int ordinal = 0;
     @Override
     public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
+        ordinal++;
         if (!readingChunks) {
             HttpRequest request = this.request = (HttpRequest) e.getMessage();
 
@@ -53,6 +54,7 @@ public class DefaultHttpServerHandler extends SimpleChannelUpstreamHandler {
             buf.append("VERSION: " + request.getProtocolVersion() + "\r\n");
             buf.append("HOSTNAME: " + getHost(request, "unknown") + "\r\n");
             buf.append("REQUEST_URI: " + request.getUri() + "\r\n\r\n");
+            buf.append("Ordinal: " +ordinal+"\r\n\r\n");
 
             for (Map.Entry<String, String> h: request.getHeaders()) {
                 buf.append("HEADER: " + h.getKey() + " = " + h.getValue() + "\r\n");
