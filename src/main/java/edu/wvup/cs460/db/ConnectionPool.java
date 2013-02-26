@@ -19,7 +19,7 @@ public class ConnectionPool {
     final String dbRootPassword = "postgres";//yes, yes, it's in plain text.
 
 
-    final String dbName = "hr_info";
+    final String dbName = "course_schedules";
     final String dbUrl = "jdbc:postgresql://localhost/"+dbName;
     final String dbClass = "org.postgresql.Driver";
     final String dbUser = "cs460";

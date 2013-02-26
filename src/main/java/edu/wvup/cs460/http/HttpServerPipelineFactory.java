@@ -8,6 +8,10 @@ import org.jboss.netty.handler.codec.http.HttpChunkAggregator;
 import org.jboss.netty.handler.codec.http.HttpContentCompressor;
 import org.jboss.netty.handler.codec.http.HttpRequestDecoder;
 import org.jboss.netty.handler.codec.http.HttpResponseEncoder;
+import org.jboss.netty.handler.execution.ExecutionHandler;
+import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author <a href="http://www.jboss.org/netty/">The Netty Project</a>
@@ -18,6 +22,10 @@ import org.jboss.netty.handler.codec.http.HttpResponseEncoder;
 public class HttpServerPipelineFactory implements ChannelPipelineFactory {
     public ChannelPipeline getPipeline() throws Exception {
         // Create a default pipeline implementation.
+        OrderedMemoryAwareThreadPoolExecutor eventExecutor =
+                new OrderedMemoryAwareThreadPoolExecutor(
+                        5, 1000000, 10000000, 100,
+                        TimeUnit.MILLISECONDS);
         ChannelPipeline pipeline = pipeline();
 
         // Uncomment the following line if you want HTTPS
@@ -31,7 +39,11 @@ public class HttpServerPipelineFactory implements ChannelPipelineFactory {
         pipeline.addLast("encoder", new HttpResponseEncoder());
         // Remove the following line if you don't want automatic content compression.
         pipeline.addLast("deflater", new HttpContentCompressor());
+
+        pipeline.addLast("pipelineExecutor", new ExecutionHandler(eventExecutor));
+
         pipeline.addLast("handler", new DefaultHttpServerHandler());
+
         return pipeline;
     }
 }
