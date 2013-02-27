@@ -12,7 +12,7 @@ public class ImportFactory {
         return INSTANCE;
     }
 
-    public static CourseImporter getCourseImporter(){
+    public CourseImporter getCourseImporter(){
         return new FakeCourseImporter();
     }
 

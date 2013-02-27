@@ -20,8 +20,8 @@ public class DBSetup {
     private static final String USER_DROP = "DROP USER "+ConnectionPool.getInstance().dbUser+";";
     private static final String USER_CREATE = "CREATE USER "+ConnectionPool.getInstance().dbUser+" with password '"+ConnectionPool.getInstance().dbPassword+"';";
     private static final String USER_GRANT = "GRANT ALL ON DATABASE "+ConnectionPool.getInstance().dbName+" to "+ConnectionPool.getInstance().dbUser;
-    private static final String CREATE_MAIN_COURSE_TABLE =
-            "CREATE TABLE IF NOT EXISTS COURSE_LIST ("+
+    private static final String CREATE_COURSE_INSTANCE_TABLE =
+            "CREATE TABLE IF NOT EXISTS COURSE_INSTANCE ("+
                     "CRN VARCHAR(12) NOT NULL,"+ //CRN of course, like 5609
                     "TYPE VARCHAR(8) NOT NULL,"+ //Short type, like "E-C" or "Lec"
                     "CROSSLISTED BOOLEAN NOT NULL DEFAULT FALSE,"+ //Boolean
@@ -41,26 +41,20 @@ public class DBSetup {
                     "PRIMARY KEY (CRN));";
 
 
-    /**
-     * Type 		VARCHAR(8)
-     Crosslisted Boolean
-     CRN			VARCHAR(12)
-     Subject		VARCHAR(8)
-     CRS			VARCHAR(8)
-     Title		VARCHAR(255)
-     CR(edits)	INT
-     Days		VARCHAR(7)
-     Time		VARCHAR(32) (Note - should be start time and end time)
-     Instructor 	VARCHAR(64)
-     Room		VARCHAR(32)
-     Start date	datetime
-     Meeting dates - MEETING DATES TABLE
-     Seats avail	unsigned int
-     Length of term VARCHAR(64)
-     End date 	datetime
-     campus		VARCHAR(32)
-
-     */
+    private static final String CREATE_COURSE_META_TABLE =
+            "CREATE TABLE IF NOT EXISTS COURSE_META ("+
+                    "SUBJECT VARCHAR(8) NOT NULL,"+ //Subject, like ECON
+                    "COURSE_NUMBER VARCHAR(8) NOT NULL,"+
+                    "HUMANITIES BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "NATSCI BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "SOCSCI BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "MATH BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "COMMUNICATIONS BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "COMPLIT BOOLEAN NOT NULL DEFAULT FALSE,"+
+                    "UPPERDIV BOOLEAN NOT NULL DEFAULT FALSE," +
+                    "PRIMARY KEY (SUBJECT, COURSE_NUMBER))";
+    //insert into course_meta (subject, course_number, humanities, natsci, socsci, math, communications, complit)"+
+    //" values (?, ?, ?, ?, ?, ?, ?, ?)";
     public static void createOrSetupDB(){
         Connection myConnection = ConnectionPool.getInstance().getRootConnection();
         try{
@@ -105,9 +99,10 @@ public class DBSetup {
     public static void createOrSetupTables(){
         Connection myConnection = ConnectionPool.getInstance().getConnection();
         try{
-            final PreparedStatement preparedStatement = myConnection.prepareStatement(CREATE_MAIN_COURSE_TABLE);
-            final int executed = preparedStatement.executeUpdate();
-            System.out.println("Table Created:"+executed);
+            final PreparedStatement createCourseInstance = myConnection.prepareStatement(CREATE_COURSE_INSTANCE_TABLE);
+            createCourseInstance.executeUpdate();
+            final PreparedStatement createCourseMeta = myConnection.prepareStatement(CREATE_COURSE_META_TABLE);
+            createCourseMeta.executeUpdate();
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{

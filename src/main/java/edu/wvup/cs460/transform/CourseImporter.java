@@ -1,6 +1,6 @@
 package edu.wvup.cs460.transform;
 
-import edu.wvup.cs460.datamodel.Course;
+import edu.wvup.cs460.datamodel.CourseInstance;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ import java.util.List;
  * "Code early, Code often."
  */
 public interface CourseImporter {
-    List<Course> getCourses();
+    List<CourseInstance> getCourses();
 }

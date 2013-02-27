@@ -7,7 +7,7 @@ import java.util.Date;
  * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
-public class Course {
+public class CourseInstance {
     private final String _crn;
     private final String _type;
     private final boolean _crossListed;
@@ -21,13 +21,18 @@ public class Course {
     private final String _room;
     private final Date _startDate;
     private final Date _endDate;
+    private final short _seatsAvail;
     private final String _termLength;
     private final String _campus;
 
-    public Course(String _crn, String _type, boolean _crossListed, String _subject, String _courseNumber,
-                  String _courseTitle, short _credits, String _days, String _time, String _instructor,
-                  String _room, Date _startDate, Date _endDate, String _termLength, String _campus) {
+    public CourseInstance(String _crn, String _type, boolean _crossListed, String _subject, String _courseNumber,
+                          String _courseTitle, short _credits, String _days, String _time, String _instructor,
+                          String _room, Date _startDate, Date _endDate, short _seatsAvail, String _termLength, String _campus) {
+        if(null == _crn){
+            throw new IllegalArgumentException("Unable to create a course without a CRN.");
+        }
         this._crn = _crn;
+
         this._type = _type;
         this._crossListed = _crossListed;
         this._subject = _subject;
@@ -40,6 +45,7 @@ public class Course {
         this._room = _room;
         this._startDate = _startDate;
         this._endDate = _endDate;
+        this._seatsAvail = _seatsAvail;
         this._termLength = _termLength;
         this._campus = _campus;
     }
@@ -104,6 +110,10 @@ public class Course {
         return _courseTitle;
     }
 
+    public short getSeatsAvail(){
+        return _seatsAvail;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -121,6 +131,7 @@ public class Course {
                 ", _room='" + _room + '\'' +
                 ", _startDate=" + _startDate +
                 ", _endDate=" + _endDate +
+                ", _seatsAvail=" + _seatsAvail +
                 ", _termLength='" + _termLength + '\'' +
                 ", _campus='" + _campus + '\'' +
                 '}';
