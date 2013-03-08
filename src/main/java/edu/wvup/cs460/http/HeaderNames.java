@@ -6,4 +6,16 @@ package edu.wvup.cs460.http;
  * "Code early, Code often."
  */
 public enum HeaderNames {
+
+    ContentType("Content-Type");
+
+    private String _formattedValue;
+    private HeaderNames(String formattedValue){
+        _formattedValue = formattedValue;
+    }
+
+    public String getFormattedValue(){
+        return _formattedValue;
+    }
+
 }

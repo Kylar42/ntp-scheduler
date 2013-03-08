@@ -11,13 +11,13 @@ public final class CourseMetadata {
 
     private final String _subject;
     private final String _courseNum;
-    private final boolean _isHumanities;
-    private final boolean _isNaturalScience;
-    private final boolean _isSocialScience;
-    private final boolean _isMath;
-    private final boolean _isCommunications;
-    private final boolean _isComputerLit;
-    private final boolean _isUpperDivision;
+    private boolean _isHumanities;
+    private boolean _isNaturalScience;
+    private boolean _isSocialScience;
+    private boolean _isMath;
+    private boolean _isCommunications;
+    private boolean _isComputerLit;
+    private boolean _isUpperDivision;
 
     public CourseMetadata(String subject, String courseNum, boolean humanities, boolean natScience, boolean socScience,
                           boolean isMath, boolean isComm, boolean isComputerLit, boolean isUpperDivision) {
@@ -44,8 +44,8 @@ public final class CourseMetadata {
 
     }
 
-    public String getSubject()          { return _subject;          }
-    public String getCourseNumber()     { return _courseNum;        }
+    public String  getSubject()         { return _subject;          }
+    public String  getCourseNumber()    { return _courseNum;        }
     public boolean isHumanities()       { return _isHumanities;     }
     public boolean isNaturalScience()   { return _isNaturalScience; }
     public boolean isSocialScience()    { return _isSocialScience;  }
@@ -53,4 +53,12 @@ public final class CourseMetadata {
     public boolean isCommunications()   { return _isCommunications; }
     public boolean isComputerLit()      { return _isComputerLit;    }
     public boolean isUpperDivision()    { return _isUpperDivision;  }
+
+    public void setIsMath           (boolean newVal){ _isMath = newVal;             }
+    public void setIsHumanities     (boolean newVal){ _isHumanities = newVal;       }
+    public void setIsNaturalScience (boolean newVal){ _isNaturalScience = newVal;   }
+    public void setIsSocialScience  (boolean newVal){ _isSocialScience = newVal;    }
+    public void setIsCommunications (boolean newVal){ _isCommunications = newVal;   }
+    public void setIsComputerLit    (boolean newVal){ _isComputerLit = newVal;      }
+    public void setIsUpperDivision  (boolean newVal){ _isUpperDivision = newVal;    }
 }

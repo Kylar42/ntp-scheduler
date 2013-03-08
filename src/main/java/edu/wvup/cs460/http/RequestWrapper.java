@@ -33,6 +33,10 @@ public class RequestWrapper {
 
     }
 
+    public HttpRequest getRequest(){
+        return _request;
+    }
+
     private class BlockingInputStream extends InputStream{
         CircularByteBuffer byteBuffer = new CircularByteBuffer(4096, true);
 

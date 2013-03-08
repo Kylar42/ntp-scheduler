@@ -13,9 +13,12 @@
 	</head>
 	<body>
 		<form method="post" action="" id="class-find">
-			<label>Class Name</label> <input type="text" name="classname" /> <br> 
-			<input type="checkbox" name="humanities" /><label>Humanities</label> <br>
-			<input type="checkbox" name="natscience" /><label>Natural Sciences</label><br> 
+			<label>Class Name</label> <input type="text" name="math101.classname" value="Math 101" disabled="true"/> 
+			<input type="checkbox" name="math101.isMath" /><label>is Math</label>
+			<input type="checkbox" name="math101.isScience" /><label>Is Science </label><br> 
+			<label>Class Name</label> <input type="text" name="chem101.classname" value="Chem 101"/> 
+			<input type="checkbox" name="chem101.isMath" /><label>is Math</label>
+			<input type="checkbox" name="chem101.isScience" /><label>Is Science </label><br> 
 			<input type="button" value="Go" onclick="doSomething(this.form)" />
 		</form>
 	</body>

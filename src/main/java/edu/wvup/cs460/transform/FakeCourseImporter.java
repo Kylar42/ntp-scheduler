@@ -67,7 +67,7 @@ public class FakeCourseImporter implements CourseImporter {
                 line = buff.readLine();
             }
         } catch (IOException ioe) {
-            ioe.printStackTrace();//for now. fake, after all.
+            ioe.printStackTrace();
         }
 
         return toReturn;

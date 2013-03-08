@@ -1,6 +1,8 @@
 package edu.wvup.cs460.db;
 
 import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,6 +27,8 @@ public class ConnectionPool {
     final String dbUser = "cs460";
     final String dbPassword = "cs460";
 
+    private final static Logger LOG = LoggerFactory.getLogger(ConnectionPool.class);
+
     private static final ConnectionPool INSTANCE = new ConnectionPool();
 
     private final ConcurrentLinkedQueue<Connection> ROOT_CONNECTIONS = new ConcurrentLinkedQueue<Connection>() ;
@@ -46,12 +50,12 @@ public class ConnectionPool {
         try {
             Class.forName(dbClass);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         }
         try {
             return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         }
         return null;
     }
@@ -60,12 +64,12 @@ public class ConnectionPool {
         try {
             Class.forName(dbClass);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         }
         try {
             return DriverManager.getConnection(dbRootUrl,dbRootUser, dbRootPassword);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         }
         return null;
     }

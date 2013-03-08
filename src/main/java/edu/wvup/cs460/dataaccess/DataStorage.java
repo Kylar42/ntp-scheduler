@@ -4,11 +4,14 @@ import edu.wvup.cs460.datamodel.CourseInstance;
 import edu.wvup.cs460.datamodel.CourseMetadata;
 import edu.wvup.cs460.db.ConnectionPool;
 import edu.wvup.cs460.transform.ImportFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +21,9 @@ import java.util.List;
  * "Code early, Code often."
  */
 public class DataStorage {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DataStorage.class);
+
     //------------------------------------------------------------------Prepared Statements for Course Instances
     String COURSE_INSTANCE_INSERT_SQL = "insert into course_instance (crn, type, crosslisted, subject, course_number," +
             "course_title, credits, days, time, instructor, room, start_date, end_date, seats_available, " +
@@ -35,7 +41,42 @@ public class DataStorage {
             " values (?, ?, ?, ?, ?, ?, ?, ?)";
     String COURSE_META_UPDATE_SQL = "update course_meta set humanities=?, natsci=?, socsci=?, math=?, communications=?, complit=? where subject=? and course_number=?";
     String COURSE_META_EXISTS_SQL = "select count(*) from course_meta where subject=? and course_number=?";
+
+    String COURSE_LIST_SQL = "select * from course_meta where lower(subject) like lower(?)";
+    String[] COURSE_META_COLS = {"subject", "course_number", "humanities", "natsci", "socsci", "math", "communications", "complit"};
     //------------------------------------------------------------------End
+
+    public List<CourseMetadata> getCoursesWithSubjectSubstring(String subtring){
+        List<CourseMetadata> courses = new ArrayList<CourseMetadata>();
+        final Connection connection = ConnectionPool.getInstance().getConnection();
+        try {
+            final PreparedStatement preparedStatement = connection.prepareStatement(COURSE_LIST_SQL);
+            String wildcard = "%"+subtring+"%";//wildcard
+            preparedStatement.setString(1, wildcard);
+            final ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                String subject = resultSet.getString(COURSE_META_COLS[0]);
+                String courseNum = resultSet.getString(COURSE_META_COLS[1]);
+
+                boolean humanities = resultSet.getBoolean(COURSE_META_COLS[2]);
+                boolean natsci = resultSet.getBoolean(COURSE_META_COLS[3]);
+                boolean socsci = resultSet.getBoolean(COURSE_META_COLS[4]);
+                boolean math = resultSet.getBoolean(COURSE_META_COLS[5]);
+                boolean comm = resultSet.getBoolean(COURSE_META_COLS[6]);
+                boolean complit = resultSet.getBoolean(COURSE_META_COLS[7]);
+                CourseMetadata cMeta = new CourseMetadata(subject, courseNum, humanities, natsci, socsci, math, comm, complit, false);
+                courses.add(cMeta);
+
+            }
+        } catch (SQLException e) {
+            LOG.error("SQLError While retrieving Course list.", e);
+        } finally {
+            ConnectionPool.getInstance().returnConnection(connection);
+        }
+
+
+        return courses;
+    }
 
     public boolean insertCourseMeta(CourseMetadata courseMeta){
         final Connection connection = ConnectionPool.getInstance().getConnection();
@@ -53,7 +94,7 @@ public class DataStorage {
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
             return false;
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
@@ -77,7 +118,7 @@ public class DataStorage {
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
             return false;
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
@@ -109,7 +150,7 @@ public class DataStorage {
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
             return false;
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
@@ -140,7 +181,7 @@ public class DataStorage {
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
             return false;
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
@@ -173,7 +214,7 @@ public class DataStorage {
             final int anInt = resultSet.getInt(1);
             return anInt > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
         }
@@ -192,7 +233,7 @@ public class DataStorage {
             final int anInt = resultSet.getInt(1);
             return anInt > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error occurred", e);
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
         }
@@ -205,7 +246,8 @@ public class DataStorage {
     }
 
     public static void main(String[] args) {
-        importAllCourses();
+        final List<CourseMetadata> courseMetadatas = new DataStorage().getCoursesWithSubjectSubstring("mat");
+        System.out.println("foo");
     }
 
 

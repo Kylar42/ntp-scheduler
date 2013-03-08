@@ -2,7 +2,6 @@ package edu.wvup.cs460.http;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public enum MimeType {
@@ -14,9 +13,6 @@ public enum MimeType {
     TEXT_HTML                   ("text/html",           true),
     TEXT_PLAIN                  ("text/plain",          true),
     TEXT_CSS                    ("text/css",            true),
-    TEXT_XML                    ("text/xml",            false), // Some RFCs have not been updated to application/xml
-    TEXT_VCARD                  ("text/vcard",          true),
-    TEXT_PLIST                  ("text/plist",          true),
     TEXT_OCTET_STREAM           ("text/octet-stream",   false),
     TEXT_ANY                    ("text/*",              true),
 
@@ -29,9 +25,6 @@ public enum MimeType {
     APPLICATION_OCTET_STREAM    ("application/octet-stream",            false),
     APP_JSON                    ("application/json",                    true),
     APP_XML                     ("application/xml",                     true),
-    APP_XBEL                    ("application/xbel+xml",                true),
-    APP_ZIP                     ("application/zip",                     false),
-    APP_APPLE_XML_PLIST         ("application/x-apple-plist",           true),
 
 
 
@@ -40,20 +33,19 @@ public enum MimeType {
     JPEG    ("image/jpeg",      false),
     XICON   ("image/x-icon",    false),
 
-
     BINARY_OCTET_STREAM ("binary/octet-stream",     false),
 
     VIDEO_QUICKTIME     ("video/quicktime",         false),
 
-    UNKNOWN             ("application/newcastle",   false);
+    UNKNOWN     ("application/unknown", false);
 
 
     private String  _typeString;
-    private boolean _isStringType;
+    private boolean _isString;
 
     private MimeType(final String typeString, final boolean isStringType){
         _typeString = typeString;
-        _isStringType = isStringType;
+        _isString = isStringType;
     }
 
     public static MimeType typeFromStringValue(final String value){
@@ -76,7 +68,7 @@ public enum MimeType {
     }
 
     public final String formattedString(String charset){
-        if(_isStringType){
+        if(_isString){
             final StringBuilder toReturn = new StringBuilder(_typeString);
             toReturn.append("; charset=").append(charset);
             return toReturn.toString();

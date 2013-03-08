@@ -27,6 +27,7 @@ import org.jboss.netty.handler.codec.http.HttpChunkTrailer;
 import org.jboss.netty.handler.codec.http.HttpHeaders;
 import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.jboss.netty.handler.codec.http.HttpResponse;
+import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
 import org.jboss.netty.util.CharsetUtil;
 
@@ -37,26 +38,29 @@ public class DefaultHttpServerHandler extends SimpleChannelUpstreamHandler {
     /** Buffer that stores the response content */
     private final StringBuilder buf = new StringBuilder();
 
-    private HttpMethod      _method;
+    private AbstractHttpMethod _method;
     private RequestWrapper  _reqWrapper;
     private ResponseWrapper _respWrapper;
 
 
-    public void mr(ChannelHandlerContext ctx, MessageEvent e){
-        if(e.getMessage() instanceof HttpChunk){
-            _reqWrapper.chunkedBytesReceived((HttpChunk)e.getMessage());
-        }else if(e.getMessage() instanceof HttpRequest){
+    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e){
+       if(e.getMessage() instanceof HttpRequest){
             //create new wrapper and dispatch  it to expected method.
             HttpRequest request = this.request = (HttpRequest) e.getMessage();
             _reqWrapper = new RequestWrapper(request);
             _respWrapper = new ResponseWrapper(ctx, request);
             _method = MethodFactory.getInstance().methodForRequest(request);
-            _method.handleRequest(_reqWrapper, _respWrapper);
+           try {
+               _method.handleRequest(_reqWrapper, _respWrapper);
+           } catch (Throwable e1) {
+                _respWrapper.writeResponse(HttpResponseStatus.INTERNAL_SERVER_ERROR, e1.getMessage(), MimeType.TEXT_PLAIN);
+           }
+       } else if(e.getMessage() instanceof HttpChunk){
+            _reqWrapper.chunkedBytesReceived((HttpChunk)e.getMessage());
         }
     }
 
-    @Override
-    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
+    public void messageReceived2(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
         if (!readingChunks) {
             HttpRequest request = this.request = (HttpRequest) e.getMessage();
 
