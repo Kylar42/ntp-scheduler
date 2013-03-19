@@ -14,7 +14,7 @@ import java.util.List;
  * User: Tom Byrne(tom.byrne@apple.com)
  * "Code early, Code often."
  */
-public class FakeCourseImporter implements CourseImporter {
+public class CSVCourseImporter implements CourseImporter {
     @Override
     public List<CourseInstance> getCourses() {
         List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
@@ -71,5 +71,9 @@ public class FakeCourseImporter implements CourseImporter {
         }
 
         return toReturn;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
