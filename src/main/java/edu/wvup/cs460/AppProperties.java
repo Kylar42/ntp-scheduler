@@ -1,19 +1,25 @@
 package edu.wvup.cs460;
 
+import edu.wvup.cs460.util.PropertiesHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public class AppProperties {
 
 
     private Properties mergedProperties = new Properties();
+    private Logger LOG = LoggerFactory.getLogger(AppProperties.class);
 
-    /* friendly */ AppProperties(){
+    public AppProperties(){
 
     }
 
@@ -65,6 +71,26 @@ public class AppProperties {
     public boolean getPropertyAsBoolean(String key, boolean defaultValue){
         String val = findProperty(key);
         return (null == val) ? defaultValue : Boolean.parseBoolean(val);
+
+    }
+    public void initPropertiesFromCommandLine(String[] args){
+        //look for properties
+        Properties cliProps = PropertiesHelper.parsePropsFromCommandLine(args);
+
+        final String mainPropsFilePath = cliProps.getProperty("main.properties");
+        if(null != mainPropsFilePath){
+            File mainPropsFile = new File(mainPropsFilePath);
+            if(mainPropsFile.exists()){
+                //read in main props
+                try {
+                    final Properties properties = PropertiesHelper.readPropsFile(mainPropsFile);
+                    mergeProperties(properties);//merge to main.
+                } catch (IOException e) {
+                    LOG.error("Unable to read properties file.", e);
+                }
+            }
+        }
+        //System.getProperties().getProperty("someprops.propfield");
 
     }
 

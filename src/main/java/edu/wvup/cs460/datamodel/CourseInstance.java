@@ -24,10 +24,13 @@ public class CourseInstance {
     private final short _seatsAvail;
     private final String _termLength;
     private final String _campus;
+    private final String _term;
+    private final String _termYear;
 
     public CourseInstance(String _crn, String _type, boolean _crossListed, String _subject, String _courseNumber,
                           String _courseTitle, short _credits, String _days, String _time, String _instructor,
-                          String _room, Date _startDate, Date _endDate, short _seatsAvail, String _termLength, String _campus) {
+                          String _room, Date _startDate, Date _endDate, short _seatsAvail, String _termLength, String _campus,
+                          String _term, String _termYear) {
         if(null == _crn){
             throw new IllegalArgumentException("Unable to create a course without a CRN.");
         }
@@ -48,6 +51,8 @@ public class CourseInstance {
         this._seatsAvail = _seatsAvail;
         this._termLength = _termLength;
         this._campus = _campus;
+        this._term = _term;
+        this._termYear = _termYear;
     }
 
     public String getCrn() {
@@ -114,6 +119,14 @@ public class CourseInstance {
         return _seatsAvail;
     }
 
+    public String getTerm(){
+        return _term;
+    }
+
+    public String getTermYear(){
+        return _term;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -134,6 +147,8 @@ public class CourseInstance {
                 ", _seatsAvail=" + _seatsAvail +
                 ", _termLength='" + _termLength + '\'' +
                 ", _campus='" + _campus + '\'' +
+                ", _term='" + _term + '\'' +
+                ", _termyear='" + _termYear + '\'' +
                 '}';
     }
 }

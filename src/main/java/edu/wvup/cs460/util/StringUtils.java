@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.StringTokenizer;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
@@ -12,6 +13,9 @@ import java.nio.charset.Charset;
  * "Code early, Code often."
  */
 public class StringUtils {
+
+
+    public static String DATE_FORMAT_STRING = "EEE, dd MMM YYYY HH:mm:ss zzz";
 
     private static int DEFAULT_BUFFER_SIZE = 4096;//TODO:should be a property, so we can tune
     /**
@@ -59,5 +63,23 @@ public class StringUtils {
             output.write(buffer, 0, count);
         }
     }
+
+    public static String[] splitStringWithoutEmpty(final String value, final String delimiter) throws NullPointerException {
+        //noinspection ConstantConditions
+        if (null == value || null == delimiter) {
+            throw new NullPointerException("Invalid args for split for string: " + value);
+        }
+
+        final StringTokenizer tokenizer = new StringTokenizer(value, delimiter, false);
+
+        final String[] result = new String[tokenizer.countTokens()];
+
+        int i = 0;
+        while (tokenizer.hasMoreTokens()) {
+            result[i++] = tokenizer.nextToken();
+        }
+        return result;
+    }
+
 }
 

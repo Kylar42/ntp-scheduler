@@ -1,14 +1,17 @@
 package edu.wvup.cs460.transform;
 
 import edu.wvup.cs460.datamodel.CourseInstance;
+import edu.wvup.cs460.util.Tuple;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
+ * This will return a list of parsed course instances, as well as a date that they were produced.
+ * We can later use the date to determine if they need to be re-fetched.
  */
 public interface CourseImporter {
-    List<CourseInstance> getCourses();
+    List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes);
 }

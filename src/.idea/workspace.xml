@@ -2,451 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/action/ChainStatus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/action/MethodResponse.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/classsearch/en/f5ec4a800bf3aaee0e92f0e9a68f7724768e823d/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/classsearch/en/f5ec4a800bf3aaee0e92f0e9a68f7724768e823d/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/classsearch/en/f5ec4a800bf3aaee0e92f0e9a68f7724768e823d/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/classsearch/en/f5ec4a800bf3aaee0e92f0e9a68f7724768e823d/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/18px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/18px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/18px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/18px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/active_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/normal_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/normal_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_active_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/24px/selected_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/normal_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/selected_active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/30px/selected_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/44px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/44px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/44px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/ace/44px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/active_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/normal_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/normal_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_active_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_button_capsule.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/24px/selected_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/normal_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/normal_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/selected_active_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/selected_active_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/selected_button.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/dark/30px/selected_button_pointer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/popup/active_select.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/button/popup/normal_select.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_checked.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_checked_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_mixed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_mixed_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_unchecked.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/14px/checkbox_unchecked_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_checked.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_checked_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_mixed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_mixed_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_unchecked.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/checkbox/ace/16px/checkbox_unchecked_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/collection/source-list/selection.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/disclosure/ace/disclosure_closed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/disclosure/ace/disclosure_closed_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/disclosure/ace/disclosure_open.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/disclosure/ace/disclosure_open_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/checkmark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/checkmark_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/down.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/menu_item.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/menu/up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/panel/panel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/ace/panel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/ace/pointers.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/popover/popover.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/popover/popover_empty.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/popover/popover_notoolbar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/popover/popover_pointers.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/picker/popover/popover_pointers_notoolbar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/progress/ace/progress_view_content.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/progress/ace/progress_view_indeterminate_content.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/progress/ace/progress_view_track.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_mixed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_mixed_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/radio/radio_unselected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/horizontal/thumb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/horizontal/track_and_arrows.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/horizontal/track_and_arrows_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/vertical/thumb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/vertical/track_and_arrows.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/scroller/vertical/track_and_arrows_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/18px/segmented_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/18px/segmented_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/18px/segmented_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/18px/segmented_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_vertical_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_vertical_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_vertical_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/24px/segmented_vertical_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_vertical_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_vertical_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_vertical_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/30px/segmented_vertical_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/44px/segmented_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/44px/segmented_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/44px/segmented_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/segmented/44px/segmented_selected_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/14px/knob.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/14px/knob_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/16px/knob.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/16px/knob_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/22px/knob.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/22px/knob_active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/22px/track.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/slider/ace/track.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/source/resources/toolbar/toolbar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-no-repeat.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-no-repeat@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-repeat-x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-repeat-x@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-repeat-y.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-repeat-y@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/menu/menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/menu/menu.png@2x" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/panel/panel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/panel/panel.png@2x" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/picker/ace/panel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/picker/ace/panel.png@2x" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/picker/popover/popover_empty.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet-resources/picker/popover/popover_empty.png@2x" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/ace/en/48a3a3c665884fb3797d35e42cec99b213d5657e/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/bootstrap/en/3a06137012f8e5112684d730a19c914ca4f84a34/setup_body_class_names.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/resources/debug/iframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/debug/a_sample_image.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/debug/apple-logo1.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/cap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/downbutton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-alert-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-alert-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-alert-48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-bookmark-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-bookmark-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-cancel-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-document-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-document-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-down-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-error-48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-favorite-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-favorite-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-folder-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-folder-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-group-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-group-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-help-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-help-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-info-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-info-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-info-48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-left-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-options-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-options-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-redo-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-right-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-tools-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-trash-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-trash-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-undo-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-up-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-user-16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/icons/sc-icon-user-24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/thumb-bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/thumb-center.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/thumb-top.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/track.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/source/resources/images/upbutton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/stylesheet-no-repeat.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/stylesheet-no-repeat@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/desktop/en/e94ec8401b49956050f40a2525a60186d6e0c845/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/controller.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/dock-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/dock-item-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/dock-item-divider.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/dock-item-sel-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/dock-item-sel-divider.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/main-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/page.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/pane.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/source/images/view.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/designer/en/06e82d997666c6ca1959dc96efccff0221ce4165/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500_italic.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500_italic.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/fonts/museosans_500_italic.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/app-selector/choose-app.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/app-selector/list-item-sel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/active-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/regular-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/regular-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule-xl/regular-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/regular-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/regular-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/capsule/sel-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/active-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-sel-active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-sel-active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-sel-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/cap-sel-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/disabled-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/regular-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/regular-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/regular-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-active-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-disabled-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/dark/sel-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/active-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/disabled-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/regular-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/sel-active-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/sel-disabled-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/shared/sel-m.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/regular-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/regular-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-active-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-active-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-disabled-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-disabled-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/buttons/square/sel-r.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/actions-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/actions.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/inspector-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/inspector.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/library-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/library.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/projects-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/projects.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/run-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/run.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/save-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/icons/save.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/logos/greenhouse-l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/logos/greenhouse-s.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/logos/sproutcore.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/main-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/bottom-left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/bottom-right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/close-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/pointer-bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/pointer-left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/pointer-right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/pointer-top.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/search-active.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/top-left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/top-right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/picker/top.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/source/images/toolbar-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/experimental/greenhouse/en/366ff509ca67fd8e3935b70e250214030eb999c3/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/resources/images/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-startup-landscape.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-startup-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-startup-portrait.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-startup-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore-startup.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/source/resources/images/sproutcore.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/foundation/en/d5a4c79d04e87af434434fcc4cd005a8e49ff01b/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/backButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/blueButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/cancel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/grayButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/leftButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/listArrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/listArrowSel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/listGroup.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/pinstripes.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/rightButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/selection.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/thumb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/toggle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/toggleOn.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/toolButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/toolbar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/source/images/whiteButton.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/iphone_theme/en/39f22c9fad3067b48955ce7e3c4219e2b9842596/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/icons/mini_222222.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/icons/mini_454545.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/icons/mini_888888.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/icons/mini_ffffff.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/panels/sprite-x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/panels/sprite-y.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-scroller-repeat-x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-scroller-repeat-y.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-scroller-sprite.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-theme-repeat-x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-theme-ysprite.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/source/images/sc-toolbar-view.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/legacy_theme/en/bb9f4e1aa0762e94e4dd20bcde04f12dc5399913/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/resources/playeras3.fla" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/resources/videoCanvas.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/source/resources/controls.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/stylesheet-no-repeat.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/stylesheet-no-repeat@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media/en/b17b6d572cb91360f113dd2c0f7f1ab09149519d/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media_examples/en/d920e9c41de1e39686bf21f4c82b3ae59b5ef950/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media_examples/en/d920e9c41de1e39686bf21f4c82b3ae59b5ef950/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media_examples/en/d920e9c41de1e39686bf21f4c82b3ae59b5ef950/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/media_examples/en/d920e9c41de1e39686bf21f4c82b3ae59b5ef950/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/resources/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/alarm-clock.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/balloon-facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/balloon-twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/balloon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/bullet.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/calendar-insert.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/cross.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/example-box-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/fruit-grape.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/fruit-lime.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/fruit-orange.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/fruit.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/glow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/green-dot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/grey-dot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/pixels.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/red-dot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/sproutcore-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/source/resources/images/sproutcore-startup-landscape.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/stylesheet-resources/images/pixels.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/stylesheet-resources/images/pixels.png@2x" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/showcase/en/21a6a2da83a0a46f68f64bfec8cd71933c31e6a3/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/statechart_routing/en/921eea40c792bab38d0a8375d1d104241a81798c/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/statechart_routing/en/921eea40c792bab38d0a8375d1d104241a81798c/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/statechart_routing/en/921eea40c792bab38d0a8375d1d104241a81798c/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/statechart_routing/en/921eea40c792bab38d0a8375d1d104241a81798c/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/testing/en/bfeba25c9e1bd7a27bd4f37e7815fdb07794d69f/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/tests/en/ebb8885944a6ff5b4c22e30fff7e63fb07724992/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/tests/en/ebb8885944a6ff5b4c22e30fff7e63fb07724992/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/tests/en/ebb8885944a6ff5b4c22e30fff7e63fb07724992/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/tests/en/ebb8885944a6ff5b4c22e30fff7e63fb07724992/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/tests/en/ebb8885944a6ff5b4c22e30fff7e63fb07724992/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/javascript-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/source/images/main-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/stylesheet-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/welcome/en/7c22009bc54be8ce7922050762a8431c089f0e7d/stylesheet@2x-packed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/html/static/sproutcore/yuireset/en/aa723d50e74b670b29b990672c2305e4efe96234/stylesheet.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/AbstractHttpMethod.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/AbstractHttpMethod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/AppProperties.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/AppProperties.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/Constants.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ContentHandlerFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ContentHandlerFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DynamicGetMethod.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DynamicGetMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/FakeCourseImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/FakeCourseImporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/GetMethod.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/GetMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/HeaderNames.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/HeaderNames.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodContext.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MimeType.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MimeType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/MimeUtils.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/MimeUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ParsedURL.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ParsedURL.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/PropertiesHelper.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/PropertiesHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/RequestWrapper.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/RequestWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/application.js" afterPath="$PROJECT_DIR$/main/resources/html/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/index.html" afterPath="$PROJECT_DIR$/main/resources/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/applicationSearch.js" afterPath="$PROJECT_DIR$/main/resources/html/applicationSearch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ntp-scheduler.iml" afterPath="$PROJECT_DIR$/ntp-scheduler.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/test1.html" afterPath="$PROJECT_DIR$/main/resources/html/test1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/search.html" afterPath="$PROJECT_DIR$/main/resources/html/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ntp-scheduler.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362685730222" ignored="false" />
-    <file path="/ConnectionPool.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362703622475" ignored="false" />
-    <file path="/DBSetup.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361937579997" ignored="false" />
+    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363651779658" ignored="false" />
+    <file path="/ConnectionPool.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363657969850" ignored="false" />
+    <file path="/DBSetup.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700283607" ignored="false" />
     <file path="/DefaultHttpServerHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362671090597" ignored="false" />
     <file path="/HttpMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336703644" ignored="false" />
     <file path="/RequestWrapper.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362014530718" ignored="false" />
@@ -454,26 +45,26 @@
     <file path="/HttpServerPipelineFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361319582389" ignored="false" />
     <file path="/ResponseWrapper.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362672211031" ignored="false" />
     <file path="/MethodFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362626106387" ignored="false" />
-    <file path="/ImportFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361759325306" ignored="false" />
-    <file path="/CourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361759877345" ignored="false" />
-    <file path="/FakeCourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362703722399" ignored="false" />
+    <file path="/ImportFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363130938214" ignored="false" />
+    <file path="/CourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363703343943" ignored="false" />
+    <file path="/FakeCourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363092176284" ignored="false" />
     <file path="/Course.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361927919873" ignored="false" />
-    <file path="/CourseSeeder.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361938718200" ignored="false" />
-    <file path="/DataStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362702754371" ignored="false" />
-    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362672288128" ignored="false" />
-    <file path="/CourseMetadata.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362701833324" ignored="false" />
-    <file path="/StringUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362015624455" ignored="false" />
+    <file path="/CourseSeeder.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704426660" ignored="false" />
+    <file path="/DataStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363702554647" ignored="false" />
+    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363705315785" ignored="false" />
+    <file path="/CourseMetadata.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363136006633" ignored="false" />
+    <file path="/StringUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363701474297" ignored="false" />
     <file path="/MethodContext.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336594819" ignored="false" />
     <file path="/Constants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362022596245" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/ideagen/foundation/src/protobuf/mme/foundation/memcached/generated/ValueWrapperProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362077419322" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/ideagen/resourcestorage/src/protobuf/mme/resourcestorage/datarecovery/transport/ReportTransport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362077695160" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/ideagen/resourcestorage/src/protobuf/mme/resourcestorage/datarecovery/transport/ReportTransport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358116425" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/OutlinedUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120533" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/eclipse/build-eclipse.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/CardDavFilterBase.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/tools/ideagen/src/build-idea.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368529731" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/tools/ideagen/src/build-idea.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356158915" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/CardDavResourceUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/report/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/report/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356286375" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/foundation/src/mme/foundation/util/Util.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/baseapplication/src/mme/baseapplication/BaseApplicationProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/build.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
@@ -489,9 +80,9 @@
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/DavReport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/accountapi/src/mme/accountapi/AccountApiProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/post/CardDavMultiPost.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
-    <file path="/PostMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362704032690" ignored="false" />
+    <file path="/PostMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363050164013" ignored="false" />
     <file path="/MimeUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362671035409" ignored="false" />
-    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362703229378" ignored="false" />
+    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363320235" ignored="false" />
     <file path="/HeaderNames.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336633172" ignored="false" />
     <file path="/AbstractHttpMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362702659384" ignored="false" />
     <file path="/MimeTypes.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336973134" ignored="false" />
@@ -503,12 +94,12 @@
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerChangeAdmin.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerDelete.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/MutateRecords.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
-    <file path="/NTPAppServer.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362702612336" ignored="false" />
+    <file path="/NTPAppServer.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658468423" ignored="false" />
     <file path="/PropertiesHelper.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362615637209" ignored="false" />
-    <file path="/AppProperties.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362615310514" ignored="false" />
+    <file path="/AppProperties.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363657872429" ignored="false" />
     <file path="/ChainStatus.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362669603099" ignored="false" />
     <file path="/MethodResponse.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362670839510" ignored="false" />
-    <file path="/application.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362700347294" ignored="false" />
+    <file path="/application.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362943013279" ignored="false" />
     <file path="/application2.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362700262405" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/ckservice/src/mme/ckservice/CKProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
     <file path="/AbstractDavMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362682112322" ignored="false" />
@@ -517,6 +108,38 @@
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/ideagen/ckservice/src/protobuf/mme/ckservice/clouddb/generated/CloudDBInternalProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684175725" ignored="false" />
     <file path="$PROJECT_DIR$/../../../RandomCode2/src/NotCreatedEqual.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684187380" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/Prebuilt/Newcastle/thirdparty/zookeeper-3.4.5-src.jar!/org/apache/zookeeper/ClientCnxn.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362685533374" ignored="false" />
+    <file path="/ClassMetaHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658714381" ignored="false" />
+    <file path="/ParsedURL.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363050618480" ignored="false" />
+    <file path="/ContentHandlerFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363054924162" ignored="false" />
+    <file path="/search.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363051156274" ignored="false" />
+    <file path="/applicationSearch.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363051179056" ignored="false" />
+    <file path="/ClassListHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658689039" ignored="false" />
+    <file path="/CourseMetaStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363132751988" ignored="false" />
+    <file path="/CourseInstanceStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700773761" ignored="false" />
+    <file path="/HTMLScraperImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363705681698" ignored="false" />
+    <file path="/DBConstants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658160574" ignored="false" />
+    <file path="/CourseInstance.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700803344" ignored="false" />
+    <file path="/CSVCourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704143528" ignored="false" />
+    <file path="/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356205618" ignored="false" />
+    <file path="/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368528589" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/test/functional/carddavtester/scripts/tests/CardDAV/new-features.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358342424" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363360891162" ignored="false" />
+    <file path="/BundleMethodGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363360889537" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/DavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363754018" ignored="false" />
+    <file path="/DavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363307575" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/exception/BundleErrorUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363365206926" ignored="false" />
+    <file path="/BundleErrorUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363365205358" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodFetch.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368400544" ignored="false" />
+    <file path="/BundleMethodFetch.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368209002" ignored="false" />
+    <file path="/DBSetupSQLStrings.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700066550" ignored="false" />
+    <file path="/*.regexp" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700160397" ignored="false" />
+    <file path="/Tuple.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363701730718" ignored="false" />
+    <file path="/URLCacheStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704083786" ignored="false" />
+    <file path="/CourseImportContext.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363703628727" ignored="false" />
+    <file path="$PROJECT_DIR$/../../generic/src/Fenian.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363792708451" ignored="false" />
+    <file path="$PROJECT_DIR$/../../generic/src/MyBank.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363788634130" ignored="false" />
+    <file path="/Fenian.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363792659718" ignored="false" />
+    <file path="/MyBank.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363788633809" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,6 +154,64 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" line="58" class="edu.wvup.cs460.http.DefaultHttpServerHandler" package="edu.wvup.cs460.http">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" line="60" class="edu.wvup.cs460.transform.CSVCourseImporter" package="edu.wvup.cs460.transform">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" line="88" class="edu.wvup.cs460.dataaccess.CourseMetaStorage" package="edu.wvup.cs460.dataaccess">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" line="69" class="edu.wvup.cs460.dataaccess.CourseInstanceStorage" package="edu.wvup.cs460.dataaccess">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -565,64 +246,6 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" line="58" class="edu.wvup.cs460.http.DefaultHttpServerHandler" package="edu.wvup.cs460.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" line="119" class="edu.wvup.cs460.http.PostMethod" package="edu.wvup.cs460.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" line="60" class="edu.wvup.cs460.http.PostMethod" package="edu.wvup.cs460.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" line="112" class="edu.wvup.cs460.http.PostMethod" package="edu.wvup.cs460.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -633,95 +256,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PostMethod.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="0" selection-start="5665" selection-end="5665" vertical-scroll-proportion="0.3326572">
-              <folding>
-                <element signature="e#4403#4440#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DataStorage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="0" selection-start="6042" selection-end="6042" vertical-scroll-proportion="0.0">
+            <state line="35" column="5" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseMetaStorage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="145" column="0" selection-start="6199" selection-end="6307" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#2559#2575#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1713#1729#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractHttpMethod.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/AbstractHttpMethod.java">
+      <file leaf-file-name="CourseSeeder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="0" selection-start="1454" selection-end="1454" vertical-scroll-proportion="0.0">
+            <state line="19" column="27" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1686#1700#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSVCourseImporter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="98" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#598#619#0" expanded="true" />
+                <element signature="e#880#896#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTMLScraperImporter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="167" column="41" selection-start="6769" selection-end="6769" vertical-scroll-proportion="0.29377204">
+              <folding>
+                <element signature="e#1108#1129#0" expanded="true" />
+                <element signature="e#4932#4948#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketInputStream.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/net/SocketInputStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="23" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#7651#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="51" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NTPAppServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java">
+      <file leaf-file-name="DBSetupSQLStrings.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="31" selection-start="3393" selection-end="3393" vertical-scroll-proportion="0.0">
+            <state line="14" column="30" selection-start="482" selection-end="483" vertical-scroll-proportion="-6.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionPool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java">
+      <file leaf-file-name="CourseImporter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="82" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetMethod.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/GetMethod.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="73" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FakeCourseImporter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/FakeCourseImporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="34" selection-start="2667" selection-end="2667" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseMetadata.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="40" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/html/application.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="4" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/html/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="55" selection-start="593" selection-end="593" vertical-scroll-proportion="-6.875">
+            <state line="14" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -745,22 +369,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/action/MethodResponse.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/MimeUtils.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MimeType.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java" />
-        <option value="$PROJECT_DIR$/main/resources/html/application2.js" />
-        <option value="$PROJECT_DIR$/main/resources/html/application.js" />
-        <option value="$PROJECT_DIR$/main/resources/html/index.html" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/AbstractHttpMethod.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/GetMethod.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/FakeCourseImporter.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" />
       </list>
     </option>
   </component>
@@ -791,16 +415,170 @@
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="ntp-scheduler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1021,6 +799,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ntp-scheduler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs460" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1105,8 +913,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1118,7 +924,7 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main/resource-src/logback-core-1.0.9-sources.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../generic" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1132,13 +938,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.wvup.cs460.http.roap" />
       <recent name="edu.wvup.cs460.http" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main/resources/html" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="edu.wvup.cs460.action" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NTPAppServer">
+  <component name="RunManager" selected="Application.DBSetup">
     <configuration default="false" name="DBSetup" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.db.DBSetup" />
       <option name="VM_PARAMETERS" />
@@ -1155,6 +965,9 @@
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
@@ -1177,6 +990,9 @@
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
@@ -1225,6 +1041,26 @@
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="HTMLScraperImporter" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.transform.HTMLScraperImporter" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ntp-scheduler" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1309,18 +1145,20 @@
       <patterns />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.DBSetup" />
       <item index="1" class="java.lang.String" itemvalue="Application.NTPAppServer" />
       <item index="2" class="java.lang.String" itemvalue="Application.CourseSeeder" />
       <item index="3" class="java.lang.String" itemvalue="Application.DataStorage" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HTMLScraperImporter" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.NTPAppServer" />
-        <item index="1" class="java.lang.String" itemvalue="Application.DataStorage" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CourseSeeder" />
-        <item index="3" class="java.lang.String" itemvalue="Application.DBSetup" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.DBSetup" />
+        <item index="1" class="java.lang.String" itemvalue="Application.NTPAppServer" />
+        <item index="2" class="java.lang.String" itemvalue="Application.HTMLScraperImporter" />
+        <item index="3" class="java.lang.String" itemvalue="Application.DataStorage" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CourseSeeder" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
@@ -1359,18 +1197,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33009708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279396" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686085" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1447,118 +1285,135 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/action/ChainStatus.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="20" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+        <state line="22" column="35" selection-start="615" selection-end="632" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="25" selection-start="298" selection-end="312" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="121" selection-start="2556" selection-end="2556" vertical-scroll-proportion="0.0">
+        <state line="27" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/sql/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="13" selection-start="804" selection-end="804" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/MimeUtils.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/sql/ResultSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="451" selection-end="459" vertical-scroll-proportion="0.0">
+        <state line="674" column="17" selection-start="31512" selection-end="31516" vertical-scroll-proportion="0.33214286">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MimeType.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="120" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="98" column="40" selection-start="3638" selection-end="3638" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3795#3816#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="126" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/html/application2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="0" selection-end="264" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="55" selection-start="593" selection-end="593" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/html/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="4" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="40" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="31" selection-start="3393" selection-end="3393" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="82" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/GetMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="73" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/FakeCourseImporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="34" selection-start="2667" selection-end="2667" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/AbstractHttpMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1454" selection-end="1454" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="69" column="98" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#598#619#0" expanded="true" />
+            <element signature="e#880#896#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="6042" selection-end="6042" vertical-scroll-proportion="0.0">
+        <state line="35" column="5" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="0" selection-start="6199" selection-end="6307" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#2559#2575#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1713#1729#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="0" selection-start="5665" selection-end="5665" vertical-scroll-proportion="0.3326572">
+        <state line="14" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="27" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#4403#4440#0" expanded="true" />
+            <element signature="e#1686#1700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="30" selection-start="482" selection-end="483" vertical-scroll-proportion="-6.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="51" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/net/SocketInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="23" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#7651#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../RandomCode2/RandomCode2.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="41" selection-start="6769" selection-end="6769" vertical-scroll-proportion="0.29377204">
+          <folding>
+            <element signature="e#1108#1129#0" expanded="true" />
+            <element signature="e#4932#4948#0" expanded="true" />
           </folding>
         </state>
       </provider>

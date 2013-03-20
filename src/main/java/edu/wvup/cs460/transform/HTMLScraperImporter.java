@@ -1,9 +1,412 @@
 package edu.wvup.cs460.transform;
 
+import com.sun.javafx.tools.packager.Log;
+import edu.wvup.cs460.datamodel.CourseInstance;
+import edu.wvup.cs460.util.StringUtils;
+import edu.wvup.cs460.util.Tuple;
+import org.jboss.netty.handler.codec.http.HttpResponseStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
-public class HTMLScraperImporter {
+public class HTMLScraperImporter implements CourseImporter {
+
+    Logger LOG = LoggerFactory.getLogger(HTMLScraperImporter.class);
+
+    @Override
+    public List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes) {
+        LOG.info("Beginning Course Retrieval.");
+        final List<CourseImportContext> toReturn = new ArrayList<CourseImportContext>();
+        final List<URL> urls = findURLs();
+        for (URL url : urls) {
+            Date lastModForThisURL = findLastModified(urlCacheTimes, url.toExternalForm());
+            Date lastModifiedDate = null;
+            LOG.info("Retrieving Courses from:"+url);
+            StringBuilder builder = new StringBuilder();
+            try {
+                final HttpURLConnection httpConnection;
+                URLConnection urlConnection = url.openConnection();
+                //first things first - check to see if we got a 200, 304 or other.
+                if(urlConnection instanceof HttpURLConnection){
+                    httpConnection = (HttpURLConnection)urlConnection;
+                }else{
+                    LOG.error("URL Connection was not of a recognized type for URL:"+url);
+                    continue;
+                }
+                if(null != lastModForThisURL){
+                    SimpleDateFormat sdf = new SimpleDateFormat(StringUtils.DATE_FORMAT_STRING);
+                    httpConnection.addRequestProperty("If-Modified-Since", sdf.format(lastModForThisURL));
+                }
+
+
+                httpConnection.connect();//make the call.
+
+                final int responseCode = httpConnection.getResponseCode();
+                if(HttpResponseStatus.NOT_MODIFIED.getCode() == responseCode){
+                    LOG.info("Data at URL has not changed since we last checked it. URL:"+url);
+                    continue;//jump out of loop.
+                }
+
+                if(HttpResponseStatus.OK.getCode() != responseCode){
+                    LOG.error("We recieved a response from the server that indicates Failure. Response:"+responseCode+" URL:"+url);
+                }
+
+
+                final String headerField = urlConnection.getHeaderField("Last-Modified");
+                if(null != headerField && headerField.length() > 0 ){
+                    lastModifiedDate = parseLastModified(headerField);
+                }
+
+
+                //Here I need to get
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                String line = br.readLine();
+                while (line != null) {
+                    builder.append(line);
+                    line = br.readLine();
+                }
+            }catch(IOException ioe){
+                LOG.error("Unable to properly retrieve data from URL["+url+"] for Import");
+            }
+            LOG.info("Finished receiving data from:"+url);
+            //Store Date.
+
+            List<CourseInstance> parsed = parseFromHTML(builder.toString());
+            LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
+            if(null == lastModifiedDate){
+                lastModifiedDate = new Date();
+            }
+            toReturn.add(new CourseImportContext(lastModifiedDate, url.toExternalForm(), parsed));
+
+        }
+
+
+
+        return toReturn;
+    }
+
+    private Date findLastModified(List<Tuple<String, Date>> urlCacheTimes, String url){
+        for(Tuple<String, Date> mod : urlCacheTimes){
+            if(url.equalsIgnoreCase(mod.getKey().toLowerCase())){
+                return mod.getValue();
+            }
+        }
+        return null;
+    }
+
+    /*< Last-Modified: Tue, 19 Mar 2013 13:10:29 GMT */
+    private Date parseLastModified(String lastMod){
+        //return null if parseable.
+        SimpleDateFormat format = new SimpleDateFormat(StringUtils.DATE_FORMAT_STRING);
+        try {
+            return format.parse(lastMod);
+        } catch (ParseException e) {
+            LOG.debug("Unable to parse Last Modified date:"+lastMod);
+            return new Date();
+        }
+    }
+
+    private List<CourseInstance> parseFromHTML(String htmlBody) {
+        List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
+        try{
+        //OK first things, let's find the course term.
+        int ndx = htmlBody.indexOf("Course Schedule - ");
+        int endNdx = htmlBody.indexOf("<", ndx + 16);
+        String courseTerm = htmlBody.substring(ndx + 17, endNdx);
+        courseTerm = courseTerm.trim();
+        String[] split = courseTerm.split(" ");
+        //first is term, second is year.
+        final String term = split[0];
+        final String year = split[1];
+
+        /**
+         startIndex = pageText.find("<a name=\"TOP\">Main Campus", startIndex)
+         startIndex = pageText.find("<span id=\"", startIndex)
+         startIndex = pageText.find("<tr>", startIndex)
+         while startIndex > -1:
+
+         #from start index, we need the first <A HREF.
+         endNdx = pageText.find("</tr>", startIndex)
+         pullApart(pageText[startIndex:endNdx], outputFile)
+         tableEnd = pageText.find("/table>", endNdx)
+         startIndex = pageText.find("<tr>", endNdx)
+         # check for end of table, if it's less than..
+         if(tableEnd < startIndex):
+         startIndex = pageText.find("<span id=\"", endNdx)
+         startIndex = pageText.find("<tr>", startIndex)
+         outputFile.flush()
+         outputFile.close()
+
+         */
+        int startNdx = htmlBody.indexOf("<a name=\"TOP\">Main Campus\"");
+        startNdx = htmlBody.indexOf("<span id=\"", startNdx);
+        startNdx = htmlBody.indexOf("<tr>", startNdx);
+        while (-1 < startNdx) {
+
+            endNdx = htmlBody.indexOf("</tr>", startNdx);
+            String classEntry = htmlBody.substring(startNdx, endNdx);
+            CourseInstance courseInstance = pullApart(classEntry, term, year);
+            if (null != courseInstance) {
+                toReturn.add(courseInstance);
+            }
+            int tableEnd = htmlBody.indexOf("/table>", endNdx);
+            startNdx = htmlBody.indexOf("<tr>", endNdx);
+            if (tableEnd < startNdx) {
+                startNdx = htmlBody.indexOf("<span id=\"", endNdx);
+                if(-1 == startNdx){
+                    continue;//break.
+                }
+                startNdx = htmlBody.indexOf("<tr>", startNdx);
+            }
+        }
+        }catch(Throwable t){
+            LOG.error("A really bad error occurred while trying to parse HTML.", t);
+        }
+
+        return toReturn;
+    }
+
+    private CourseInstance pullApart(String classText, String term, String year) {
+        CourseInstance toReturn = null;
+        int startNdx = classText.indexOf("<tr>") + 4;
+        startNdx = classText.indexOf("<td>", startNdx) + 4;
+        while (-1 < startNdx) {
+            int endNdx = classText.indexOf("</td>");
+            String tmp = classText.substring(startNdx, endNdx);
+            int tmpSI = classText.indexOf("center\">", startNdx) + 8;
+            int tmpEI = classText.indexOf("</a>", tmpSI);
+            if (-1 == tmpEI) {
+                //didn't find the right end.
+                LOG.debug("Unable to find correct end of class piece.");
+                return null;
+            }
+            String classType = classText.substring(tmpSI, tmpEI).trim();
+
+            //----------------------------------------------- CrossListed
+
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+
+
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            //# looks like either X or &nbsp;
+            boolean crosslisted = "X".equalsIgnoreCase(tmp);
+
+            //----------------------------------------------- CRN
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+
+            //normally the end for this would be </td> but the html is malformed, and there's just another <td> next.
+            //but sometimes, there's a <span id> next.
+            int tmpA = classText.indexOf("<span", tmpSI);
+            int tmptd = classText.indexOf("<td>", tmpSI);
+            if (tmpA > -1 && tmpA < tmptd) {
+                tmpEI = tmpA;
+            } else {
+                tmpEI = tmptd;
+            }
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+
+            String crn = tmp;
+
+            //----------------------------------------------- Subject
+            tmpSI = tmptd + 4;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String subject = tmp;
+
+            //----------------------------------------------- Course
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String course = tmp;
+
+            //-----------------------------------------------Title.
+            // Going to be a bit more interesting here.
+            //#<td> <a onmouseover="TagToTip('ACCT201', TITLE, 'ACCT 201', WIDTH, 240, TITLEBGCOLOR, '#00386B', SHADOW, true, BORDERCOLOR, '#00386B')"
+            //#onmouseout="UnTip()"> PRIN OF ACCOUNTING 1 </a>
+
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            //#now need to find the end of the <a
+
+            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            tmpEI = classText.indexOf("<", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String title = tmp;
+
+            //-----------------------------------------------credit hours
+            //<td> <p align="center"> 3 </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            short credithours = parseShort(tmp);
+
+            //-----------------------------------------------Days
+            //<td> T R </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String coursedays = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
+
+
+            //-----------------------------------------------Times
+            //<td> 1100 - 1215 pm </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String times = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
+
+            //-----------------------------------------------instructor
+            //<td> Morgan S </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            // there may be a <a href= "mailto:first.last@wvup.edu" >
+            tmpA = classText.indexOf("<a ", tmpSI);
+            tmptd = classText.indexOf("</td>", tmpSI);
+            if (tmpA > -1 && tmpA < tmptd) {
+                tmpEI = tmpA;
+            } else {
+                tmpEI = tmptd;
+            }
+
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String instructor = tmp;
+
+            //-----------------------------------------------classroom
+            //<td> <a onmouseover="Tip(' Classroom (MAIN CAMPUS) ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
+            //onmouseout="UnTip()"> 1330 (MAIN) </a></td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            //now need to find the end of the <a
+            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            tmpEI = classText.indexOf("<", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String classroom = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
+
+
+            //-----------------------------------------------startdate
+            //<td> <p align="center"> 14-JAN-13 </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            Date startdate = parseDate(tmp);
+            //todo make a real date.
+
+            //-----------------------------------------------Seats available
+            //#<td> <a onmouseover="Tip(' Seats Available: 3 <br/>\
+            //#Waitlist: 0 ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
+            //#onmouseout="UnTip()"> <p align="center"> <p align="center">3 </a> </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;// #it's malformed.
+            tmpEI = classText.indexOf("<", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            short seatsavailable = parseShort(tmp);
+
+
+            //-----------------------------------------------Term Length
+            //#<td> <p align="center">FULL TERM<br />(14-JAN-13 - 10-MAY-13) </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            //#need to remove embedded html linebreaks too
+            tmp = tmp.replace("<br />", " ");
+            tmp = tmp.replace("<br>", " ");
+            String termlength = tmp;
+            Date enddate = parseDateFromTerm(termlength);
+
+            //-----------------------------------------------campus
+            //#<td> Main </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
+            tmpEI = classText.indexOf("</td>", tmpSI);
+            tmp = classText.substring(tmpSI, tmpEI).trim();
+            String campus = tmp;
+
+            toReturn = new CourseInstance(crn, classType, crosslisted, subject, course, title, credithours,
+                                          coursedays, times, instructor, classroom, startdate, enddate, seatsavailable,
+                                          termlength, campus, term, year);
+
+
+            //System.out.println(toReturn);
+
+            startNdx = classText.indexOf("<tr>", endNdx);
+
+        }
+
+
+        return toReturn;
+    }
+
+    private short parseShort(String val) {
+        short toReturn = Short.MIN_VALUE;
+        try {
+            toReturn = Short.parseShort(val);
+        } catch (NumberFormatException ignore) {
+        }
+        return toReturn;
+    }
+
+    private Date parseDateFromTerm(String term) {
+        if (null == term || term.isEmpty()) {
+            return new Date();
+        }
+        //get what's in the brackets, break it out by " - " and use the last half.
+        int startNdx = term.indexOf('(');
+        int endNdx = term.lastIndexOf(')');
+        if(-1 == startNdx || -1 == endNdx){
+            return new Date();
+        }
+        String middle = term.substring(startNdx + 1, endNdx).trim();
+        String[] split = middle.split(" - ");
+        return parseDate(split[1]);
+    }
+
+    private Date parseDate(String strDate) {
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yy");
+        try {
+            final Date parse = simpleDateFormat.parse(strDate);
+            return parse;
+        } catch (ParseException e) {
+            return new Date();
+        }
+    }
+
+    String[] url_list = {
+            "http://www.wvup.edu/schedules/fall.htm",
+            "http://www.wvup.edu/schedules/fall_jcc.htm",
+            "http://www.wvup.edu/schedules/spring.htm",
+            "http://www.wvup.edu/schedules/spring_jcc.htm",
+            "http://www.wvup.edu/schedules/summer.htm",
+            "http://www.wvup.edu/schedules/summer_jcc.htm",
+    };
+
+    private List<URL> findURLs() {
+        ArrayList<URL> urlList = new ArrayList<URL>();
+        for (String s : url_list) {
+            try {
+                urlList.add(new URL(s));
+            } catch (MalformedURLException e) {
+                LOG.error("Unable to create URL from string.", e);
+            }
+        }
+        return urlList;
+    }
+
 }

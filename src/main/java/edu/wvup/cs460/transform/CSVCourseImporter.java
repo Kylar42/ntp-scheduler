@@ -1,6 +1,7 @@
 package edu.wvup.cs460.transform;
 
 import edu.wvup.cs460.datamodel.CourseInstance;
+import edu.wvup.cs460.util.Tuple;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,13 +17,13 @@ import java.util.List;
  */
 public class CSVCourseImporter implements CourseImporter {
     @Override
-    public List<CourseInstance> getCourses() {
-        List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
+    public List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes){
+        List<CourseImportContext> toReturn = new ArrayList<CourseImportContext>();
         try {
             File f = new File("main/resources/classlist.csv");
             FileReader reader = new FileReader(f);
             BufferedReader buff = new BufferedReader(reader);
-
+            List<CourseInstance> courseInstanceList = new ArrayList<CourseInstance>();
             String line = buff.readLine();
 
             while (null != line) {
@@ -60,12 +61,13 @@ public class CSVCourseImporter implements CourseImporter {
                 CourseInstance courseInstance = new CourseInstance(crn, courseType, false, subject, courseNum, courseTitle, creditHours, courseDays, "09:00-12:00 AM",
                                            instructor, classroom, new Date(2012, 8, 12), new Date(2012, 12, 18), seatsAvail,
                                            term,
-                                           campus);
+                                           campus, "Fall", "2012");//fake term
 
-                toReturn.add(courseInstance);
+                courseInstanceList.add(courseInstance);
 
                 line = buff.readLine();
             }
+            toReturn.add(new CourseImportContext(new Date(f.lastModified()), f.getAbsolutePath(), courseInstanceList));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

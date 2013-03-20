@@ -26,13 +26,13 @@ public class DBContext {
     //TODO: Init these from properties.
 
 
-    DBContext(AppProperties toInitFrom){
+    public DBContext(AppProperties toInitFrom){
         String dbHost = toInitFrom.getProperty("db.host", "localhost");
-        DB_ROOT_URL = "jdbc:postgres://"+dbHost+"/";
+        DB_ROOT_URL = "jdbc:postgresql://"+dbHost+"/";
         DB_ROOT_USER = toInitFrom.getProperty("db.root.username", "postgres");
         DB_ROOT_PASSWORD = toInitFrom.getProperty("db.root.password", "postgres");
         DB_NAME = toInitFrom.getProperty("db.name", "course_schedules");
-        DB_URL = "jdbc:postgres://"+dbHost+"/"+DB_NAME;
+        DB_URL = "jdbc:postgresql://"+dbHost+"/"+DB_NAME;
         DB_READ_WRITE_USERNAME = toInitFrom.getProperty("db.readwrite.username", "cs460");
         DB_READ_WRITE_PASSWORD = toInitFrom.getProperty("db.readwrite.password", "cs460");
         DB_READ_ONLY_USERNAME = toInitFrom.getProperty("db.readonly.username", "cs460");

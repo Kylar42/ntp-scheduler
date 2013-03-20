@@ -1,5 +1,9 @@
 package edu.wvup.cs460.db;
 
+import edu.wvup.cs460.AppProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,123 +16,120 @@ import java.sql.SQLException;
  */
 public class DBSetup {
     
-    private static final DBSetup INSTANCE = new DBSetup();
+    //private static final DBSetup INSTANCE = new DBSetup();
+
+    private final DBContext         _context;
+    private final ConnectionPool    _connectionPool;
+    private final DBSetupSQLStrings _sqlStrings;
+
+    private static final Logger LOG = LoggerFactory.getLogger(DBSetup.class);
 
 
-    private static final String DB_CREATE = "CREATE DATABASE "+ConnectionPool.getInstance().dbName+";";
-    private static final String DB_DROP = "DROP DATABASE "+ConnectionPool.getInstance().dbName+";";
-    private static final String USER_DROP = "DROP USER "+ConnectionPool.getInstance().dbUser+";";
-    private static final String USER_CREATE = "CREATE USER "+ConnectionPool.getInstance().dbUser+" with password '"+ConnectionPool.getInstance().dbPassword+"';";
-    private static final String USER_GRANT = "GRANT ALL ON DATABASE "+ConnectionPool.getInstance().dbName+" to "+ConnectionPool.getInstance().dbUser;
-    private static final String CREATE_COURSE_INSTANCE_TABLE =
-            "CREATE TABLE IF NOT EXISTS COURSE_INSTANCE ("+
-                    "CRN VARCHAR(12) NOT NULL,"+ //CRN of course, like 5609
-                    "TYPE VARCHAR(8) NOT NULL,"+ //Short type, like "E-C" or "Lec"
-                    "CROSSLISTED BOOLEAN NOT NULL DEFAULT FALSE,"+ //Boolean
-                    "SUBJECT VARCHAR(8) NOT NULL,"+ //Subject, like ECON
-                    "COURSE_NUMBER VARCHAR(8) NOT NULL,"+
-                    "COURSE_TITLE VARCHAR(255) NOT NULL,"+
-                    "CREDITS SMALLINT NOT NULL,"+
-                    "DAYS VARCHAR(16) NOT NULL,"+
-                    "TIME VARCHAR(32) NOT NULL,"+
-                    "INSTRUCTOR VARCHAR(64) NOT NULL,"+
-                    "ROOM VARCHAR(32) NOT NULL,"+
-                    "START_DATE timestamp NOT NULL,"+
-                    "END_DATE timestamp NOT NULL,"+
-                    "SEATS_AVAILABLE SMALLINT NOT NULL,"+
-                    "TERM_LENGTH VARCHAR(64) NOT NULL,"+
-                    "CAMPUS VARCHAR(32) NOT NULL,"+
-                    "PRIMARY KEY (CRN));";
-
-
-    private static final String CREATE_COURSE_META_TABLE =
-            "CREATE TABLE IF NOT EXISTS COURSE_META ("+
-                    "SUBJECT VARCHAR(8) NOT NULL,"+ //Subject, like ECON
-                    "COURSE_NUMBER VARCHAR(8) NOT NULL,"+
-                    "HUMANITIES BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "NATSCI BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "SOCSCI BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "MATH BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "COMMUNICATIONS BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "COMPLIT BOOLEAN NOT NULL DEFAULT FALSE,"+
-                    "UPPERDIV BOOLEAN NOT NULL DEFAULT FALSE," +
-                    "PRIMARY KEY (SUBJECT, COURSE_NUMBER))";
     //insert into course_meta (subject, course_number, humanities, natsci, socsci, math, communications, complit)"+
     //" values (?, ?, ?, ?, ?, ?, ?, ?)";
-    public static void createOrSetupDB(){
-        Connection myConnection = ConnectionPool.getInstance().getRootConnection();
+
+    private DBSetup(AppProperties props){
+        _context = new DBContext(props);
+        _sqlStrings = new DBSetupSQLStrings(_context);
+        _connectionPool = new ConnectionPool(_context);
+    }
+
+
+    public DBContext getDBContext(){
+        return _context;
+    }
+
+
+    public void createOrSetupDB(){
+        LOG.info("Attempting to create DB");
+        Connection myConnection = _connectionPool.getRootConnection();
         try{
-            final PreparedStatement preparedStatement = myConnection.prepareStatement(DB_CREATE);
+            final PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.DB_CREATE);
             final int executed = preparedStatement.executeUpdate();
             System.out.println("Created:"+executed);
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{
-            ConnectionPool.getInstance().returnRootConnection(myConnection);
+            _connectionPool.returnRootConnection(myConnection);
         }
     }
-    public static void dropUser(){
-        Connection myConnection = ConnectionPool.getInstance().getRootConnection();
+    public void dropUser(){
+        Connection myConnection =  _connectionPool.getRootConnection();
         try{
-            final PreparedStatement preparedStatement = myConnection.prepareStatement(USER_DROP);
+            final PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.RW_USER_DROP);
             final int executed = preparedStatement.executeUpdate();
             System.out.println("DB Created:"+executed);
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{
-            ConnectionPool.getInstance().returnRootConnection(myConnection);
+            _connectionPool.returnRootConnection(myConnection);
         }
     }
-    public static void createUser(){
-        Connection myConnection = ConnectionPool.getInstance().getRootConnection();
+    public void createUser(){
+        Connection myConnection =  _connectionPool.getRootConnection();
         try{
-            PreparedStatement preparedStatement = myConnection.prepareStatement(USER_CREATE);
+            PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.RW_USER_CREATE);
             int executed = preparedStatement.executeUpdate();
-            System.out.println("User Created:"+executed);
-            preparedStatement = myConnection.prepareStatement(USER_GRANT);
+            LOG.info("Successfully created User.");
+            preparedStatement = myConnection.prepareStatement(_sqlStrings.RW_USER_GRANT);
             executed = preparedStatement.executeUpdate();
-            System.out.println("User Granted:"+executed);
-        }catch(SQLException sql){
-            sql.printStackTrace();
+            LOG.info("Successfully granted user access.");
+        }catch(SQLException sqlErr){
+            LOG.error("Unable to create user!", sqlErr);
         }finally{
-            ConnectionPool.getInstance().returnRootConnection(myConnection);
+            _connectionPool.returnRootConnection(myConnection);
         }
     }
     
 
-    public static void createOrSetupTables(){
-        Connection myConnection = ConnectionPool.getInstance().getConnection();
+    public void createOrSetupTables(){
+        Connection myConnection =  _connectionPool.getConnection();
         try{
-            final PreparedStatement createCourseInstance = myConnection.prepareStatement(CREATE_COURSE_INSTANCE_TABLE);
+            final PreparedStatement createCourseInstance = myConnection.prepareStatement(_sqlStrings.CREATE_COURSE_INSTANCE_TABLE);
             createCourseInstance.executeUpdate();
-            final PreparedStatement createCourseMeta = myConnection.prepareStatement(CREATE_COURSE_META_TABLE);
+            LOG.info("Course Instance Table created.");
+            final PreparedStatement createCourseMeta = myConnection.prepareStatement(_sqlStrings.CREATE_COURSE_META_TABLE);
             createCourseMeta.executeUpdate();
+            LOG.info("Course Metadata Table created.");
+            final PreparedStatement createUrlCache = myConnection.prepareStatement(_sqlStrings.CREATE_URL_CACHE_TABLE);
+            createUrlCache.executeUpdate();
+            LOG.info("URL Cache Table created.");
+            final PreparedStatement createTerms = myConnection.prepareStatement(_sqlStrings.CREATE_TERMS_TABLE);
+            createTerms.executeUpdate();
+            LOG.info("School Terms table created.");
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{
-            ConnectionPool.getInstance().returnConnection(myConnection);
+            _connectionPool.returnConnection(myConnection);
         }
     }
 
-    public static void dropDB(){
-        Connection myConnection = ConnectionPool.getInstance().getRootConnection();
+    public void dropDB(){
+        Connection myConnection =  _connectionPool.getRootConnection();
         try{
-            final PreparedStatement preparedStatement = myConnection.prepareStatement(DB_DROP);
+            final PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.DB_DROP);
             final int executed = preparedStatement.executeUpdate();
-            System.out.println("DB Dropped:"+executed);
+
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{
-            ConnectionPool.getInstance().returnRootConnection(myConnection);
+            _connectionPool.returnRootConnection(myConnection);
         }
     }
 
     public static void main(String[] args) {
-        DBSetup.dropDB();
-        DBSetup.dropUser();
-        DBSetup.createOrSetupDB();
-        DBSetup.createUser();
-        DBSetup.createOrSetupTables();
+        AppProperties props = new AppProperties();
+        props.initPropertiesFromCommandLine(args);
+        DBSetup setup = new DBSetup(props);
+        //look for what was asked for.
+
+        setup.dropDB();
+        setup.dropUser();
+        setup.createOrSetupDB();
+        setup.createUser();
+        setup.createOrSetupTables();
+
+        new CourseSeeder().seedAllCourses(setup.getDBContext());
     }
 }
 

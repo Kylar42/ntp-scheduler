@@ -6,7 +6,7 @@ function classFind(frm) {
 		//alert(jsonText);
 		var request = $.ajax({
 			type: "POST",
-			url: "/search/classes",
+			url: "/classmeta/search",
 			contentType: "application/json; charset=utf-8",
 			data: jsonText,
 			error: function(xhr, status, error){
@@ -33,7 +33,7 @@ function classUpdate(frm){
 		//alert(jsonText);
 		var request = $.ajax({
 			type: "POST",
-			url: "/update/classmeta",
+			url: "/classmeta/update",
 			contentType: "application/json; charset=utf-8",
 			data: jsonText,
 			error: function(xhr, status, error){

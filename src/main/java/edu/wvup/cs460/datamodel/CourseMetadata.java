@@ -7,7 +7,7 @@ import edu.wvup.cs460.util.StringUtils;
  * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
-public final class CourseMetadata {
+public final class CourseMetadata implements Comparable<CourseMetadata>{
 
     private final String _subject;
     private final String _courseNum;
@@ -61,4 +61,11 @@ public final class CourseMetadata {
     public void setIsCommunications (boolean newVal){ _isCommunications = newVal;   }
     public void setIsComputerLit    (boolean newVal){ _isComputerLit = newVal;      }
     public void setIsUpperDivision  (boolean newVal){ _isUpperDivision = newVal;    }
+
+    @Override
+    public int compareTo(CourseMetadata o) {
+        String thisCourse = getSubject()+getCourseNumber();
+        String thatCourse = o.getSubject()+o.getCourseNumber();
+        return thisCourse.compareTo(thatCourse);
+    }
 }

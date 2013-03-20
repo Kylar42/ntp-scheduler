@@ -6,7 +6,7 @@ function classFind(frm) {
 		//alert(jsonText);
 		var request = $.ajax({
 			type: "POST",
-			url: "/classmeta/search",
+			url: "/classlist/search",
 			contentType: "application/json; charset=utf-8",
 			data: jsonText,
 			error: function(xhr, status, error){
@@ -22,30 +22,6 @@ function classFind(frm) {
 	} catch (err) {
 		alert(err.message);
 	}
-}
-
-function classUpdate(frm){
-
-    try{
-        console.log("classUpdate");
-		var frm1 = $(frm);
-		var jsonText = JSON.stringify(frm1.serializeArray());
-		//alert(jsonText);
-		var request = $.ajax({
-			type: "POST",
-			url: "/classmeta/update",
-			contentType: "application/json; charset=utf-8",
-			data: jsonText,
-			error: function(xhr, status, error){
-				alert("Status:"+status+" Error: "+error);
-			},
-			success: function(data, status, error){
-				$("#class-results").html("Classes Updated.");
-			}
-		});
-	} catch(err){
-        alert(err.message);
-    }
 }
 
 //This waits until the document is ready, and then binds the enter key to the submit action.

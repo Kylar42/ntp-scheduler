@@ -13,7 +13,7 @@ public class ImportFactory {
     }
 
     public CourseImporter getCourseImporter(){
-        return new FakeCourseImporter();
+        return new HTMLScraperImporter();
     }
 
 

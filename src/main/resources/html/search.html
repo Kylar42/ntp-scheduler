@@ -9,12 +9,18 @@
 		</title>
    		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
    		<script type="text/javascript" src="http://yandex.st/json2/2011-10-19/json2.min.js"></script>
-		<script type="text/javascript" src="application.js"></script>
+		<script type="text/javascript" src="applicationSearch.js"></script>
 	</head>
 	<body>
 		<form method="post" id="class-find">
-			<label>Class Name</label> <input type="text" name="classname" value=""/> 
-			<input type="button" value="Go" onclick="classFind(this.form)" />
+			<label>Class Name</label> <input type="text" name="classname" value=""/>
+            <label>Humanities</label> <input type="checkbox" name="isHumanities" value=""/>
+            <label>Social Science</label> <input type="checkbox" name="isSocSci" value=""/>
+            <label>Natural Science</label> <input type="checkbox" name="isNatSci" value=""/>
+            <label>Math</label> <input type="checkbox" name="isMath" value=""/>
+            <label>Communications</label> <input type="checkbox" name="isComm" value=""/>
+            <label>Computer Literacy</label> <input type="checkbox" name="isCompLit" value=""/>
+            <input type="button" value="Go" onclick="classFind(this.form)" />
 		</form>		
 		<span id="class-results"></span>
 	</body>

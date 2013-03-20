@@ -1,6 +1,7 @@
 package edu.wvup.cs460;
 
 import edu.wvup.cs460.dataaccess.DataStorage;
+import edu.wvup.cs460.db.DBContext;
 import edu.wvup.cs460.http.HttpServerPipelineFactory;
 import edu.wvup.cs460.util.PropertiesHelper;
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -26,7 +27,7 @@ public class NTPAppServer {
     //-------------------------------------------------Instance Members
     private final AppProperties _properties = new AppProperties();
 
-    private final DataStorage   _storageService = new DataStorage();
+    private DataStorage   _storageService;
 
     protected NTPAppServer(){
         LOG.info("Creating NTPAppServer.");
@@ -41,7 +42,8 @@ public class NTPAppServer {
     private void initialize(String[] args){
         LOG.info("Initializing App Server.");
         checkFileEncoding();
-        initProperties(args);
+        _properties.initPropertiesFromCommandLine(args);
+        initDataStorage();
         initAppServer();
     }
     //--------------------------------------------------Protected Methods
@@ -53,27 +55,11 @@ public class NTPAppServer {
         }
     }
 
-    protected void initProperties(String[] args){
-        //look for properties
-        Properties cliProps = PropertiesHelper.parsePropsFromCommandLine(args);
-
-        final String mainPropsFilePath = cliProps.getProperty("main.properties");
-        if(null != mainPropsFilePath){
-            File mainPropsFile = new File(mainPropsFilePath);
-            if(mainPropsFile.exists()){
-                //read in main props
-                try {
-                    final Properties properties = PropertiesHelper.readPropsFile(mainPropsFile);
-                    _properties.mergeProperties(properties);//merge to main.
-                } catch (IOException e) {
-                    LOG.error("Unable to read properties file.", e);
-                }
-            }
-        }
-        System.getProperties().getProperty("someprops.propfield");
+    protected void initDataStorage(){
+        DBContext context = new DBContext(_properties);
+        _storageService = new DataStorage(context);
 
     }
-
 
     protected void initAppServer(){
         // Configure the server.
@@ -96,8 +82,6 @@ public class NTPAppServer {
     public DataStorage getStorageService(){
         return _storageService;
     }
-
-
 
     //--------------------------------------------------Main Method
     public static void main(String[] args) {

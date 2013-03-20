@@ -1,13 +1,12 @@
 package edu.wvup.cs460.db;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import edu.wvup.cs460.AppProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -16,30 +15,23 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 
 public class ConnectionPool {
-    final String dbRootUrl = "jdbc:postgresql://localhost/";
-    final String dbRootUser = "postgres";
-    final String dbRootPassword = "postgres";//yes, yes, it's in plain text.
-
-
-    final String dbName = "course_schedules";
-    final String dbUrl = "jdbc:postgresql://localhost/"+dbName;
-    final String dbClass = "org.postgresql.Driver";
-    final String dbUser = "cs460";
-    final String dbPassword = "cs460";
 
     private final static Logger LOG = LoggerFactory.getLogger(ConnectionPool.class);
 
-    private static final ConnectionPool INSTANCE = new ConnectionPool();
 
     private final ConcurrentLinkedQueue<Connection> ROOT_CONNECTIONS = new ConcurrentLinkedQueue<Connection>() ;
     private final ConcurrentLinkedQueue<Connection> NORMAL_CONNECTIONS = new ConcurrentLinkedQueue<Connection>() ;
 
-    public static ConnectionPool getInstance(){ return INSTANCE; }
+    private final DBContext _context;
+
+    public ConnectionPool(DBContext context){
+        _context = context;
+    }
 
     /** I am going to make this just create a new one for now. */
     public synchronized Connection getConnection(){
         if(null == NORMAL_CONNECTIONS.peek()){
-            return INSTANCE.newDefaultConnection();
+            return newDefaultConnection();
         }else{
             return NORMAL_CONNECTIONS.poll();
         }
@@ -48,12 +40,12 @@ public class ConnectionPool {
     
     private Connection newDefaultConnection(){
         try {
-            Class.forName(dbClass);
+            Class.forName(_context.DB_CLASS);
         } catch (ClassNotFoundException e) {
             LOG.error("Error occurred", e);
         }
         try {
-            return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+            return DriverManager.getConnection(_context.DB_URL, _context.DB_READ_WRITE_USERNAME, _context.DB_READ_WRITE_PASSWORD);
         } catch (SQLException e) {
             LOG.error("Error occurred", e);
         }
@@ -62,12 +54,12 @@ public class ConnectionPool {
 
     private Connection newRootConnection(){
         try {
-            Class.forName(dbClass);
+            Class.forName(_context.DB_CLASS);
         } catch (ClassNotFoundException e) {
             LOG.error("Error occurred", e);
         }
         try {
-            return DriverManager.getConnection(dbRootUrl,dbRootUser, dbRootPassword);
+            return DriverManager.getConnection(_context.DB_ROOT_URL, _context.DB_ROOT_USER, _context.DB_ROOT_PASSWORD);
         } catch (SQLException e) {
             LOG.error("Error occurred", e);
         }
