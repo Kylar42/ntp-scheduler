@@ -12,7 +12,6 @@ public class MethodFactory {
 
     private static MethodFactory INSTANCE = new MethodFactory();
 
-
     enum MethodType{
         GET,
         POST

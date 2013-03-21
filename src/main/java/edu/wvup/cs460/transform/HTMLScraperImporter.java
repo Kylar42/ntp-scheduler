@@ -237,6 +237,9 @@ public class HTMLScraperImporter implements CourseImporter {
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String course = tmp;
 
+            if("1695".equalsIgnoreCase(crn)){
+                System.out.println("foo");
+            }
             //-----------------------------------------------Title.
             // Going to be a bit more interesting here.
             //#<td> <a onmouseover="TagToTip('ACCT201', TITLE, 'ACCT 201', WIDTH, 240, TITLEBGCOLOR, '#00386B', SHADOW, true, BORDERCOLOR, '#00386B')"
@@ -286,7 +289,7 @@ public class HTMLScraperImporter implements CourseImporter {
             }
 
             tmp = classText.substring(tmpSI, tmpEI).trim();
-            String instructor = tmp;
+            String instructor = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
             //-----------------------------------------------classroom
             //<td> <a onmouseover="Tip(' Classroom (MAIN CAMPUS) ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
@@ -312,23 +315,36 @@ public class HTMLScraperImporter implements CourseImporter {
             //#<td> <a onmouseover="Tip(' Seats Available: 3 <br/>\
             //#Waitlist: 0 ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
             //#onmouseout="UnTip()"> <p align="center"> <p align="center">3 </a> </td>
+
+            //note that there MAY be an empty bit here, so let's just check
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
-            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
-            tmpSI = classText.indexOf("center\">", tmpSI) + 8;// #it's malformed.
-            tmpEI = classText.indexOf("<", tmpSI);
-            tmp = classText.substring(tmpSI, tmpEI).trim();
+            int tmpEndNDX = classText.indexOf("</td>", tmpSI);
+            int nextCenter = classText.indexOf("center\">", tmpSI) + 8;
+            if(tmpEndNDX < tmpSI || nextCenter < tmpSI){
+                tmpEI = tmpEndNDX+5;//reset end index.
+                tmp="-10";//set it so that we know we didn't get it for real.
+
+            }else{
+                tmpSI = classText.indexOf("center\">", nextCenter) + 8;// #it's malformed.
+                tmpEI = classText.indexOf("<", tmpSI);
+                tmp = classText.substring(tmpSI, tmpEI).trim();
+            }
             short seatsavailable = parseShort(tmp);
 
 
             //-----------------------------------------------Term Length
             //#<td> <p align="center">FULL TERM<br />(14-JAN-13 - 10-MAY-13) </td>
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
-            tmpSI = classText.indexOf("center\">", tmpSI) + 8;
+            nextCenter = classText.indexOf("center\">", tmpSI) + 8;
             tmpEI = classText.indexOf("</td>", tmpSI);
-            tmp = classText.substring(tmpSI, tmpEI).trim();
-            //#need to remove embedded html linebreaks too
-            tmp = tmp.replace("<br />", " ");
-            tmp = tmp.replace("<br>", " ");
+            if(nextCenter < tmpSI || nextCenter > tmpEI){
+                tmp = "";
+            }else{
+                tmp = classText.substring(nextCenter, tmpEI).trim();
+                //#need to remove embedded html linebreaks too
+                tmp = tmp.replace("<br />", " ");
+                tmp = tmp.replace("<br>", " ");
+            }
             String termlength = tmp;
             Date enddate = parseDateFromTerm(termlength);
 
@@ -337,7 +353,7 @@ public class HTMLScraperImporter implements CourseImporter {
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
-            String campus = tmp;
+            String campus = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
             toReturn = new CourseInstance(crn, classType, crosslisted, subject, course, title, credithours,
                                           coursedays, times, instructor, classroom, startdate, enddate, seatsavailable,

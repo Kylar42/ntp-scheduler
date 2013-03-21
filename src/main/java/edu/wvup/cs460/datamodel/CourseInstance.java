@@ -7,7 +7,7 @@ import java.util.Date;
  * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
-public class CourseInstance {
+public class CourseInstance implements Comparable<CourseInstance>{
     private final String _crn;
     private final String _type;
     private final boolean _crossListed;
@@ -124,7 +124,14 @@ public class CourseInstance {
     }
 
     public String getTermYear(){
-        return _term;
+        return _termYear;
+    }
+
+    @Override
+    public int compareTo(CourseInstance o) {
+        String thisCourse = getSubject()+getCourseNumber();
+        String thatCourse = o.getSubject()+o.getCourseNumber();
+        return thisCourse.compareTo(thatCourse);
     }
 
     @Override

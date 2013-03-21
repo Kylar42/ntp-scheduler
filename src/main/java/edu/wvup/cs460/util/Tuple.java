@@ -13,7 +13,7 @@ import java.util.Map;
 public class Tuple<K, V> implements Map.Entry<K, V> {
 
     private final K _value1;
-    private final V _value2;
+    private V _value2;
 
 
     public Tuple(K k, V v){
@@ -23,17 +23,19 @@ public class Tuple<K, V> implements Map.Entry<K, V> {
 
     @Override
     public K getKey() {
-        return null;
+        return _value1;
     }
 
     @Override
     public V getValue() {
-        return null;
+        return _value2;
     }
 
     @Override
     public V setValue(V value) {
-        return null;
+        V toReturn = _value2;
+        _value2 = value;
+        return toReturn;
     }
 
     @Override

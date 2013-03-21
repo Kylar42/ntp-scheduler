@@ -46,7 +46,7 @@ public class DBSetup {
         try{
             final PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.DB_CREATE);
             final int executed = preparedStatement.executeUpdate();
-            System.out.println("Created:"+executed);
+           LOG.info("Database created.");
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{
@@ -58,7 +58,7 @@ public class DBSetup {
         try{
             final PreparedStatement preparedStatement = myConnection.prepareStatement(_sqlStrings.RW_USER_DROP);
             final int executed = preparedStatement.executeUpdate();
-            System.out.println("DB Created:"+executed);
+            LOG.info("Users Dropped.");
         }catch(SQLException sql){
             sql.printStackTrace();
         }finally{

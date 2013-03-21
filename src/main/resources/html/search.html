@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="wufooTheme8/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="stylesheet.css" type="text/css" />
 		<title>
 			Course Search
 		</title>
@@ -14,12 +14,23 @@
 	<body>
 		<form method="post" id="class-find">
 			<label>Class Name</label> <input type="text" name="classname" value=""/>
-            <label>Humanities</label> <input type="checkbox" name="isHumanities" value=""/>
-            <label>Social Science</label> <input type="checkbox" name="isSocSci" value=""/>
-            <label>Natural Science</label> <input type="checkbox" name="isNatSci" value=""/>
-            <label>Math</label> <input type="checkbox" name="isMath" value=""/>
-            <label>Communications</label> <input type="checkbox" name="isComm" value=""/>
-            <label>Computer Literacy</label> <input type="checkbox" name="isCompLit" value=""/>
+            <select name="term">
+                <option value="Spring" selected>Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+            </select>
+            <select name="year">
+                <option value="2013" selected>2013</option>
+                <option value="2012">2012</option>
+            </select>
+            <br>
+            <label>Humanities</label> <input type="checkbox" name="humanities" value=""/><br/>
+            <label>Social Science</label> <input type="checkbox" name="socsci" value=""/><br/>
+            <label>Natural Science</label> <input type="checkbox" name="natsci" value=""/><br/>
+            <label>Math</label> <input type="checkbox" name="math" value=""/><br/>
+            <label>Communications</label> <input type="checkbox" name="communications" value=""/><br/>
+            <label>Computer Literacy</label> <input type="checkbox" name="complit" value=""/><br/>
+            <label>Include Full Classes</label> <input type="checkbox" name="fullClasses" value=""/><br/>
             <input type="button" value="Go" onclick="classFind(this.form)" />
 		</form>		
 		<span id="class-results"></span>

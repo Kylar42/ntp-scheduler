@@ -86,7 +86,7 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
-            LOG.error("Error occurred", e);
+            LOG.debug("Error occurred", e); //moved this to debug because it can happen as part of our normal, for now.
             return false;
         } finally {
             _connectionPool.returnConnection(connection);

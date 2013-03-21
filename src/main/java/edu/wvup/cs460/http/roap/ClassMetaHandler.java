@@ -89,7 +89,7 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
                         CourseMetadata curCourse = courseForClass(split[0], split[1], courseMetaMap);
                         setCourseMeta(curCourse, split[2], value.toString());
                     }
-                    System.out.println("name" + name + " Value:" + value);
+                    //System.out.println("name" + name + " Value:" + value);
                 }
             }
 
@@ -141,7 +141,7 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
                     if ("classname".equals(name)) {
                         classToSearch = value.toString();
                     }
-                    System.out.println("name" + name + " Value:" + value);
+                    //System.out.println("name" + name + " Value:" + value);
                 }
             }
 
@@ -159,32 +159,46 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         Collections.sort(courses);
         StringBuilder sb = new StringBuilder();
         sb.append("\t\t<form method=\"post\" action=\"\" id=\"class-update\">\n");
-
+        sb.append("<table id=\"gen-table\">");
+        sb.append("<thead>");
+        sb.append("<th scope=\"col\">Name</th>");
+        sb.append("<th scope=\"col\">Math</th>");
+        sb.append("<th scope=\"col\">Humanities</th>");
+        sb.append("<th scope=\"col\">Social Science</th>");
+        sb.append("<th scope=\"col\">Natural Science</th>");
+        sb.append("<th scope=\"col\">Communications</th>");
+        sb.append("<th scope=\"col\">Comp Lit</th>");
+        sb.append("</thead><tbody>");
         for (CourseMetadata course : courses) {
+            sb.append("<tr>");
+
             String idPrefix = course.getSubject() + "." + course.getCourseNumber() + ".";
             //<label>Class Name</label> <input type="text" name="math101.classname" value="Math 101" disabled="true"/>
-            sb.append("<br/><label>Class Name</label> <input type=\"text\" name=\"" + idPrefix + "classname\" value=\"" +
-                              course.getSubject() + course.getCourseNumber() + "\" readonly /> ");
+            sb.append("<td><input type=\"text\" name=\"" + idPrefix + "classname\" value=\"" +
+                              course.getSubject() + course.getCourseNumber() + "\" readonly /> </td>");
             //			<input type="checkbox" name="math101.isMath" /><label>is Math</label>
             boolean isMath = course.isMath();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isMath\" " + (isMath ? "checked=\"checked\"" : "") + " /><label>is Math</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isMath\" " + (isMath ? "checked=\"checked\"" : "") + " /></td>\n");
 
             boolean isHumanities = course.isHumanities();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isHumanities\" " + (isHumanities ? "checked=\"checked\"" : "") + " /><label>is Humanities</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isHumanities\" " + (isHumanities ? "checked=\"checked\"" : "") + " /></td>\n");
 
             boolean isSocSci = course.isSocialScience();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isSocSci\" " + (isSocSci ? "checked=\"checked\"" : "") + " /><label>is Social Science</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isSocSci\" " + (isSocSci ? "checked=\"checked\"" : "") + " /></td>\n");
 
             boolean isNatsci = course.isNaturalScience();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isNatSci\" " + (isNatsci ? "checked=\"checked\"" : "") + " /><label>is Natural Science</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isNatSci\" " + (isNatsci ? "checked=\"checked\"" : "") + " /></td>\n");
 
             boolean isComm = course.isCommunications();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isComm\" " + (isComm ? "checked=\"checked\"" : "") + " /><label>is Communications</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isComm\" " + (isComm ? "checked=\"checked\"" : "") + " /></td>\n");
 
             boolean isCompLit = course.isComputerLit();
-            sb.append("\t\t\t<input type=\"checkbox\" name=\"" + idPrefix + "isCompLit\" " + (isCompLit ? "checked=\"checked\"" : "") + " /><label>is Computer Lit</label>\n");
+            sb.append("\t\t\t<td><input type=\"checkbox\" name=\"" + idPrefix + "isCompLit\" " + (isCompLit ? "checked=\"checked\"" : "") + " /></td>\n");
+            sb.append("</tr>");
 
         }
+
+        sb.append("</tbody></table>");
 
         sb.append("\t\t\t<input type=\"button\" value=\"Update\" onclick=\"classUpdate(this.form)\" />\n</form>");
 

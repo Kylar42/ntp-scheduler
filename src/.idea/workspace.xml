@@ -2,42 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/AppProperties.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/AppProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/resources/html/stylesheet.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/ConnectionPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ContentHandlerFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ContentHandlerFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ParsedURL.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ParsedURL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/application.js" afterPath="$PROJECT_DIR$/main/resources/html/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/applicationSearch.js" afterPath="$PROJECT_DIR$/main/resources/html/applicationSearch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ntp-scheduler.iml" afterPath="$PROJECT_DIR$/ntp-scheduler.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/index.html" afterPath="$PROJECT_DIR$/main/resources/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/properties/logback.xml" afterPath="$PROJECT_DIR$/properties/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/properties/main.properties" afterPath="$PROJECT_DIR$/properties/main.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/html/search.html" afterPath="$PROJECT_DIR$/main/resources/html/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ntp-scheduler.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363651779658" ignored="false" />
+    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363822722425" ignored="false" />
     <file path="/ConnectionPool.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363657969850" ignored="false" />
-    <file path="/DBSetup.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700283607" ignored="false" />
+    <file path="/DBSetup.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363824454076" ignored="false" />
     <file path="/DefaultHttpServerHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362671090597" ignored="false" />
     <file path="/HttpMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336703644" ignored="false" />
     <file path="/RequestWrapper.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362014530718" ignored="false" />
@@ -51,49 +36,49 @@
     <file path="/Course.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361927919873" ignored="false" />
     <file path="/CourseSeeder.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704426660" ignored="false" />
     <file path="/DataStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363702554647" ignored="false" />
-    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363705315785" ignored="false" />
+    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363828324761" ignored="false" />
     <file path="/CourseMetadata.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363136006633" ignored="false" />
     <file path="/StringUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363701474297" ignored="false" />
     <file path="/MethodContext.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336594819" ignored="false" />
     <file path="/Constants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362022596245" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/ideagen/foundation/src/protobuf/mme/foundation/memcached/generated/ValueWrapperProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362077419322" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/ideagen/resourcestorage/src/protobuf/mme/resourcestorage/datarecovery/transport/ReportTransport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358116425" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/OutlinedUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120533" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/eclipse/build-eclipse.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/CardDavFilterBase.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368529731" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/tools/ideagen/src/build-idea.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356158915" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/CardDavResourceUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/report/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356286375" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/foundation/src/mme/foundation/util/Util.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/baseapplication/src/mme/baseapplication/BaseApplicationProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/build.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/DavResourceUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/BaseDavCassandraProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/model/AddressResolver.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/CardDavProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/report/IntrospectionReport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/framework/AbstractDavMethodBase.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/exception/CardParseException.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120876" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/impl/VCardFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120877" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/exception/CardException.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120877" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/DavReport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/accountapi/src/mme/accountapi/AccountApiProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/src/mme/carddav/method/post/CardDavMultiPost.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
+    <file path="/code/source/trunk/ideagen/foundation/src/protobuf/mme/foundation/memcached/generated/ValueWrapperProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362077419322" ignored="false" />
+    <file path="/code/source/trunk/ideagen/resourcestorage/src/protobuf/mme/resourcestorage/datarecovery/transport/ReportTransport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358116425" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/OutlinedUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120533" ignored="false" />
+    <file path="/code/source/trunk/eclipse/build-eclipse.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/method/CardDavFilterBase.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/method/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368529731" ignored="false" />
+    <file path="/code/source/trunk/tools/ideagen/src/build-idea.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356158915" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/CardDavResourceUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/report/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356286375" ignored="false" />
+    <file path="/code/source/trunk/foundation/src/mme/foundation/util/Util.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/baseapplication/src/mme/baseapplication/BaseApplicationProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/build.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/DavResourceUrlParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/BaseDavCassandraProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/resourcestorage/src/mme/resourcestorage/model/AddressResolver.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/CardDavProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/report/IntrospectionReport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120534" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/actions/framework/AbstractDavMethodBase.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
+    <file path="/code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/exception/CardParseException.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120876" ignored="false" />
+    <file path="/code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/impl/VCardFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120877" ignored="false" />
+    <file path="/code/source/trunk/thirdparty/icloud-vcard-0.9-src.jar!/com/icloud/vcard/exception/CardException.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362098120877" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/actions/DavReport.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
+    <file path="/code/source/trunk/accountapi/src/mme/accountapi/AccountApiProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
+    <file path="/code/source/trunk/carddav/src/mme/carddav/method/post/CardDavMultiPost.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
     <file path="/PostMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363050164013" ignored="false" />
     <file path="/MimeUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362671035409" ignored="false" />
-    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363320235" ignored="false" />
+    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363824485083" ignored="false" />
     <file path="/HeaderNames.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336633172" ignored="false" />
     <file path="/AbstractHttpMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362702659384" ignored="false" />
     <file path="/MimeTypes.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336973134" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/RunImporters.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851372" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/DeleteRecordTypeAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851372" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/CKSimProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/GetRecordsAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/GetRecordTypesAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerChangeAdmin.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerDelete.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/MutateRecords.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/RunImporters.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851372" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/DeleteRecordTypeAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851372" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/CKSimProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/GetRecordsAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/GetRecordTypesAction.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerChangeAdmin.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/ContainerDelete.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362612851373" ignored="false" />
+    <file path="/code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/MutateRecords.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
     <file path="/NTPAppServer.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658468423" ignored="false" />
     <file path="/PropertiesHelper.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362615637209" ignored="false" />
     <file path="/AppProperties.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363657872429" ignored="false" />
@@ -101,45 +86,48 @@
     <file path="/MethodResponse.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362670839510" ignored="false" />
     <file path="/application.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362943013279" ignored="false" />
     <file path="/application2.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362700262405" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/ckservice/src/mme/ckservice/CKProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
+    <file path="/code/source/liverpool/ckservice/src/mme/ckservice/CKProps.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362680995370" ignored="false" />
     <file path="/AbstractDavMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362682112322" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/AbstractDavMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362682113501" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/ideagen/ckservice/src/protobuf/mme/ckservice/clouddb/generated/CloudDBDevCenterProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684175724" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/ideagen/ckservice/src/protobuf/mme/ckservice/clouddb/generated/CloudDBInternalProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684175725" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/actions/AbstractDavMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362682113501" ignored="false" />
+    <file path="/code/source/liverpool/ideagen/ckservice/src/protobuf/mme/ckservice/clouddb/generated/CloudDBDevCenterProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684175724" ignored="false" />
+    <file path="/code/source/liverpool/ideagen/ckservice/src/protobuf/mme/ckservice/clouddb/generated/CloudDBInternalProto.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684175725" ignored="false" />
     <file path="$PROJECT_DIR$/../../../RandomCode2/src/NotCreatedEqual.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362684187380" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/liverpool/Prebuilt/Newcastle/thirdparty/zookeeper-3.4.5-src.jar!/org/apache/zookeeper/ClientCnxn.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362685533374" ignored="false" />
-    <file path="/ClassMetaHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658714381" ignored="false" />
+    <file path="/code/source/liverpool/Prebuilt/Newcastle/thirdparty/zookeeper-3.4.5-src.jar!/org/apache/zookeeper/ClientCnxn.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362685533374" ignored="false" />
+    <file path="/ClassMetaHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363830699592" ignored="false" />
     <file path="/ParsedURL.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363050618480" ignored="false" />
     <file path="/ContentHandlerFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363054924162" ignored="false" />
-    <file path="/search.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363051156274" ignored="false" />
+    <file path="/search.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363832754686" ignored="false" />
     <file path="/applicationSearch.js" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363051179056" ignored="false" />
-    <file path="/ClassListHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658689039" ignored="false" />
-    <file path="/CourseMetaStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363132751988" ignored="false" />
-    <file path="/CourseInstanceStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700773761" ignored="false" />
-    <file path="/HTMLScraperImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363705681698" ignored="false" />
+    <file path="/ClassListHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363836611139" ignored="false" />
+    <file path="/CourseMetaStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363823724242" ignored="false" />
+    <file path="/CourseInstanceStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363835219452" ignored="false" />
+    <file path="/HTMLScraperImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363827375801" ignored="false" />
     <file path="/DBConstants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363658160574" ignored="false" />
-    <file path="/CourseInstance.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700803344" ignored="false" />
+    <file path="/CourseInstance.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363835777587" ignored="false" />
     <file path="/CSVCourseImporter.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704143528" ignored="false" />
     <file path="/ReportIntrospectDelegate.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363356205618" ignored="false" />
     <file path="/CardDavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368528589" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/carddav/test/functional/carddavtester/scripts/tests/CardDAV/new-features.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358342424" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363360891162" ignored="false" />
+    <file path="/code/source/trunk/carddav/test/functional/carddavtester/scripts/tests/CardDAV/new-features.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363358342424" ignored="false" />
+    <file path="/code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363360891162" ignored="false" />
     <file path="/BundleMethodGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363360889537" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/basedav/src/mme/basedav/application/actions/DavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363754018" ignored="false" />
+    <file path="/code/source/trunk/basedav/src/mme/basedav/application/actions/DavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363754018" ignored="false" />
     <file path="/DavGet.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363363307575" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/exception/BundleErrorUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363365206926" ignored="false" />
+    <file path="/code/source/trunk/resourcestorage/src/mme/resourcestorage/exception/BundleErrorUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363365206926" ignored="false" />
     <file path="/BundleErrorUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363365205358" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../../code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodFetch.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368400544" ignored="false" />
+    <file path="/code/source/trunk/resourcestorage/src/mme/resourcestorage/method/BundleMethodFetch.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368400544" ignored="false" />
     <file path="/BundleMethodFetch.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363368209002" ignored="false" />
     <file path="/DBSetupSQLStrings.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700066550" ignored="false" />
     <file path="/*.regexp" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363700160397" ignored="false" />
-    <file path="/Tuple.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363701730718" ignored="false" />
+    <file path="/Tuple.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363813999411" ignored="false" />
     <file path="/URLCacheStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363704083786" ignored="false" />
     <file path="/CourseImportContext.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363703628727" ignored="false" />
     <file path="$PROJECT_DIR$/../../generic/src/Fenian.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363792708451" ignored="false" />
     <file path="$PROJECT_DIR$/../../generic/src/MyBank.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363788634130" ignored="false" />
     <file path="/Fenian.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363792659718" ignored="false" />
     <file path="/MyBank.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363788633809" ignored="false" />
+    <file path="/main.properties" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363809367246" ignored="false" />
+    <file path="/stylesheet.css" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363830441292" ignored="false" />
+    <file path="/index.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363830805450" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,64 +142,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" line="58" class="edu.wvup.cs460.http.DefaultHttpServerHandler" package="edu.wvup.cs460.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" line="60" class="edu.wvup.cs460.transform.CSVCourseImporter" package="edu.wvup.cs460.transform">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" line="88" class="edu.wvup.cs460.dataaccess.CourseMetaStorage" package="edu.wvup.cs460.dataaccess">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" line="69" class="edu.wvup.cs460.dataaccess.CourseInstanceStorage" package="edu.wvup.cs460.dataaccess">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -246,6 +176,36 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java" line="58" class="edu.wvup.cs460.http.DefaultHttpServerHandler" package="edu.wvup.cs460.http">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" line="60" class="edu.wvup.cs460.transform.CSVCourseImporter" package="edu.wvup.cs460.transform">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -256,10 +216,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataStorage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
+      <file leaf-file-name="search.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/resources/html/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="5" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+            <state line="32" column="88" selection-start="1791" selection-end="1802" vertical-scroll-proportion="-20.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationSearch.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/resources/html/applicationSearch.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassMetaHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="171" column="0" selection-start="6518" selection-end="7190" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -268,84 +246,66 @@
       <file leaf-file-name="CourseMetaStorage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="0" selection-start="6199" selection-end="6307" vertical-scroll-proportion="0.0">
+            <state line="19" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassListHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="100" column="55" selection-start="3993" selection-end="3993" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1444#1460#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseInstance.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="133" column="48" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseMetadata.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="0" selection-start="2790" selection-end="2963" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataStorage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="0" selection-start="1943" selection-end="1943" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseInstanceStorage.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="0" selection-start="7222" selection-end="7222" vertical-scroll-proportion="0.1943128">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1713#1729#0" expanded="true" />
+                <element signature="e#7125#7141#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseSeeder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java">
+      <file leaf-file-name="DefaultHttpServerHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="27" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1686#1700#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CSVCourseImporter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="98" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#598#619#0" expanded="true" />
-                <element signature="e#880#896#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HTMLScraperImporter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="41" selection-start="6769" selection-end="6769" vertical-scroll-proportion="0.29377204">
-              <folding>
-                <element signature="e#1108#1129#0" expanded="true" />
-                <element signature="e#4932#4948#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketInputStream.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/net/SocketInputStream.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="23" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#7651#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="51" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBSetupSQLStrings.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="30" selection-start="482" selection-end="483" vertical-scroll-proportion="-6.4">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseImporter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
+            <state line="53" column="0" selection-start="2334" selection-end="2334" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -369,29 +329,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBContext.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" />
-        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" />
+        <option value="$PROJECT_DIR$/properties/main.properties" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/Tuple.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java" />
+        <option value="$PROJECT_DIR$/properties/logback.xml" />
+        <option value="$PROJECT_DIR$/main/resources/html/index.html" />
+        <option value="$PROJECT_DIR$/main/resources/html/stylesheet.css" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java" />
+        <option value="$PROJECT_DIR$/main/resources/html/search.html" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1680" />
-    <option name="height" value="1024" />
+    <option name="width" value="2560" />
+    <option name="height" value="1414" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -419,8 +379,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -615,11 +575,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="properties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -696,32 +652,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cs460" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs460" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -885,32 +815,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs460" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -924,7 +828,7 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../generic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -948,14 +852,14 @@
       <recent name="edu.wvup.cs460.action" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DBSetup">
+  <component name="RunManager" selected="Application.NTPAppServer">
     <configuration default="false" name="DBSetup" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.db.DBSetup" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dlogback.configurationFile=properties/logback.xml" />
+      <option name="PROGRAM_PARAMETERS" value="-Dmain.properties=properties/main.properties" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -1063,6 +967,12 @@
       <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1154,16 +1064,13 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.DBSetup" />
-        <item index="1" class="java.lang.String" itemvalue="Application.NTPAppServer" />
+        <item index="0" class="java.lang.String" itemvalue="Application.NTPAppServer" />
+        <item index="1" class="java.lang.String" itemvalue="Application.DBSetup" />
         <item index="2" class="java.lang.String" itemvalue="Application.HTMLScraperImporter" />
         <item index="3" class="java.lang.String" itemvalue="Application.DataStorage" />
         <item index="4" class="java.lang.String" itemvalue="Application.CourseSeeder" />
       </list>
     </recent_temporary>
-    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-    </configuration>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -1197,23 +1104,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
+    <frame x="0" y="22" width="2560" height="1414" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33009708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4072643" sideWeight="0.9594272" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686085" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32534775" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.249694" sideWeight="0.600863" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16229117" sideWeight="0.5927357" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1287,133 +1195,117 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="615" selection-end="632" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/ImportFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="298" selection-end="312" vertical-scroll-proportion="0.0">
+        <state line="131" column="0" selection-start="4958" selection-end="4958" vertical-scroll-proportion="-75.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportContext.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/PostMethod.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/sql/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="13" selection-start="804" selection-end="804" vertical-scroll-proportion="0.33333334">
+        <state line="59" column="0" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/sql/ResultSet.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="674" column="17" selection-start="31512" selection-end="31516" vertical-scroll-proportion="0.33214286">
+        <state line="25" column="0" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/URLCacheStorage.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="40" selection-start="3638" selection-end="3638" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3795#3816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="98" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#598#619#0" expanded="true" />
-            <element signature="e#880#896#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="5" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
+        <state line="5" column="47" selection-start="276" selection-end="276" vertical-scroll-proportion="-3.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/html/stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="0" selection-start="6199" selection-end="6307" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1713#1729#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0">
+        <state line="6" column="14" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/CourseSeeder.java">
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ContentHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1686#1700#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetupSQLStrings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="482" selection-end="483" vertical-scroll-proportion="-6.4">
+        <state line="16" column="0" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="51" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/net/SocketInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="23" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#7651#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../RandomCode2/RandomCode2.iml">
+    <entry file="file://$PROJECT_DIR$/main/resources/html/applicationSearch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/HTMLScraperImporter.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/html/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="41" selection-start="6769" selection-end="6769" vertical-scroll-proportion="0.29377204">
+        <state line="32" column="88" selection-start="1791" selection-end="1802" vertical-scroll-proportion="-20.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/DefaultHttpServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="2334" selection-end="2334" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassMetaHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="0" selection-start="6518" selection-end="7190" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="2790" selection-end="2963" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/datamodel/CourseInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="48" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/DataStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1943" selection-end="1943" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseMetaStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="478" selection-end="478" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/ClassListHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="55" selection-start="3993" selection-end="3993" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1108#1129#0" expanded="true" />
-            <element signature="e#4932#4948#0" expanded="true" />
+            <element signature="e#1444#1460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/dataaccess/CourseInstanceStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="0" selection-start="7222" selection-end="7222" vertical-scroll-proportion="0.1943128">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7125#7141#0" expanded="true" />
           </folding>
         </state>
       </provider>
