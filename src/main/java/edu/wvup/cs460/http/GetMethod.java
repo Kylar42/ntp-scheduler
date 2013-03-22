@@ -15,7 +15,6 @@ import java.nio.charset.Charset;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public class GetMethod extends AbstractHttpMethod {
@@ -28,18 +27,24 @@ public class GetMethod extends AbstractHttpMethod {
 
     @Override
     public void handleRequest(RequestWrapper reqWrapper, ResponseWrapper respWrapper) {
+
+        final ChainStatus authenticate = super.authenticate(respWrapper);
+        if(!authenticate.shouldContinue()) {
+            return;
+        }
+
         String url = context().getUri();
         //open a file in our root.
 
         final ChainStatus chainStatus = checkForRelativeSegments(url);
         if(!chainStatus.shouldContinue()){
-
+            return;
         }
 
 
         File inputFile = new File(Constants.STATIC_CONTENT_ROOT, url);
         if(inputFile.isDirectory()){
-            //redirect to index.html.
+            //redirect to class-update.html.
             StringBuilder newUrl = new StringBuilder(url);
             if(newUrl.charAt(newUrl.length()-1) != '/'){
                 newUrl.append('/');

@@ -1,5 +1,6 @@
 package edu.wvup.cs460.http;
 
+import edu.wvup.cs460.action.ChainStatus;
 import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.datamodel.CourseMetadata;
 import edu.wvup.cs460.http.roap.ContentHandlerFactory;
@@ -25,7 +26,6 @@ import java.util.Map;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public class PostMethod extends AbstractHttpMethod {
@@ -38,6 +38,12 @@ public class PostMethod extends AbstractHttpMethod {
 
     @Override
     public void handleRequest(RequestWrapper reqWrapper, ResponseWrapper respWrapper) {
+
+        final ChainStatus authenticate = super.authenticate(respWrapper);
+        if(!authenticate.shouldContinue()) {
+            return;
+        }
+
         String url = context().getUri();
         //TODO: URL based dispatcher for REST.
         String contentType = getHeaderValue(HeaderNames.ContentType, null);

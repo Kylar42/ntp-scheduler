@@ -17,7 +17,6 @@ import java.util.Map;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public class CourseInstanceStorage implements DataStorage.StorageInstance<CourseInstance> {

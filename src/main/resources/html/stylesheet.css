@@ -1,3 +1,24 @@
+body
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: #fff;
+	margin: 20px;
+	width: 800px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+#small-table
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: #fff;
+	margin: 20px;
+	width: 800px;
+	border-collapse: collapse;
+	text-align: left;
+}
 #gen-table
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -7,6 +28,7 @@
 	width: 800px;
 	border-collapse: collapse;
 	text-align: left;
+	border: 1px solid #ccc;
 }
 #gen-table th
 {

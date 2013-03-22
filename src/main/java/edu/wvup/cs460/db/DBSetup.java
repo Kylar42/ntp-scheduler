@@ -10,9 +10,6 @@ import java.sql.SQLException;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2011 Apple Inc.
- * "I code not because I have a problem to solve, but because there is
- * code within me, crying to get out."
  */
 public class DBSetup {
     
@@ -123,8 +120,8 @@ public class DBSetup {
         DBSetup setup = new DBSetup(props);
         //look for what was asked for.
 
-        setup.dropDB();
-        setup.dropUser();
+        //setup.dropDB();
+        //setup.dropUser();
         setup.createOrSetupDB();
         setup.createUser();
         setup.createOrSetupTables();

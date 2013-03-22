@@ -1,5 +1,6 @@
 package edu.wvup.cs460.http;
 
+import edu.wvup.cs460.http.authentication.Principal;
 import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.jboss.netty.handler.codec.http.QueryStringDecoder;
 
@@ -16,11 +17,14 @@ public class MethodContext {
     private final Map<String, List<String>> _queryStringParams;
     private final String _uri;
     private final Map<String, String>   _headers;
+    private final Principal _principal;
 
 
 
-    public MethodContext(HttpRequest req){
+    public MethodContext(HttpRequest req, Principal principal){
+        _principal = principal;
         _uri = req.getUri();
+
 
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(req.getUri());
         _queryStringParams = queryStringDecoder.getParameters();
@@ -40,5 +44,9 @@ public class MethodContext {
 
     public Map<String, String> getHeaders(){
         return _headers;
+    }
+
+    public Principal getPrincipal(){
+        return _principal;
     }
 }

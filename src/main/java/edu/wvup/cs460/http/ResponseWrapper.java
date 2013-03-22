@@ -67,7 +67,7 @@ public class ResponseWrapper {
         boolean keepAlive = isKeepAlive(_request);
 
         // Build the response object.
-        HttpResponse response = new DefaultHttpResponse(HTTP_1_1, OK);
+        HttpResponse response = new DefaultHttpResponse(HTTP_1_1, status);
 
         if (null != contentType && MimeType.UNKNOWN != contentType) {
             response.setHeader(CONTENT_TYPE, contentType.formattedString());
@@ -101,11 +101,11 @@ public class ResponseWrapper {
             }
         } else {//TODO: Actually look at cookies?
             // Browser sent no cookie.  Add some.
-            CookieEncoder cookieEncoder = new CookieEncoder(true);
-            cookieEncoder.addCookie("key1", "value1");
-            response.addHeader(SET_COOKIE, cookieEncoder.encode());
-            cookieEncoder.addCookie("key2", "value2");
-            response.addHeader(SET_COOKIE, cookieEncoder.encode());
+            //CookieEncoder cookieEncoder = new CookieEncoder(true);
+            //cookieEncoder.addCookie("key1", "value1");
+            //response.addHeader(SET_COOKIE, cookieEncoder.encode());
+            //cookieEncoder.addCookie("key2", "value2");
+            //response.addHeader(SET_COOKIE, cookieEncoder.encode());
         }
 
         //set response.

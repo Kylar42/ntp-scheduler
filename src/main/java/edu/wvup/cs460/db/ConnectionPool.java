@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2011 Apple Inc.
  */
 
 public class ConnectionPool {

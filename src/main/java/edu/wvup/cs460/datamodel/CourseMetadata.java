@@ -4,7 +4,6 @@ import edu.wvup.cs460.util.StringUtils;
 
 /**
  * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
  * "Code early, Code often."
  */
 public final class CourseMetadata implements Comparable<CourseMetadata>{
