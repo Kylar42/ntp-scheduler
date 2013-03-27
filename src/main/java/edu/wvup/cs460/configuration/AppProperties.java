@@ -1,4 +1,4 @@
-package edu.wvup.cs460;
+package edu.wvup.cs460.configuration;
 
 import edu.wvup.cs460.util.PropertiesHelper;
 import org.slf4j.Logger;

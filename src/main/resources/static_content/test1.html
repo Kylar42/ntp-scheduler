@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="wufooTheme8/css/theme.css" type="text/css" />
+		<title>
+			Course Search
+		</title>
+   		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+   		<script type="text/javascript" src="http://yandex.st/json2/2011-10-19/json2.min.js"></script>
+		<script type="text/javascript" src="application.js"></script>
+	</head>
+	<body>
+		<form method="post" action="" id="class-find">
+			<label>Class Name</label> <input type="text" name="math101.classname" value="Math 101" disabled="true"/> 
+			<input type="checkbox" name="math101.isMath" /><label>is Math</label>
+			<input type="checkbox" name="math101.isScience" /><label>Is Science </label><br> 
+			<label>Class Name</label> <input type="text" name="chem101.classname" value="Chem 101"/> 
+			<input type="checkbox" name="chem101.isMath" /><label>is Math</label>
+			<input type="checkbox" name="chem101.isScience" /><label>Is Science </label><br> 
+			<input type="button" value="Go" onclick="doSomething(this.form)" />
+		</form>
+	</body>
+</html>
