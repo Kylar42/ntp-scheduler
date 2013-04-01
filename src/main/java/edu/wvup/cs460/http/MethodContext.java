@@ -15,16 +15,17 @@ import java.util.Map;
 public class MethodContext {
 
     private final Map<String, List<String>> _queryStringParams;
-    private final String _uri;
-    private final Map<String, String>   _headers;
-    private final Principal _principal;
+    private final String                    _uri;
+    private final Map<String, String>       _headers;
+    private final Principal                 _principal;
+    private final ParsedURL                 _parsedURL;
 
 
 
     public MethodContext(HttpRequest req, Principal principal){
         _principal = principal;
         _uri = req.getUri();
-
+        _parsedURL = new ParsedURL(_uri);
 
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(req.getUri());
         _queryStringParams = queryStringDecoder.getParameters();
@@ -48,5 +49,9 @@ public class MethodContext {
 
     public Principal getPrincipal(){
         return _principal;
+    }
+
+    public ParsedURL getParsedURL(){
+        return _parsedURL;
     }
 }

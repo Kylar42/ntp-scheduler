@@ -25,8 +25,11 @@ public class AuthenticationHandler {
     private Principal authenticate(AuthenticationContext context){
         if(context.getAuthType() == AuthenticationTypes.BASIC &&
                 context.getUser().equalsIgnoreCase("guest")){
-            return new Principal(context.getUser());
-        }else
+            return Principal.READ_USER;
+        }else if(context.getAuthType() == AuthenticationTypes.BASIC &&
+                context.getUser().equalsIgnoreCase("admin")){
+            return Principal.READ_WRITE_USER;
+        }
 
         return Principal.UNAUTHORIZED;
     }

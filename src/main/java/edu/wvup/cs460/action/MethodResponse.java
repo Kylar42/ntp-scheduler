@@ -11,9 +11,6 @@ public class MethodResponse {
 
     public static MethodResponse NOT_FOUND = new MethodResponse(HttpResponseStatus.NOT_FOUND);
 
-
-
-
     private final HttpResponseStatus  _responseStatus;
     private final String              _responseData;
     private final MimeType            _responseType;

@@ -4,6 +4,7 @@ import edu.wvup.cs460.NTPAppServer;
 import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.datamodel.CourseInstance;
 import edu.wvup.cs460.datamodel.CourseMetadata;
+import edu.wvup.cs460.http.MethodContext;
 import edu.wvup.cs460.http.MimeType;
 import edu.wvup.cs460.http.ParsedURL;
 import edu.wvup.cs460.http.ResponseWrapper;
@@ -28,16 +29,16 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
 
 
     @Override
-    public void handleContent(ResponseWrapper responseWrapper, Object content, ParsedURL url) {
+    public void handleContent(ResponseWrapper responseWrapper, Object content, MethodContext context) {
         //Are we searching, or updating?
-        switch (url.getActionType()) {
+        switch (context.getParsedURL().getActionType()) {
 
             case search:
                 doClassSearch(responseWrapper, content);
                 break;
             case update:
             case unknown:
-                ContentHandlerFactory.UNKNOWN_HANDLER.handleContent(responseWrapper, content, url);
+                ContentHandlerFactory.UNKNOWN_HANDLER.handleContent(responseWrapper, content,  context);
         }
     }
 

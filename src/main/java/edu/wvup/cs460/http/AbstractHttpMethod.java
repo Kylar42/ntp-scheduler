@@ -37,11 +37,7 @@ public abstract class AbstractHttpMethod {
         //if it's unauthenticated, send back a 401.
         final Principal principal = _context.getPrincipal();
         if(Principal.UNAUTHORIZED.equals(principal)){
-            Map<String, String> headers = new HashMap<String, String>(){{
-                put("WWW-Authenticate", " Basic realm=\"ntp\"");
-            }
-            };
-            responseWrapper.writeResponse(HttpResponseStatus.UNAUTHORIZED, "", MimeType.TEXT_PLAIN, headers);
+            responseWrapper.writeUnauthorizedResponse("ntp");
             return ChainStatus.FAIL_DO_NOT_CONTINUE;
         }
         return ChainStatus.PASS_CONTINUE;
@@ -65,4 +61,6 @@ public abstract class AbstractHttpMethod {
     protected DataStorage getStorageService(){
         return NTPAppServer.getInstance().getStorageService();
     }
+
+
 }

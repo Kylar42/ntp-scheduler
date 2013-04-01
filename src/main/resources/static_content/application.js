@@ -27,7 +27,6 @@ function classFind(frm) {
 function classUpdate(frm){
 
     try{
-        console.log("classUpdate");
 		var frm1 = $(frm);
 		var jsonText = JSON.stringify(frm1.serializeArray());
 		//alert(jsonText);
@@ -55,7 +54,6 @@ $('#class-find').bind("keydown", function(e) {
   var code = e.keyCode || e.which;
   if (code  == 13) {
     e.preventDefault();
-    console.log('stop');
     var frm = $('#class-find');
     classFind(frm);
     return false;

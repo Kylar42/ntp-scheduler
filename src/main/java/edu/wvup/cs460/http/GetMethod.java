@@ -3,8 +3,10 @@ package edu.wvup.cs460.http;
 import edu.wvup.cs460.NTPAppServer;
 import edu.wvup.cs460.action.ChainStatus;
 import edu.wvup.cs460.configuration.ConfigurationException;
+import edu.wvup.cs460.http.roap.ContentHandlerFactory;
 import edu.wvup.cs460.util.MimeUtils;
 import edu.wvup.cs460.util.StringUtils;
+import org.jboss.netty.handler.codec.http.HttpMethod;
 import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +58,15 @@ public class GetMethod extends AbstractHttpMethod {
 
     @Override
     public void handleRequest(RequestWrapper reqWrapper, ResponseWrapper respWrapper) {
+
+        //check one specific issue.
+
+        final ContentHandlerFactory.ContentHandler contentHandler = ContentHandlerFactory.contentHandlerforURL(context().getParsedURL(), HttpMethod.GET);
+        if(null != contentHandler && ContentHandlerFactory.UNKNOWN_HANDLER != contentHandler){
+            contentHandler.handleContent(respWrapper, null, context());
+            return;
+        }
+
 
         final ChainStatus authenticate = super.authenticate(respWrapper);
         if (!authenticate.shouldContinue()) {

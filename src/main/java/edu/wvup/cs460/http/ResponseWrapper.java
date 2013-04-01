@@ -129,4 +129,12 @@ public class ResponseWrapper {
     }
 
 
+    public void writeUnauthorizedResponse(final String realm){
+        Map<String, String> headers = new HashMap<String, String>(){{
+            put("WWW-Authenticate", " Basic realm=\""+realm+"\"");
+        }
+        };
+        writeResponse(HttpResponseStatus.UNAUTHORIZED, "", MimeType.TEXT_PLAIN, headers);
+    }
+
 }

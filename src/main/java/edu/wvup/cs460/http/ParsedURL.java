@@ -9,7 +9,7 @@ import edu.wvup.cs460.util.StringUtils;
 public class ParsedURL {
 
     public enum OBJECT_TYPE{
-        classlist, classmeta, unknown;
+        classlist, classmeta, authentication, user, unknown;
 
         private static OBJECT_TYPE forValue(String value){
             for(OBJECT_TYPE ot : values()){
@@ -23,7 +23,7 @@ public class ParsedURL {
     }
 
     public enum ACTION_TYPE{
-        search, update, unknown;
+        search, update, invalidate, validate, unknown;
         private static ACTION_TYPE forValue(String value){
             for(ACTION_TYPE ot : values()){
                 if(ot.name().equalsIgnoreCase(value)){
@@ -44,7 +44,7 @@ public class ParsedURL {
     public ParsedURL(String requestURL){
         //URL should look like
 
-        // /OBJECTTYPE/ACTION
+        // /OBJECTTYPE/ACTION/other
 
         if(null == requestURL ||requestURL.isEmpty()){
             objectType = OBJECT_TYPE.unknown;

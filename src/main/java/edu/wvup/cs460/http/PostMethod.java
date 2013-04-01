@@ -10,6 +10,7 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
+import org.jboss.netty.handler.codec.http.HttpMethod;
 import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 import org.jboss.netty.util.CharsetUtil;
 import org.slf4j.Logger;
@@ -60,11 +61,9 @@ public class PostMethod extends AbstractHttpMethod {
             }
         }
 
-        ParsedURL parsedURL = new ParsedURL(url);
+        final ContentHandlerFactory.ContentHandler contentHandler = ContentHandlerFactory.contentHandlerforURL(context().getParsedURL(), HttpMethod.POST);
 
-        final ContentHandlerFactory.ContentHandler contentHandler = ContentHandlerFactory.contentHandlerforURL(parsedURL);
-
-        contentHandler.handleContent(respWrapper, parsedJson, parsedURL);
+        contentHandler.handleContent(respWrapper, parsedJson, context());
 
 
 

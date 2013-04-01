@@ -3,9 +3,11 @@ package edu.wvup.cs460.http.roap;
 import edu.wvup.cs460.NTPAppServer;
 import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.datamodel.CourseMetadata;
+import edu.wvup.cs460.http.MethodContext;
 import edu.wvup.cs460.http.MimeType;
 import edu.wvup.cs460.http.ParsedURL;
 import edu.wvup.cs460.http.ResponseWrapper;
+import edu.wvup.cs460.http.authentication.Principal;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.jboss.netty.handler.codec.http.HttpResponseStatus;
@@ -27,18 +29,18 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
 
 
     @Override
-    public void handleContent(ResponseWrapper responseWrapper, Object content, ParsedURL url) {
+    public void handleContent(ResponseWrapper responseWrapper, Object content, MethodContext context) {
         //Are we searching, or updating?
-        switch (url.getActionType()) {
+        switch (context.getParsedURL().getActionType()) {
 
             case search:
-                doClassSearch(responseWrapper, content);
+                doClassSearch(responseWrapper, content, context);
                 break;
             case update:
-                doClassMetaUpdate(responseWrapper, content);
+                doClassMetaUpdate(responseWrapper, content, context);
                 break;
             case unknown:
-                ContentHandlerFactory.UNKNOWN_HANDLER.handleContent(responseWrapper, content, url);
+                ContentHandlerFactory.UNKNOWN_HANDLER.handleContent(responseWrapper, content, context);
         }
     }
 
@@ -69,7 +71,18 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         }
     }
 
-    private void doClassMetaUpdate(ResponseWrapper respWrapper, Object parsedJson) {
+    private void writeAuthenticationError(ResponseWrapper responseWrapper){
+        responseWrapper.writeResponse(HttpResponseStatus.OK, "<p>You do not have the proper credentials to perform this operation.<p>", MimeType.TEXT_HTML);
+    }
+
+    private void doClassMetaUpdate(ResponseWrapper respWrapper, Object parsedJson, MethodContext context) {
+        //here we're checking to see if this is a valid principal.
+
+        if(Principal.READ_WRITE_USER != context.getPrincipal()){
+            writeAuthenticationError(respWrapper);
+        }
+
+
         //This will be a map of maps.
         Map<String, Map<String, CourseMetadata>> courseMetaMap = new HashMap<String, Map<String, CourseMetadata>>();
         if (parsedJson instanceof JSONArray) {
@@ -129,7 +142,14 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         return toReturn;
     }
 
-    private void doClassSearch(ResponseWrapper respWrapper, Object parsedJson) {
+    private void doClassSearch(ResponseWrapper respWrapper, Object parsedJson, MethodContext context) {
+
+        //here we're checking to see if this is a valid principal.
+
+        if(Principal.READ_WRITE_USER != context.getPrincipal()){
+            writeAuthenticationError(respWrapper);
+        }
+
         if (parsedJson instanceof JSONArray) {
             JSONArray array = (JSONArray) parsedJson;
             String classToSearch = null;
