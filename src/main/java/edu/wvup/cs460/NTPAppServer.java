@@ -1,11 +1,16 @@
 package edu.wvup.cs460;
 
+import edu.wvup.cs460.configuration.AppProperties;
 import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.db.DBContext;
 import edu.wvup.cs460.http.HttpServerPipelineFactory;
+import edu.wvup.cs460.transform.CourseImportJob;
 import edu.wvup.cs460.util.PropertiesHelper;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.File;
@@ -42,9 +47,40 @@ public class NTPAppServer {
     private void initialize(String[] args){
         LOG.info("Initializing App Server.");
         checkFileEncoding();
-        _properties.initPropertiesFromCommandLine(args);
+        initProperties(args);
         initDataStorage();
+        initCourseRetrievalScheduler();
         initAppServer();
+    }
+
+    private void initCourseRetrievalScheduler(){
+        try {
+            // Grab the Scheduler instance from the Factory
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+
+            // and start it off
+            scheduler.start();
+
+            CourseImportJob.scheduleImportJob(scheduler);
+
+        } catch (SchedulerException se) {
+            se.printStackTrace();
+        }
+    }
+
+    private void initProperties(String[] args){
+        //initialize the AppProperties
+        _properties.initPropertiesFromCommandLine(args);
+
+        //initialize System properties for the Scheduler.
+
+        System.setProperty("org.quartz.scheduler.instanceName","CourseRetrievalScheduler");
+        System.setProperty("org.quartz.threadPool.threadCount","2");
+        System.setProperty("org.quartz.jobStore.class","org.quartz.simpl.RAMJobStore");// keep in RAM, as we will start a new one when the server starts.
+
+       /* org.quartz.scheduler.instanceName = MyScheduler
+        org.quartz.threadPool.threadCount = 3
+        org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore  */
     }
     //--------------------------------------------------Protected Methods
     protected void checkFileEncoding(){
@@ -81,6 +117,10 @@ public class NTPAppServer {
 
     public DataStorage getStorageService(){
         return _storageService;
+    }
+
+    public AppProperties getAppProperties(){
+        return _properties;
     }
 
     //--------------------------------------------------Main Method

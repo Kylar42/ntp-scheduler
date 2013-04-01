@@ -6,17 +6,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class CourseImportContext {
 
-    private final Date                  _dateImportLastModified;
+    private final String                _importContentMD5;
     private final String                _path;
     private final List<CourseInstance>  _instances;
 
-    public CourseImportContext(Date lastMod, String path, List<CourseInstance> instances){
-        _dateImportLastModified = lastMod;
+    public CourseImportContext(String md5, String path, List<CourseInstance> instances){
+        _importContentMD5 = md5;
         _path = path;
         _instances = instances;
     }
@@ -30,7 +30,7 @@ public class CourseImportContext {
         return _instances;
     }
 
-    public Date getLastModified(){
-        return _dateImportLastModified;
+    public String getContentMD5(){
+        return _importContentMD5;
     }
 }

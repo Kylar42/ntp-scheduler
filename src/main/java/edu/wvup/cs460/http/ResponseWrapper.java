@@ -16,6 +16,8 @@ import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 import org.jboss.netty.util.CharsetUtil;
 
 import javax.management.monitor.StringMonitorMBean;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +36,7 @@ import static org.jboss.netty.handler.codec.http.HttpResponseStatus.OK;
 import static org.jboss.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class ResponseWrapper {
@@ -61,8 +63,14 @@ public class ResponseWrapper {
     public void writeResponse(HttpResponseStatus status, String content, MimeType contentType) {
         writeResponse(status, content, contentType, Collections.EMPTY_MAP);
     }
+    public void writeResponse(HttpResponseStatus status, byte[] content, MimeType contentType) {
+        writeResponse(status, content, contentType, Collections.EMPTY_MAP);
+    }
 
     public void writeResponse(HttpResponseStatus status, String content, MimeType contentType, Map<String, String> headers) {
+        writeResponse(status,content.getBytes(), contentType, headers);
+    }
+    public void writeResponse(HttpResponseStatus status, byte[] content, MimeType contentType, Map<String, String> headers) {
         // Decide whether to close the connection or not.
         boolean keepAlive = isKeepAlive(_request);
 
@@ -109,7 +117,7 @@ public class ResponseWrapper {
         }
 
         //set response.
-        response.setContent(ChannelBuffers.copiedBuffer(content, CharsetUtil.UTF_8));
+        response.setContent(ChannelBuffers.copiedBuffer(content));
 
         // Write the response.
         ChannelFuture future = _channelContext.getChannel().write(response);

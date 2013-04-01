@@ -1,7 +1,7 @@
 package edu.wvup.cs460.http;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public enum MimeType {
@@ -30,7 +30,7 @@ public enum MimeType {
 
     //image
     PNG     ("image/png",       false),
-    JPEG    ("image/jpeg",      false),
+    JPEG    ("image/jpg",      false),
     XICON   ("image/x-icon",    false),
 
     BINARY_OCTET_STREAM ("binary/octet-stream",     false),
@@ -62,6 +62,18 @@ public enum MimeType {
         return UNKNOWN;
     }
 
+    public static MimeType typeFromStringWithoutCharset(String mimeType){
+        if(null == mimeType){
+            return UNKNOWN;
+        }
+        for(MimeType mt : values()){
+            if(mimeType.startsWith(mt._typeString)){
+                return mt;
+            }
+        }
+        return UNKNOWN;
+    }
+
     public final String formattedString(){
         //return with default Charset
         return formattedString("UTF-8");
@@ -74,5 +86,9 @@ public enum MimeType {
             return toReturn.toString();
         }
         return _typeString;
+    }
+
+    public boolean isString(){
+        return _isString;
     }
 }

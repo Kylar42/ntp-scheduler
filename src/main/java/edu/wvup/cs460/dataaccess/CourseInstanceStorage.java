@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class CourseInstanceStorage implements DataStorage.StorageInstance<CourseInstance> {

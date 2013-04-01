@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMetadata> {

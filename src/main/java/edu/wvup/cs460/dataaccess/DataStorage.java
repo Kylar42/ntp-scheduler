@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class DataStorage {
@@ -36,20 +36,26 @@ public class DataStorage {
 
     //------------------------------------------------------------------delegates
 
-    private ConnectionPool _sharedPool;
+    private ConnectionPool          _sharedPool;
 
     //Delegates for each type
-    private CourseMetaStorage _courseMetaStorage;
+    private CourseMetaStorage       _courseMetaStorage;
 
-    private CourseInstanceStorage _courseInstanceStorage;
+    private CourseInstanceStorage   _courseInstanceStorage;
 
-    private URLCacheStorage _urlCacheStorage;
+    private URLCacheStorage         _urlCacheStorage;
+
+    private TableVersionsStorage    _tableVersionsStorage;
+
+    private UserStorage             _userStorage;
     //------------------------------------------------------------------
     public DataStorage(DBContext context){
         _sharedPool = new ConnectionPool(context);
         _courseMetaStorage = new CourseMetaStorage(_sharedPool);
         _courseInstanceStorage = new CourseInstanceStorage(_sharedPool);
         _urlCacheStorage = new URLCacheStorage(_sharedPool);
+        _tableVersionsStorage = new TableVersionsStorage(_sharedPool);
+        _userStorage = new UserStorage(_sharedPool);
     }
 
     public StorageInstance<CourseMetadata> courseMetadataStorage(){
@@ -60,7 +66,16 @@ public class DataStorage {
         return _courseInstanceStorage;
     }
 
-    public StorageInstance<Tuple<String, Date>> urlCacheStorage(){
+    public StorageInstance<Tuple<String, String>> urlCacheStorage(){
         return _urlCacheStorage;
     }
+
+    public StorageInstance<Tuple<String, Integer>> tableVersionStorage(){
+        return _tableVersionsStorage;
+    }
+
+    public StorageInstance<Tuple<String, String>> userStorage(){
+        return _userStorage;
+    }
+
 }

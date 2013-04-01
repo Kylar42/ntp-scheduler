@@ -1,6 +1,8 @@
 package edu.wvup.cs460.db;
 
-import edu.wvup.cs460.AppProperties;
+import edu.wvup.cs460.configuration.AppProperties;
+import edu.wvup.cs460.dataaccess.DataStorage;
+import edu.wvup.cs460.util.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  */
 public class DBSetup {
     
@@ -91,6 +93,9 @@ public class DBSetup {
             final PreparedStatement createUrlCache = myConnection.prepareStatement(_sqlStrings.CREATE_URL_CACHE_TABLE);
             createUrlCache.executeUpdate();
             LOG.info("URL Cache Table created.");
+            final PreparedStatement createVersions = myConnection.prepareStatement(_sqlStrings.CREATE_TABLE_VERSION_TABLE);
+            createVersions.executeUpdate();
+            LOG.info("Table Versions table created.");
             final PreparedStatement createTerms = myConnection.prepareStatement(_sqlStrings.CREATE_TERMS_TABLE);
             createTerms.executeUpdate();
             LOG.info("School Terms table created.");
@@ -98,6 +103,13 @@ public class DBSetup {
             sql.printStackTrace();
         }finally{
             _connectionPool.returnConnection(myConnection);
+        }
+    }
+
+    public void seedVersionsTable(){
+        DataStorage storage = new DataStorage(_context);
+        for(String tableName : DBSetupSQLStrings.DATABASE_TABLES){
+            storage.tableVersionStorage().insert(new Tuple<String, Integer>(tableName, 1));
         }
     }
 
@@ -125,8 +137,9 @@ public class DBSetup {
         setup.createOrSetupDB();
         setup.createUser();
         setup.createOrSetupTables();
+        setup.seedVersionsTable();//need this for the migrator to use later.
 
-        new CourseSeeder().seedAllCourses(setup.getDBContext());
+        //new CourseSeeder().seedAllCourses(setup.getDBContext());
     }
 }
 

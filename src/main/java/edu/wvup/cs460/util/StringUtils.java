@@ -8,15 +8,25 @@ import java.nio.charset.Charset;
 import java.util.StringTokenizer;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class StringUtils {
 
 
-    public static String DATE_FORMAT_STRING = "EEE, dd MMM YYYY HH:mm:ss zzz";
+    public static String DATE_FORMAT_STRING = "EEE, dd MMM yyyy HH:mm:ss zzz";
 
     private static int DEFAULT_BUFFER_SIZE = 4096;//TODO:should be a property, so we can tune
+
+
+    public static String toHexString(byte[] bytes){
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < bytes.length; i++) {
+            sb.append(Integer.toHexString(0xff & bytes[i]));
+        }
+        return sb.toString();
+    }
+
     /**
      * Parse out all the integers out of a string and return an int value.
      * @param value

@@ -1,7 +1,7 @@
 package edu.wvup.cs460.db;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 final class DBSetupSQLStrings {
@@ -53,8 +53,18 @@ final class DBSetupSQLStrings {
                     "YEAR smallint NOT NULL);";
 
     final String CREATE_URL_CACHE_TABLE =
-            "create table if not exists URL_CACHE (URL VARCHAR(255) NOT NULL, LASTMODIFIED TIMESTAMP WITH TIME ZONE NOT NULL, "+
+            "create table if not exists URL_CACHE (URL VARCHAR(255) NOT NULL, MD5 VARCHAR(255), "+
             "PRIMARY KEY (URL));";
+
+    final String CREATE_TABLE_VERSION_TABLE =
+            "create table if not exists TABLE_VERSIONS (TABLE_NAME VARCHAR(255) NOT NULL, TABLE_VERSION INT NOT NULL DEFAULT(1), "+
+                    "PRIMARY KEY (TABLE_NAME));";
+
+    final String CREATE_USERS_TABLE =
+            "create table if not exists USERS (USER VARCHAR(255) NOT NULL, PASSWORD VARCHAR(255) NOT NULL, "+
+                    "PRIMARY KEY (USER));";
+
+    public static String[] DATABASE_TABLES = {"COURSE_INSTANCE", "COURSE_META", "SCHOOL_TERMS", "URL_CACHE", "TABLE_VERSIONS", "USERS"};
 
     DBSetupSQLStrings(DBContext context){
         DB_CREATE = constructDBCreate(context);

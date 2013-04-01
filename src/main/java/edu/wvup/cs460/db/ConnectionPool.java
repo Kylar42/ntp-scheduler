@@ -1,6 +1,6 @@
 package edu.wvup.cs460.db;
 
-import edu.wvup.cs460.AppProperties;
+import edu.wvup.cs460.configuration.AppProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

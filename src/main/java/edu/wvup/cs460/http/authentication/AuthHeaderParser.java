@@ -4,7 +4,7 @@ import com.Ostermiller.util.Base64;
 import edu.wvup.cs460.util.StringUtils;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class AuthHeaderParser {
@@ -25,7 +25,6 @@ public class AuthHeaderParser {
             final byte[] decode = Base64.decode(rest.getBytes());
             String decoded = new String(decode);
             String[] split = StringUtils.splitStringWithoutEmpty(decoded, ":");
-            System.out.println(header);
             String user = "";
             String password = "";
             if(null != split){

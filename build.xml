@@ -1,71 +1,90 @@
-<project name="icloud-vcard" default="help" basedir=".">
-    <description>
-        Build VCard Library
+<?xml version="1.0"?>
+<project name="ntp-scheduler" default="help" basedir=".">
+	<description>
+		Build or start NTP Scheduler
     </description>
-    <!-- set global properties for this build -->
-    <property name="src" value="src"/>
-    <property name="build" value="build"/>
-    <property name="jar" value="jar"/>
-    <property name="clean" value="clean"/>
-    <property name="dist"  value="dist"/>
-    <property name="thirdparty" location="../trunk/thirdparty"/>
+	<!-- set global properties for this build -->
+	<property name="src" value="src/main/java"/>
+	<property name="build" value="build"/>
+	<property name="jar" value="jar"/>
+	<property name="clean" value="clean"/>
+	<property name="dist" value="dist"/>
+	<property name="resources" location="src/main/resources/"/>
 	<property name="version" value="0.9"/>
-	<property name="outputjarname" value="icloud-vcard-${version}.jar"/>
-	<property name="outputsrcjarname" value="icloud-vcard-${version}-src.jar"/>
-    <target name="init">
-        <!-- Create the time stamp -->
-        <tstamp/>
-        <!-- Create the build directory structure used by compile -->
-        <mkdir dir="${build}"/>
-    </target>
-    <target name="dist" depends="jar">
-        <!-- Create the time stamp -->
-        <tstamp/>
-        <!-- Create the build directory structure used by compile -->
-	  <move file="${dist}/icloud-vcard-${version}.jar" todir="${thirdparty}"/>
-	  <move file="${dist}/icloud-vcard-${version}-src.jar" todir="${thirdparty}"/>
-    </target>
-
-    <target name="compile" depends="clean,init"
-            description="compile the source ">
-
-        <!-- Compile the java code from ${src} into ${build} -->
-        <javac srcdir="${src}" destdir="${build}" debug="true">
-            <classpath>
-                <!-- include any jars from lib. -->
-                <fileset dir="lib">
-                    <include name="**/*.jar"/>
-                </fileset>
-            </classpath>
-        </javac>
-    </target>
-    <target name="help" 
-            description="Print help">
+	<property name="outputjarname" value="ntp-scheduler-${version}.jar"/>
+	<property name="outputsrcjarname" value="ntp-scheduler-${version}-src.jar"/>
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}"/>
+	</target>
+	<target name="dist" depends="jar">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<!--move file="${dist}/icloud-vcard-${version}.jar" todir="${thirdparty}"/>
+	  <move file="${dist}/icloud-vcard-${version}-src.jar" todir="${thirdparty}"/-->
+	</target>
+	<target name="compile" depends="clean,init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" debug="true">
+			<classpath>
+				<!-- include any jars from lib. -->
+				<fileset dir="${resources}">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+	<target name="help" description="Print help">
 		<echo message="Ant targets:${line.separator}"/>
 		<echo message="jar     - create jar files${line.separator}"/>
 		<echo message="clean   - clean output files:${line.separator}"/>
 		<echo message="compile - create class files:${line.separator}"/>
 		<echo message="jar     - create jar files:${line.separator}"/>
 		<echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
-    </target>
+	</target>
+	<target name="jar" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${dist}/logs"/>
+		<mkdir dir="${dist}/properties"/>
+		<mkdir dir="${dist}/static_content"/>
 
-    <target name="jar" depends="compile"
-            description="generate the distribution">
-        <!-- Create the distribution directory -->
-        <mkdir dir="${dist}"/>
-
-        <!-- Put everything in ${build} into the icloud jar file file -->
+		<!-- Put everything in ${build} into the jar file -->
 		<!-- TODO: Put build # into external file, create 'release-build' target -->
+		<jar jarfile="${dist}/${outputjarname}" basedir="${build}"/>
+		<copy todir="${dist}">
+			<!-- include any jars from lib. -->
+			<fileset dir="${resources}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${dist}/properties">
+			<!-- include any jars from lib. -->
+			<fileset dir="${resources}">
+				<include name="**/*.properties"/>
+				<include name="**/*.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${dist}/static_content">
+			<!-- include any jars from lib. -->
+			<fileset dir="${resources}/static_content">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<!-- Need to copy sh file. TODO: Do this based on os type. -->
+		<copy file="command.sh" todir="${dist}"/>
+		<!-- Need to copy bat file. TODO: Do this based on os type. -->
+		<copy file="start-server.bat" todir="${dist}"/>
 		
-        <jar jarfile="${dist}/${outputjarname}" basedir="${build}"/>
-        <!-- Source dist -->
- 		<jar jarfile="${dist}/${outputsrcjarname}" basedir="${src}" excludes="${src}/test"/>
-    </target>
-
-    <target name="clean"
-            description="clean up">
-        <!-- Delete the ${build} and ${dist} directory trees -->
-        <delete dir="${build}"/>
-        <delete dir="${dist}"/>
-    </target>
+		<!-- Source dist -->
+		<jar jarfile="${dist}/${outputsrcjarname}" basedir="${src}" excludes="${src}/test"/>
+	</target>
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
 </project>

@@ -3,7 +3,7 @@ package edu.wvup.cs460.datamodel;
 import edu.wvup.cs460.util.StringUtils;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public final class CourseMetadata implements Comparable<CourseMetadata>{

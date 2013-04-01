@@ -1,6 +1,5 @@
 package edu.wvup.cs460.transform;
 
-import com.sun.javafx.tools.packager.Log;
 import edu.wvup.cs460.datamodel.CourseInstance;
 import edu.wvup.cs460.util.StringUtils;
 import edu.wvup.cs460.util.Tuple;
@@ -10,11 +9,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,88 +25,110 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class HTMLScraperImporter implements CourseImporter {
 
-    Logger LOG = LoggerFactory.getLogger(HTMLScraperImporter.class);
+    private static Logger LOG = LoggerFactory.getLogger(HTMLScraperImporter.class);
+
+    private final MessageDigest md;
+
+    public HTMLScraperImporter() {
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            LOG.error("Unable to create message Digest. ", e);
+            throw new IllegalArgumentException(e);
+        }
+    }
 
     @Override
-    public List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes) {
+    public List<CourseImportContext> getCourses(List<Tuple<String, String>> urlCacheSigs) {
+
+        /**
+         *
+         InputStream is = new FileInputStream("file.txt");
+         try {
+         is = new DigestInputStream(is, md);
+         // read stream to EOF as normal...
+         }
+         finally {
+         is.close();
+         }
+         byte[] digest = md.digest();
+         */
         LOG.info("Beginning Course Retrieval.");
         final List<CourseImportContext> toReturn = new ArrayList<CourseImportContext>();
         final List<URL> urls = findURLs();
         for (URL url : urls) {
-            Date lastModForThisURL = findLastModified(urlCacheTimes, url.toExternalForm());
-            Date lastModifiedDate = null;
-            LOG.info("Retrieving Courses from:"+url);
+            String lastMD5ForURL = findMD5(urlCacheSigs, url.toExternalForm());
+            LOG.debug("Found MD5: {} for url:{}", url.toExternalForm(), lastMD5ForURL);
+
+            LOG.info("Retrieving Courses from:" + url);
             StringBuilder builder = new StringBuilder();
             try {
                 final HttpURLConnection httpConnection;
                 URLConnection urlConnection = url.openConnection();
                 //first things first - check to see if we got a 200, 304 or other.
-                if(urlConnection instanceof HttpURLConnection){
-                    httpConnection = (HttpURLConnection)urlConnection;
-                }else{
-                    LOG.error("URL Connection was not of a recognized type for URL:"+url);
+                if (urlConnection instanceof HttpURLConnection) {
+                    httpConnection = (HttpURLConnection) urlConnection;
+                } else {
+                    LOG.error("URL Connection was not of a recognized type for URL:" + url);
                     continue;
                 }
-                if(null != lastModForThisURL){
-                    SimpleDateFormat sdf = new SimpleDateFormat(StringUtils.DATE_FORMAT_STRING);
-                    httpConnection.addRequestProperty("If-Modified-Since", sdf.format(lastModForThisURL));
-                }
-
 
                 httpConnection.connect();//make the call.
 
                 final int responseCode = httpConnection.getResponseCode();
-                if(HttpResponseStatus.NOT_MODIFIED.getCode() == responseCode){
-                    LOG.info("Data at URL has not changed since we last checked it. URL:"+url);
+                if (HttpResponseStatus.NOT_MODIFIED.getCode() == responseCode) {
+                    LOG.info("Data at URL has not changed since we last checked it. URL:" + url);
                     continue;//jump out of loop.
                 }
 
-                if(HttpResponseStatus.OK.getCode() != responseCode){
-                    LOG.error("We recieved a response from the server that indicates Failure. Response:"+responseCode+" URL:"+url);
+                if (HttpResponseStatus.OK.getCode() != responseCode) {
+                    LOG.error("We recieved a response from the server that indicates Failure. Response:" + responseCode + " URL:" + url);
                 }
 
-
-                final String headerField = urlConnection.getHeaderField("Last-Modified");
-                if(null != headerField && headerField.length() > 0 ){
-                    lastModifiedDate = parseLastModified(headerField);
-                }
+                //Let's set up the reader stream
+                md.reset();
+                InputStream is = new DigestInputStream(urlConnection.getInputStream(), md);
 
 
                 //Here I need to get
-                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
                 String line = br.readLine();
                 while (line != null) {
                     builder.append(line);
                     line = br.readLine();
                 }
-            }catch(IOException ioe){
-                LOG.error("Unable to properly retrieve data from URL["+url+"] for Import");
+            } catch (IOException ioe) {
+                LOG.error("Unable to properly retrieve data from URL[" + url + "] for Import");
             }
-            LOG.info("Finished receiving data from:"+url);
+            LOG.info("Finished receiving data from:" + url);
             //Store Date.
 
-            List<CourseInstance> parsed = parseFromHTML(builder.toString());
-            LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
-            if(null == lastModifiedDate){
-                lastModifiedDate = new Date();
+            //OK, we got the data, but let's see if it's the same as what we had last time before we go parse it.
+            String newMD5 = StringUtils.toHexString(md.digest());
+
+            //if there's no previous MD5, or if they're not equal, then parse away!
+            if(null == lastMD5ForURL || !lastMD5ForURL.equals(newMD5)) {
+                List<CourseInstance> parsed = parseFromHTML(builder.toString());
+                toReturn.add(new CourseImportContext(newMD5, url.toExternalForm(), parsed));
+                LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
+            }else{
+                LOG.info("MD5 of incoming content matched DB. We did not parse or insert.");
             }
-            toReturn.add(new CourseImportContext(lastModifiedDate, url.toExternalForm(), parsed));
 
         }
-
 
 
         return toReturn;
     }
 
-    private Date findLastModified(List<Tuple<String, Date>> urlCacheTimes, String url){
-        for(Tuple<String, Date> mod : urlCacheTimes){
-            if(url.equalsIgnoreCase(mod.getKey().toLowerCase())){
+    private String findMD5(List<Tuple<String, String>> urlCacheSigs, String url) {
+        for (Tuple<String, String> mod : urlCacheSigs) {
+            if (url.equalsIgnoreCase(mod.getKey().toLowerCase())) {
                 return mod.getValue();
             }
         }
@@ -111,71 +136,71 @@ public class HTMLScraperImporter implements CourseImporter {
     }
 
     /*< Last-Modified: Tue, 19 Mar 2013 13:10:29 GMT */
-    private Date parseLastModified(String lastMod){
+    private Date parseLastModified(String lastMod) {
         //return null if parseable.
         SimpleDateFormat format = new SimpleDateFormat(StringUtils.DATE_FORMAT_STRING);
         try {
             return format.parse(lastMod);
         } catch (ParseException e) {
-            LOG.debug("Unable to parse Last Modified date:"+lastMod);
+            LOG.debug("Unable to parse Last Modified date:" + lastMod);
             return new Date();
         }
     }
 
     private List<CourseInstance> parseFromHTML(String htmlBody) {
         List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
-        try{
-        //OK first things, let's find the course term.
-        int ndx = htmlBody.indexOf("Course Schedule - ");
-        int endNdx = htmlBody.indexOf("<", ndx + 16);
-        String courseTerm = htmlBody.substring(ndx + 17, endNdx);
-        courseTerm = courseTerm.trim();
-        String[] split = courseTerm.split(" ");
-        //first is term, second is year.
-        final String term = split[0];
-        final String year = split[1];
+        try {
+            //OK first things, let's find the course term.
+            int ndx = htmlBody.indexOf("Course Schedule - ");
+            int endNdx = htmlBody.indexOf("<", ndx + 16);
+            String courseTerm = htmlBody.substring(ndx + 17, endNdx);
+            courseTerm = courseTerm.trim();
+            String[] split = courseTerm.split(" ");
+            //first is term, second is year.
+            final String term = split[0];
+            final String year = split[1];
 
-        /**
-         startIndex = pageText.find("<a name=\"TOP\">Main Campus", startIndex)
-         startIndex = pageText.find("<span id=\"", startIndex)
-         startIndex = pageText.find("<tr>", startIndex)
-         while startIndex > -1:
+            /**
+             startIndex = pageText.find("<a name=\"TOP\">Main Campus", startIndex)
+             startIndex = pageText.find("<span id=\"", startIndex)
+             startIndex = pageText.find("<tr>", startIndex)
+             while startIndex > -1:
 
-         #from start index, we need the first <A HREF.
-         endNdx = pageText.find("</tr>", startIndex)
-         pullApart(pageText[startIndex:endNdx], outputFile)
-         tableEnd = pageText.find("/table>", endNdx)
-         startIndex = pageText.find("<tr>", endNdx)
-         # check for end of table, if it's less than..
-         if(tableEnd < startIndex):
-         startIndex = pageText.find("<span id=\"", endNdx)
-         startIndex = pageText.find("<tr>", startIndex)
-         outputFile.flush()
-         outputFile.close()
+             #from start index, we need the first <A HREF.
+             endNdx = pageText.find("</tr>", startIndex)
+             pullApart(pageText[startIndex:endNdx], outputFile)
+             tableEnd = pageText.find("/table>", endNdx)
+             startIndex = pageText.find("<tr>", endNdx)
+             # check for end of table, if it's less than..
+             if(tableEnd < startIndex):
+             startIndex = pageText.find("<span id=\"", endNdx)
+             startIndex = pageText.find("<tr>", startIndex)
+             outputFile.flush()
+             outputFile.close()
 
-         */
-        int startNdx = htmlBody.indexOf("<a name=\"TOP\">Main Campus\"");
-        startNdx = htmlBody.indexOf("<span id=\"", startNdx);
-        startNdx = htmlBody.indexOf("<tr>", startNdx);
-        while (-1 < startNdx) {
+             */
+            int startNdx = htmlBody.indexOf("<a name=\"TOP\">Main Campus\"");
+            startNdx = htmlBody.indexOf("<span id=\"", startNdx);
+            startNdx = htmlBody.indexOf("<tr>", startNdx);
+            while (-1 < startNdx) {
 
-            endNdx = htmlBody.indexOf("</tr>", startNdx);
-            String classEntry = htmlBody.substring(startNdx, endNdx);
-            CourseInstance courseInstance = pullApart(classEntry, term, year);
-            if (null != courseInstance) {
-                toReturn.add(courseInstance);
-            }
-            int tableEnd = htmlBody.indexOf("/table>", endNdx);
-            startNdx = htmlBody.indexOf("<tr>", endNdx);
-            if (tableEnd < startNdx) {
-                startNdx = htmlBody.indexOf("<span id=\"", endNdx);
-                if(-1 == startNdx){
-                    continue;//break.
+                endNdx = htmlBody.indexOf("</tr>", startNdx);
+                String classEntry = htmlBody.substring(startNdx, endNdx);
+                CourseInstance courseInstance = pullApart(classEntry, term, year);
+                if (null != courseInstance) {
+                    toReturn.add(courseInstance);
                 }
-                startNdx = htmlBody.indexOf("<tr>", startNdx);
+                int tableEnd = htmlBody.indexOf("/table>", endNdx);
+                startNdx = htmlBody.indexOf("<tr>", endNdx);
+                if (tableEnd < startNdx) {
+                    startNdx = htmlBody.indexOf("<span id=\"", endNdx);
+                    if (-1 == startNdx) {
+                        continue;//break.
+                    }
+                    startNdx = htmlBody.indexOf("<tr>", startNdx);
+                }
             }
-        }
-        }catch(Throwable t){
+        } catch (Throwable t) {
             LOG.error("A really bad error occurred while trying to parse HTML.", t);
         }
 
@@ -237,7 +262,7 @@ public class HTMLScraperImporter implements CourseImporter {
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String course = tmp;
 
-            if("1695".equalsIgnoreCase(crn)){
+            if ("1695".equalsIgnoreCase(crn)) {
                 System.out.println("foo");
             }
             //-----------------------------------------------Title.
@@ -320,11 +345,11 @@ public class HTMLScraperImporter implements CourseImporter {
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             int tmpEndNDX = classText.indexOf("</td>", tmpSI);
             int nextCenter = classText.indexOf("center\">", tmpSI) + 8;
-            if(tmpEndNDX < tmpSI || nextCenter < tmpSI){
-                tmpEI = tmpEndNDX+5;//reset end index.
-                tmp="-10";//set it so that we know we didn't get it for real.
+            if (tmpEndNDX < tmpSI || nextCenter < tmpSI) {
+                tmpEI = tmpEndNDX + 5;//reset end index.
+                tmp = "-10";//set it so that we know we didn't get it for real.
 
-            }else{
+            } else {
                 tmpSI = classText.indexOf("center\">", nextCenter) + 8;// #it's malformed.
                 tmpEI = classText.indexOf("<", tmpSI);
                 tmp = classText.substring(tmpSI, tmpEI).trim();
@@ -337,9 +362,9 @@ public class HTMLScraperImporter implements CourseImporter {
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             nextCenter = classText.indexOf("center\">", tmpSI) + 8;
             tmpEI = classText.indexOf("</td>", tmpSI);
-            if(nextCenter < tmpSI || nextCenter > tmpEI){
+            if (nextCenter < tmpSI || nextCenter > tmpEI) {
                 tmp = "";
-            }else{
+            } else {
                 tmp = classText.substring(nextCenter, tmpEI).trim();
                 //#need to remove embedded html linebreaks too
                 tmp = tmp.replace("<br />", " ");
@@ -386,7 +411,7 @@ public class HTMLScraperImporter implements CourseImporter {
         //get what's in the brackets, break it out by " - " and use the last half.
         int startNdx = term.indexOf('(');
         int endNdx = term.lastIndexOf(')');
-        if(-1 == startNdx || -1 == endNdx){
+        if (-1 == startNdx || -1 == endNdx) {
             return new Date();
         }
         String middle = term.substring(startNdx + 1, endNdx).trim();

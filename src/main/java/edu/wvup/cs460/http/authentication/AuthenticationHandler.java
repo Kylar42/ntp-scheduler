@@ -1,7 +1,7 @@
 package edu.wvup.cs460.http.authentication;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class AuthenticationHandler {
@@ -26,7 +26,7 @@ public class AuthenticationHandler {
         if(context.getAuthType() == AuthenticationTypes.BASIC &&
                 context.getUser().equalsIgnoreCase("guest")){
             return new Principal(context.getUser());
-        }
+        }else
 
         return Principal.UNAUTHORIZED;
     }

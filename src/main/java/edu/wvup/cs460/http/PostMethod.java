@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class PostMethod extends AbstractHttpMethod {
@@ -48,7 +48,8 @@ public class PostMethod extends AbstractHttpMethod {
         //TODO: URL based dispatcher for REST.
         String contentType = getHeaderValue(HeaderNames.ContentType, null);
         Object parsedJson = null;
-        if(MimeType.APP_JSON.formattedString().equals(contentType)){
+        MimeType incomingType = MimeType.typeFromStringWithoutCharset(contentType);
+        if(MimeType.APP_JSON == incomingType){
             //parse JSON
             final String jsonString = reqWrapper.getRequest().getContent().toString(CharsetUtil.UTF_8);
             JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);

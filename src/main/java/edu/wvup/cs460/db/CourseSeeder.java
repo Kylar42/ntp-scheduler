@@ -12,15 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class CourseSeeder {
 
 
-    void seedAllCourses(DBContext context){
+    public void seedAllCourses(DBContext context){
         DataStorage storageInstance = new DataStorage(context);
-        final List<Tuple<String, Date>> lastModTimes = storageInstance.urlCacheStorage().retrieveList(null);
+        final List<Tuple<String, String>> lastModTimes = storageInstance.urlCacheStorage().retrieveList(null);
 
 
         final List<CourseImportContext> coursesContexts = ImportFactory.getInstance().getCourseImporter().getCourses(lastModTimes);//
@@ -41,7 +41,7 @@ public class CourseSeeder {
 
    private void writeModDates(DataStorage storageInstance, List<CourseImportContext> contexts){
        for(CourseImportContext context : contexts){
-           Tuple<String, Date> lastModData = new Tuple<String, Date>(context.getPath(), context.getLastModified());
+           Tuple<String, String> lastModData = new Tuple<String, String>(context.getPath(), context.getContentMD5());
            storageInstance.urlCacheStorage().insertOrUpdate(lastModData);
        }
        //write to DB

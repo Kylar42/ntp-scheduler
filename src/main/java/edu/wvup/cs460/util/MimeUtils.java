@@ -1,6 +1,5 @@
 package edu.wvup.cs460.util;
 
-import edu.wvup.cs460.http.Constants;
 import edu.wvup.cs460.http.MimeType;
 
 import java.io.File;
@@ -8,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class MimeUtils {
@@ -21,6 +20,7 @@ public class MimeUtils {
         CONTENT_TYPES.put("js", MimeType.APP_JAVASCRIPT);
         CONTENT_TYPES.put("json", MimeType.APP_JSON);
         CONTENT_TYPES.put("ico", MimeType.XICON);
+        CONTENT_TYPES.put("jpeg", MimeType.JPEG);
 
     }
 

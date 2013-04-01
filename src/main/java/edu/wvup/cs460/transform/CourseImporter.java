@@ -7,11 +7,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  * This will return a list of parsed course instances, as well as a date that they were produced.
  * We can later use the date to determine if they need to be re-fetched.
  */
 public interface CourseImporter {
-    List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes);
+    List<CourseImportContext> getCourses(List<Tuple<String, String>> urlCacheTimes);
 }

@@ -2,32 +2,49 @@ package edu.wvup.cs460.transform;
 
 import edu.wvup.cs460.datamodel.CourseInstance;
 import edu.wvup.cs460.util.Tuple;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class CSVCourseImporter implements CourseImporter {
+    private static Logger LOG = LoggerFactory.getLogger(CSVCourseImporter.class);
+
     @Override
-    public List<CourseImportContext> getCourses(List<Tuple<String, Date>> urlCacheTimes){
+    public List<CourseImportContext> getCourses(List<Tuple<String, String>> urlCacheSigs){
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (Exception e) {
+            LOG.error("Unable to create Digest for MD5.");
+            throw new IllegalArgumentException(e);//need to fail the method.
+        }
+
+
         List<CourseImportContext> toReturn = new ArrayList<CourseImportContext>();
         try {
             File f = new File("main/resources/classlist.csv");
+            InputStream is = new DigestInputStream(new FileInputStream(f), md);
             FileReader reader = new FileReader(f);
             BufferedReader buff = new BufferedReader(reader);
             List<CourseInstance> courseInstanceList = new ArrayList<CourseInstance>();
             String line = buff.readLine();
 
             while (null != line) {
-                //System.out.println(line);
 
                 String[] splits = line.split(",");
                 String courseType = splits[0].trim();
@@ -67,7 +84,7 @@ public class CSVCourseImporter implements CourseImporter {
 
                 line = buff.readLine();
             }
-            toReturn.add(new CourseImportContext(new Date(f.lastModified()), f.getAbsolutePath(), courseInstanceList));
+            toReturn.add(new CourseImportContext(new String(md.digest()), f.getAbsolutePath(), courseInstanceList));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

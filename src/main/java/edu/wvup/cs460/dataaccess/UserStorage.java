@@ -1,6 +1,5 @@
 package edu.wvup.cs460.dataaccess;
 
-import edu.wvup.cs460.datamodel.CourseMetadata;
 import edu.wvup.cs460.db.ConnectionPool;
 import edu.wvup.cs460.util.Tuple;
 import org.slf4j.Logger;
@@ -11,29 +10,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
-public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String, String>> {
+public class UserStorage implements DataStorage.StorageInstance<Tuple<String, String>> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(URLCacheStorage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserStorage.class);
 
     //------------------------------------------------------------------ PreparedStatements for CourseMetadata
-    String URL_CACHE_INSERT_SQL = "insert into url_cache (url, md5)" +
+    String USERS_INSERT_SQL = "insert into users (user, password)" +
             " values (?, ?)";
-    String URL_CACHE_UPDATE_SQL = "update url_cache set md5=? where url=?";
-    String URL_CACHE_EXISTS_SQL = "select count(*) from url_cache where url=?";
+    String USERS_UPDATE_SQL = "update users set password=? where user=?";
+    String USERS_EXISTS_SQL = "select count(*) from users where user=?";
 
-    String URL_CACHE_LIST_SQL = "select * from url_cache";
-    String[] URL_CACHE_COLS = {"url", "md5"};
+    String USERS_LIST_SQL = "select * from users";
+    String[] USERS_COLS = {"user", "password"};
 
     private final ConnectionPool _connectionPool;
 
-    public URLCacheStorage(ConnectionPool pool) {
+    public UserStorage(ConnectionPool pool) {
         _connectionPool = pool;
     }
 
@@ -41,7 +39,7 @@ public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String
     public boolean insert(Tuple<String, String> object) {
         final Connection connection = _connectionPool.getConnection();
         try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(URL_CACHE_INSERT_SQL);
+            final PreparedStatement preparedStatement = connection.prepareStatement(USERS_INSERT_SQL);
             preparedStatement.setString(1, object.getKey());
             preparedStatement.setString(2, object.getValue());
             final int i = preparedStatement.executeUpdate();
@@ -58,7 +56,7 @@ public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String
     public boolean update(Tuple<String, String> object) {
         final Connection connection = _connectionPool.getConnection();
         try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(URL_CACHE_UPDATE_SQL);
+            final PreparedStatement preparedStatement = connection.prepareStatement(USERS_UPDATE_SQL);
             preparedStatement.setString(1, object.getValue());
             preparedStatement.setString(2, object.getKey());
             final int i = preparedStatement.executeUpdate();
@@ -75,7 +73,7 @@ public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String
     public boolean exists(Tuple<String, String> object) {
         final Connection connection = _connectionPool.getConnection();
         try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(URL_CACHE_EXISTS_SQL);
+            final PreparedStatement preparedStatement = connection.prepareStatement(USERS_EXISTS_SQL);
             preparedStatement.setString(1, object.getKey());
             final ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -104,12 +102,12 @@ public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String
         List<Tuple<String, String>> courses = new ArrayList<Tuple<String, String>>();
         final Connection connection = _connectionPool.getConnection();
         try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(URL_CACHE_LIST_SQL);
+            final PreparedStatement preparedStatement = connection.prepareStatement(USERS_LIST_SQL);
             final ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String url = resultSet.getString(URL_CACHE_COLS[0]);
-                String md5 = resultSet.getString(URL_CACHE_COLS[1]);
-                courses.add(new Tuple<String, String>(url, md5));
+                String user = resultSet.getString(USERS_COLS[0]);
+                String password = resultSet.getString(USERS_COLS[1]);
+                courses.add(new Tuple<String, String>(user, password));
             }
         } catch (SQLException e) {
             LOG.error("SQLError While retrieving URL Course list.", e);
