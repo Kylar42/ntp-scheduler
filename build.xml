@@ -10,6 +10,7 @@
 	<property name="clean" value="clean"/>
 	<property name="dist" value="dist"/>
 	<property name="resources" location="src/main/resources/"/>
+	<property name="properties" location="src/main/resources/properties"/>
 	<property name="version" value="0.9"/>
 	<property name="outputjarname" value="ntp-scheduler-${version}.jar"/>
 	<property name="outputsrcjarname" value="ntp-scheduler-${version}-src.jar"/>
@@ -63,7 +64,7 @@
 		</copy>
 		<copy todir="${dist}/properties">
 			<!-- include any jars from lib. -->
-			<fileset dir="${resources}">
+			<fileset dir="${properties}">
 				<include name="**/*.properties"/>
 				<include name="**/*.xml"/>
 			</fileset>

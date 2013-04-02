@@ -29,6 +29,7 @@ public final class CourseMetadata implements Comparable<CourseMetadata>{
         _isCommunications = isComm;
         _isComputerLit = isComputerLit;
         _isUpperDivision = isUpperDivision;
+        _isUpperDivision = calcUpperDivision(courseNum);
     }
     public CourseMetadata(String subject, String courseNum){
         _subject = subject;
@@ -39,7 +40,16 @@ public final class CourseMetadata implements Comparable<CourseMetadata>{
         _isMath = false;
         _isCommunications = false;
         _isComputerLit = false;
-        _isUpperDivision = false;
+        _isUpperDivision = calcUpperDivision(courseNum);
+
+    }
+
+    private boolean calcUpperDivision(String courseNum){
+        if(null == courseNum){
+            return false;
+        }
+        final int courseNumInt = StringUtils.parseIntFromString(courseNum);
+        return (courseNumInt > 299);
 
     }
 

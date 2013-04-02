@@ -16,6 +16,9 @@ public class StringUtils {
 
     public static String DATE_FORMAT_STRING = "EEE, dd MMM yyyy HH:mm:ss zzz";
 
+    public static String TABLE_DATE_OUTPUT_STRING = "dd-MMM-yy";
+
+
     private static int DEFAULT_BUFFER_SIZE = 4096;//TODO:should be a property, so we can tune
 
 

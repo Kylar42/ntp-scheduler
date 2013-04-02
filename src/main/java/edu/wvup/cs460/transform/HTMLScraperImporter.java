@@ -262,9 +262,7 @@ public class HTMLScraperImporter implements CourseImporter {
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String course = tmp;
 
-            if ("1695".equalsIgnoreCase(crn)) {
-                System.out.println("foo");
-            }
+
             //-----------------------------------------------Title.
             // Going to be a bit more interesting here.
             //#<td> <a onmouseover="TagToTip('ACCT201', TITLE, 'ACCT 201', WIDTH, 240, TITLEBGCOLOR, '#00386B', SHADOW, true, BORDERCOLOR, '#00386B')"

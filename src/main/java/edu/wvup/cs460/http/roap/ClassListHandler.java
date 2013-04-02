@@ -8,13 +8,16 @@ import edu.wvup.cs460.http.MethodContext;
 import edu.wvup.cs460.http.MimeType;
 import edu.wvup.cs460.http.ParsedURL;
 import edu.wvup.cs460.http.ResponseWrapper;
+import edu.wvup.cs460.util.StringUtils;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,17 +89,26 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         sb.append("<thead>");
         sb.append("<th scope=\"col\">CRN</th>");
         sb.append("<th scope=\"col\">Course</th>");
-        sb.append("<th scope=\"col\">Title</th>");
-        sb.append("<th scope=\"col\">Credits</th>");
+        sb.append("<th scope=\"col\" width=\"150px\">Title</th>");
+        sb.append("<th scope=\"col\" width=\"40px\">Hours</th>");
         sb.append("<th scope=\"col\">Days</th>");
         sb.append("<th scope=\"col\">Time</th>");
+        sb.append("<th scope=\"col\" width=\"70px\">Start Date</th>");
+        sb.append("<th scope=\"col\" width=\"70px\">End Date</th>");
+        sb.append("<th scope=\"col\">Term</th>");
         sb.append("<th scope=\"col\">Instructor</th>");
         sb.append("<th scope=\"col\">Seats</th>");
         sb.append("<th scope=\"col\">Campus</th>");
         sb.append("</thead><tbody>");
 
         for (CourseInstance instance : courses) {
-            sb.append("<tr>");
+            //color if seats avail < 1
+            String color = instance.getSeatsAvail() < 1 ? "BGCOLOR=\"#DDDDDD\"" : "BGCOLOR=\"#FFFFFF\"";
+            sb.append("<tr ").append(color).append(">");
+
+            String startDate = getFormattedDate(instance.getStartDate());
+            String endDate = getFormattedDate(instance.getEndDate());
+            String term = getFormattedTermString(instance.getTermLength());
 
             sb.append("<td>").append(instance.getCrn()).append("</td>");
             sb.append("<td>").append(instance.getSubject()+instance.getCourseNumber()).append("</td>");
@@ -104,6 +116,9 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
             sb.append("<td>").append(instance.getCredits()).append("</td>");
             sb.append("<td>").append(instance.getDays()).append("</td>");
             sb.append("<td>").append(instance.getTime()).append("</td>");
+            sb.append("<td>").append(startDate).append("</td>");
+            sb.append("<td>").append(endDate).append("</td>");
+            sb.append("<td>").append(term).append("</td>");
             sb.append("<td>").append(instance.getInstructor()).append("</td>");
             sb.append("<td>").append(instance.getSeatsAvail()).append("</td>");
             sb.append("<td>").append(instance.getCampus()).append("</td>");
@@ -113,6 +128,20 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         sb.append("</tbody></table>");
 
         return sb.toString();
+    }
+
+    private String getFormattedDate(Date date){
+        if(null == date){
+            return "";
+        }
+        SimpleDateFormat format = new SimpleDateFormat(StringUtils.TABLE_DATE_OUTPUT_STRING);
+        return format.format(date);
+    }
+    private String getFormattedTermString(String termString){
+        if(null == termString || -1 == termString.indexOf("(")){
+            return "";
+        }
+        return termString.substring(0,termString.indexOf("("));
     }
 
 }

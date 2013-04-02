@@ -21,13 +21,13 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
     private static final Logger LOG = LoggerFactory.getLogger(CourseMetaStorage.class);
 
     //------------------------------------------------------------------ PreparedStatements for CourseMetadata
-    String COURSE_META_INSERT_SQL = "insert into course_meta (subject, course_number, humanities, natsci, socsci, math, communications, complit)"+
-            " values (?, ?, ?, ?, ?, ?, ?, ?)";
-    String COURSE_META_UPDATE_SQL = "update course_meta set humanities=?, natsci=?, socsci=?, math=?, communications=?, complit=? where subject=? and course_number=?";
+    String COURSE_META_INSERT_SQL = "insert into course_meta (subject, course_number, humanities, natsci, socsci, math, communications, complit, upperdiv)"+
+            " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String COURSE_META_UPDATE_SQL = "update course_meta set humanities=?, natsci=?, socsci=?, math=?, communications=?, complit=?, upperdiv=? where subject=? and course_number=?";
     String COURSE_META_EXISTS_SQL = "select count(*) from course_meta where subject=? and course_number=?";
 
     String COURSE_LIST_SQL = "select * from course_meta where lower(subject) like lower(?)";
-    String[] COURSE_META_COLS = {"subject", "course_number", "humanities", "natsci", "socsci", "math", "communications", "complit"};
+    String[] COURSE_META_COLS = {"subject", "course_number", "humanities", "natsci", "socsci", "math", "communications", "complit", "upperdiv"};
 
     private final ConnectionPool _connectionPool;
 
@@ -39,6 +39,9 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
 
 
     public List<CourseMetadata> retrieveList(Object substring){
+        if(null == substring){
+            substring="";//let's not try to search for a null.
+        }
         List<CourseMetadata> courses = new ArrayList<CourseMetadata>();
         final Connection connection = _connectionPool.getConnection();
         try {
@@ -56,7 +59,8 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
                 boolean math = resultSet.getBoolean(COURSE_META_COLS[5]);
                 boolean comm = resultSet.getBoolean(COURSE_META_COLS[6]);
                 boolean complit = resultSet.getBoolean(COURSE_META_COLS[7]);
-                CourseMetadata cMeta = new CourseMetadata(subject, courseNum, humanities, natsci, socsci, math, comm, complit, false);
+                boolean upperdiv = resultSet.getBoolean(COURSE_META_COLS[8]);
+                CourseMetadata cMeta = new CourseMetadata(subject, courseNum, humanities, natsci, socsci, math, comm, complit, upperdiv);
                 courses.add(cMeta);
 
             }
@@ -82,6 +86,7 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
             preparedStatement.setBoolean(6, courseMeta.isMath());
             preparedStatement.setBoolean(7, courseMeta.isCommunications());
             preparedStatement.setBoolean(8, courseMeta.isComputerLit());
+            preparedStatement.setBoolean(9, courseMeta.isUpperDivision());
             final int i = preparedStatement.executeUpdate();
             return i > 0;
         } catch (SQLException e) {
@@ -103,8 +108,9 @@ public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMeta
             preparedStatement.setBoolean(4, courseMeta.isMath());
             preparedStatement.setBoolean(5, courseMeta.isCommunications());
             preparedStatement.setBoolean(6, courseMeta.isComputerLit());
-            preparedStatement.setString(7, courseMeta.getSubject());
-            preparedStatement.setString(8, courseMeta.getCourseNumber());
+            preparedStatement.setBoolean(7, courseMeta.isUpperDivision());
+            preparedStatement.setString(8, courseMeta.getSubject());
+            preparedStatement.setString(9, courseMeta.getCourseNumber());
 
             final int i = preparedStatement.executeUpdate();
             return i > 0;

@@ -13,6 +13,7 @@ import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -32,19 +33,19 @@ public class NTPAppServer {
     //-------------------------------------------------Instance Members
     private final AppProperties _properties = new AppProperties();
 
-    private DataStorage   _storageService;
+    private DataStorage _storageService;
 
-    protected NTPAppServer(){
+    protected NTPAppServer() {
         LOG.info("Creating NTPAppServer.");
     }
 
-    public static NTPAppServer getInstance(){
+    public static NTPAppServer getInstance() {
         return INSTANCE;
     }
 
     //--------------------------------------------------Private Methods
 
-    private void initialize(String[] args){
+    private void initialize(String[] args) {
         LOG.info("Initializing App Server.");
         checkFileEncoding();
         initProperties(args);
@@ -53,7 +54,7 @@ public class NTPAppServer {
         initAppServer();
     }
 
-    private void initCourseRetrievalScheduler(){
+    private void initCourseRetrievalScheduler() {
         try {
             // Grab the Scheduler instance from the Factory
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -68,36 +69,37 @@ public class NTPAppServer {
         }
     }
 
-    private void initProperties(String[] args){
+    private void initProperties(String[] args) {
         //initialize the AppProperties
         _properties.initPropertiesFromCommandLine(args);
 
         //initialize System properties for the Scheduler.
 
-        System.setProperty("org.quartz.scheduler.instanceName","CourseRetrievalScheduler");
-        System.setProperty("org.quartz.threadPool.threadCount","2");
-        System.setProperty("org.quartz.jobStore.class","org.quartz.simpl.RAMJobStore");// keep in RAM, as we will start a new one when the server starts.
+        System.setProperty("org.quartz.scheduler.instanceName", "CourseRetrievalScheduler");
+        System.setProperty("org.quartz.threadPool.threadCount", "2");
+        System.setProperty("org.quartz.jobStore.class", "org.quartz.simpl.RAMJobStore");// keep in RAM, as we will start a new one when the server starts.
 
        /* org.quartz.scheduler.instanceName = MyScheduler
         org.quartz.threadPool.threadCount = 3
         org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore  */
     }
+
     //--------------------------------------------------Protected Methods
-    protected void checkFileEncoding(){
+    protected void checkFileEncoding() {
         //check that file encoding is set to UTF8, and blow up otherwise.
         final Charset UTF8 = Charset.forName("UTF-8");
-        if(!Charset.defaultCharset().equals(UTF8)){
+        if (!Charset.defaultCharset().equals(UTF8)) {
             throw new RuntimeException("App Server must be set to UTF8 as default encoding. Try adding -Dfile.encoding=UTF-8 to your JVM args.");
         }
     }
 
-    protected void initDataStorage(){
+    protected void initDataStorage() {
         DBContext context = new DBContext(_properties);
         _storageService = new DataStorage(context);
 
     }
 
-    protected void initAppServer(){
+    protected void initAppServer() {
         // Configure the server.
 
         ServerBootstrap bootstrap = new ServerBootstrap(
@@ -109,17 +111,22 @@ public class NTPAppServer {
         bootstrap.setPipelineFactory(new HttpServerPipelineFactory());
 
         // Bind and start to accept incoming connections.
+        try {
+            bootstrap.bind(new InetSocketAddress(80));
+        } catch (Throwable t) {
+            LOG.error("Unable to bind to port 80, falling back to 8080.");
+        }
         bootstrap.bind(new InetSocketAddress(8080));
 
     }
 
     //--------------------------------------------------Public Methods
 
-    public DataStorage getStorageService(){
+    public DataStorage getStorageService() {
         return _storageService;
     }
 
-    public AppProperties getAppProperties(){
+    public AppProperties getAppProperties() {
         return _properties;
     }
 
