@@ -1,0 +1,101 @@
+@font-face {
+/*font-family: 'BebasRegular';
+src: url('BEBAS___-webfont.eot');
+src: local('?'), url('BEBAS___-webfont.woff') format('woff'),
+url('BEBAS___-webfont.ttf') format('truetype'),
+url('BEBAS___-webfont.svg#webfont') format('svg');    */
+font-weight: normal;
+font-style: normal;
+}
+body {
+font-family:arial, sans-serif;
+margin:0;
+padding:0;
+}
+#container {
+background:#4E7186;
+background: -moz-linear-gradient(top left, #546C7C, #4E7186);
+background: -webkit-gradient(linear, left top, right bottom, from(#546C7C), to(#4E7186));
+border:5px solid #193441;
+border-radius:30px;
+-moz-border-radius:30px;
+-webkit-border-radius:30px;
+box-shadow:4px 4px 6px #666, 2px 2px #F3F3F3 inset, -2px -2px #F3F3F3 inset, 2px -2px #F3F3F3 inset, -2px 2px #F3F3F3 inset;
+-moz-box-shadow:4px 4px 6px #666, 2px 2px #F3F3F3 inset, -2px -2px #F3F3F3 inset, 2px -2px #F3F3F3 inset, -2px 2px #F3F3F3 inset;
+-webkit-box-shadow:4px 4px 6px #999, 2px 2px #F3F3F3 inset, -2px -2px #F3F3F3 inset, 2px -2px #F3F3F3 inset, -2px 2px #F3F3F3 inset;
+color:#FAFAFA;
+padding:0 25px 25px 25px;
+margin:200px auto;
+text-align:center;
+width:500px;
+}
+h1 {
+/*font-family:'BebasRegular', sans-serif;  */
+font-size:36px;
+margin:30px 0;
+letter-spacing:2px;
+}
+#container div {
+column-count:2;
+column-gap:40px;
+column-rule:2px solid #F3F3F3;
+-moz-column-count:2;
+-moz-column-gap:40px;
+-moz-column-rule:2px solid #F3F3F3;
+-webkit-column-count:2;
+-webkit-column-gap:40px;
+-webkit-column-rule:2px solid #F3F3F3;
+}
+form input[type*=text],form input[type*=password] {
+border:3px #EAEAEA solid;
+border-radius:5px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+margin:10px 0;
+height:20px;
+width:175px;
+}
+form input[type*=text]:focus,form input[type*=password]:focus {
+border:3px #C3C3C3 solid;
+outline:none;
+}
+form input[type*=submit] {
+margin:5px 80px 7px 0;
+background:#F3F3F3;
+background: -moz-linear-gradient(top, #F3F3F3 50%, #AAA);
+background: -webkit-gradient(linear, left top, left bottom, from(#F3F3F3), color-stop(0.5, #F3F3F3), to(#AAA));
+border:3px solid #193441;
+border-radius:5px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+color:#193441;
+font-size:15px;
+height:30px;
+width:100px;
+float: right;
+}
+form input[type*=submit]:active {
+box-shadow:1px 1px 3px #1E3E4E inset;
+-moz-box-shadow:1px 1px 3px #1E3E4E inset;
+-webkit-box-shadow:1px 1px 3px #1E3E4E inset;
+}
+form label {
+font-size:15px;
+letter-spacing:2px;
+line-height:10px;
+padding-right:86px;
+}
+a {
+color:#F3F3F3;
+font-size:14px;
+padding:0 5px;
+text-decoration:none;
+}
+a:hover {
+color:#D3D3D3;
+}
+p {
+padding-left:20px;
+text-align:left;
+font-size:16px;
+}
