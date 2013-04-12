@@ -18,8 +18,11 @@ import org.jboss.netty.util.CharsetUtil;
 import javax.management.monitor.StringMonitorMBean;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -44,9 +47,20 @@ public class ResponseWrapper {
     private final ChannelHandlerContext _channelContext;
     private final HttpRequest _request;
 
+    private final Set<Cookie> _newCookies = new HashSet<Cookie>();
+    private boolean _replayCookies = true;
+
     public ResponseWrapper(ChannelHandlerContext chc, HttpRequest request) {
         _channelContext = chc;
         _request = request;
+    }
+
+    public void setReplayCookies(boolean shouldReplayCookies){
+        _replayCookies = shouldReplayCookies;
+    }
+
+    public void addCookie(Cookie cookie) {
+        _newCookies.add(cookie);
     }
 
     public void sendRedirect(final String url) {
@@ -56,20 +70,22 @@ public class ResponseWrapper {
         writeResponse(HttpResponseStatus.MOVED_PERMANENTLY, "File Moved.", null, headers);
     }
 
-    public void writeResponse(MethodResponse response){
+    public void writeResponse(MethodResponse response) {
         writeResponse(response.getResponseStatus(), response.getResponseData(), response.getResponseType());
     }
 
     public void writeResponse(HttpResponseStatus status, String content, MimeType contentType) {
         writeResponse(status, content, contentType, Collections.EMPTY_MAP);
     }
+
     public void writeResponse(HttpResponseStatus status, byte[] content, MimeType contentType) {
         writeResponse(status, content, contentType, Collections.EMPTY_MAP);
     }
 
     public void writeResponse(HttpResponseStatus status, String content, MimeType contentType, Map<String, String> headers) {
-        writeResponse(status,content.getBytes(), contentType, headers);
+        writeResponse(status, content.getBytes(), contentType, headers);
     }
+
     public void writeResponse(HttpResponseStatus status, byte[] content, MimeType contentType, Map<String, String> headers) {
         // Decide whether to close the connection or not.
         boolean keepAlive = isKeepAlive(_request);
@@ -94,27 +110,37 @@ public class ResponseWrapper {
             response.setHeader(CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
         }
 
-        // Encode the cookie.
-        String cookieString = _request.getHeader(COOKIE);
-        if (cookieString != null) {
-            CookieDecoder cookieDecoder = new CookieDecoder();
-            Set<Cookie> cookies = cookieDecoder.decode(cookieString);
-            if (!cookies.isEmpty()) {
-                // Reset the cookies if necessary.
-                CookieEncoder cookieEncoder = new CookieEncoder(true);
-                for (Cookie cookie : cookies) {
-                    cookieEncoder.addCookie(cookie);
-                    response.addHeader(SET_COOKIE, cookieEncoder.encode());
+        // Encode the cookies sent in, if we're supposed to..
+        if (_replayCookies) {
+            String cookieString = _request.getHeader(COOKIE);
+            if (cookieString != null) {
+                CookieDecoder cookieDecoder = new CookieDecoder();
+                Set<Cookie> cookies = cookieDecoder.decode(cookieString);
+                if (!cookies.isEmpty()) {
+                    // Reset the cookies if necessary.
+                    CookieEncoder cookieEncoder = new CookieEncoder(true);
+                    for (Cookie cookie : cookies) {
+                        cookieEncoder.addCookie(cookie);
+                        response.addHeader(SET_COOKIE, cookieEncoder.encode());
+                    }
                 }
             }
-        } else {//TODO: Actually look at cookies?
-            // Browser sent no cookie.  Add some.
-            //CookieEncoder cookieEncoder = new CookieEncoder(true);
-            //cookieEncoder.addCookie("key1", "value1");
-            //response.addHeader(SET_COOKIE, cookieEncoder.encode());
-            //cookieEncoder.addCookie("key2", "value2");
-            //response.addHeader(SET_COOKIE, cookieEncoder.encode());
         }
+
+        if(!_newCookies.isEmpty()){
+            CookieEncoder cookieEncoder = new CookieEncoder(true);
+            for (Cookie cookie : _newCookies) {
+                cookieEncoder.addCookie(cookie);
+                response.addHeader(SET_COOKIE, cookieEncoder.encode());
+            }
+        }
+        // Browser sent no cookie.  Add some.
+        //CookieEncoder cookieEncoder = new CookieEncoder(true);
+        //cookieEncoder.addCookie("key1", "value1");
+        //response.addHeader(SET_COOKIE, cookieEncoder.encode());
+        //cookieEncoder.addCookie("key2", "value2");
+        //response.addHeader(SET_COOKIE, cookieEncoder.encode());
+
 
         //set response.
         response.setContent(ChannelBuffers.copiedBuffer(content));
@@ -129,12 +155,15 @@ public class ResponseWrapper {
     }
 
 
-    public void writeUnauthorizedResponse(final String realm){
+    public void writeUnauthorizedResponse(final String realm) {
+        //redirect to login page.
+        /*
         Map<String, String> headers = new HashMap<String, String>(){{
             put("WWW-Authenticate", " Basic realm=\""+realm+"\"");
         }
         };
         writeResponse(HttpResponseStatus.UNAUTHORIZED, "", MimeType.TEXT_PLAIN, headers);
+        */
     }
 
 }

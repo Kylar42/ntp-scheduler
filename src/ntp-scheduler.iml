@@ -14,7 +14,9 @@
           <root url="jar://$MODULE_DIR$/main/resources/netty-3.6.2.Final.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/main/resource-src/netty-3.6.2.Final-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
@@ -102,6 +104,17 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/main/resources/commons-codec-1.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/main/resource-src/commons-codec-1.7-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="sourceFolder" forTests="false" />

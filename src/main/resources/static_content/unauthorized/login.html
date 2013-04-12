@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="loginpage.css" type="text/css"/>
     <TITLE>NTP Course Search</TITLE>
+    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="json2.min.js"></script>
+    <script type="text/javascript" src="login.js"></script>
 </HEAD>
 <BODY>
 <div id="container">
@@ -13,23 +16,17 @@
     </h1>
 
     <div>
-
-
         <p>
             <img src="ntp-login.jpg" alt="NTP Logo" style="float:left;"/>
         </p>
-
-        <form>
+        <form method="post" id="flogin">
             <label for="user">Username</label>
-            <input type="text" id="user"/>
+            <input type="text" id="user" name="user"/>
             <label for="pass">Password</label>
-            <input type="password" id="pass"/>
+            <input type="password" id="pass" name="pass"/>
             <br/>
-            <input type="submit" value="login">
-            <br/>
+            <input type="button" value="Go" onclick="doLogin(this.form)" />
         </form>
-        <!--a href="#">Register</a>
-           <a href="#">Recover Your Account</a-->
     </div>
 </div>
 </BODY>

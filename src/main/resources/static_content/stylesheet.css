@@ -32,7 +32,7 @@ br.clearing { clear: both; }
 	font-size: 12px;
 	background: #fff;
 	margin: 45px;
-	width: 1000px;
+	width: 100%;
 	border-collapse: collapse;
 	text-align: left;
 	border: 1px solid #ccc;

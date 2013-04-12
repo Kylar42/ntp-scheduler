@@ -7,7 +7,9 @@ package edu.wvup.cs460.http;
 public enum HeaderNames {
 
     ContentType("Content-Type"),
-    Authorization("Authorization");
+    Authorization("Authorization"),
+    Cookie("Cookie"),
+    SetCookie("Set-Cookie");
 
     private String _formattedValue;
     private HeaderNames(String formattedValue){

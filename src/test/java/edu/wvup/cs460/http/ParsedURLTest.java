@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * User: Tom Byrne(kylar42@gmail.com)
@@ -15,45 +16,46 @@ public class ParsedURLTest {
     @Test
     public void testParsedURLNull(){
         String url = "";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
-        assertEquals(ParsedURL.OBJECT_TYPE.unknown,  pURL.getObjectType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.nonexistant,  pURL.getObjectType());
     }
 
     @Test
     public void testEmptyURL(){
         String url = "/";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
-        assertEquals(ParsedURL.OBJECT_TYPE.unknown,  pURL.getObjectType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.nonexistant,  pURL.getObjectType());
+        assertTrue(pURL.isRoot());
     }
 
     @Test
     public void testOneLevelURL(){
         String url = "/classlist";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
 
         url = "/classmeta";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classmeta,  pURL.getObjectType());
 
         url = "/authentication";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.authentication,  pURL.getObjectType());
 
         url = "/user";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.user,  pURL.getObjectType());
     }
     @Test
@@ -61,31 +63,31 @@ public class ParsedURLTest {
         //        search, update, invalidate, validate, unknown;
 
         String url = "/classlist/search";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.search,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
 
         url = "/classmeta/update";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.update,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classmeta,  pURL.getObjectType());
 
         url = "/authentication/invalidate";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.invalidate,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.authentication,  pURL.getObjectType());
 
         url = "/user/validate";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.validate,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.user,  pURL.getObjectType());
 
         url = "/user/random-unknown";
-        pURL = new ParsedURL(url);
+        pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.user,  pURL.getObjectType());
@@ -95,9 +97,9 @@ public class ParsedURLTest {
     public void testOneLevelURLWithTrailingSlash(){
 
         String url = "/classlist";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
-        assertEquals(ParsedURL.ACTION_TYPE.unknown,  pURL.getActionType());
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
 
     }
@@ -105,7 +107,7 @@ public class ParsedURLTest {
     public void testTwoLevelURLWithTrailingSlash(){
 
         String url = "/classlist/validate/";
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.validate,  pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
@@ -117,7 +119,7 @@ public class ParsedURLTest {
 
         String url = "/classlist/validate/trogdor";
         String[] expectedRemnants = new String[]{"trogdor"};
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.validate, pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
@@ -130,11 +132,50 @@ public class ParsedURLTest {
 
         String url = "/classlist/validate/trogdor/comes/in/the/night";
         String[] expectedRemnants = new String[]{"trogdor", "comes", "in", "the", "night"};
-        ParsedURL pURL = new ParsedURL(url);
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
         assertNotNull(pURL);
         assertEquals(ParsedURL.ACTION_TYPE.validate, pURL.getActionType());
         assertEquals(ParsedURL.OBJECT_TYPE.classlist,  pURL.getObjectType());
         assertArrayEquals(expectedRemnants, pURL.getRemainingSegments());
 
     }
+
+    @Test
+    public void testStringNonexistantURLReturnsUnknown(){
+        String url = "/nonexistant/nonexistant/foo";
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
+        assertNotNull(pURL);
+        assertEquals(ParsedURL.ACTION_TYPE.unknown, pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.unknown,  pURL.getObjectType());
+    }
+    @Test
+    public void testUnauthorizedSegment(){
+        String url = "/unauthorized/login.html";
+        ParsedURL pURL = ParsedURL.createParsedURL(url);
+        assertNotNull(pURL);
+        assertEquals(ParsedURL.ACTION_TYPE.unknown, pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.unauthorized,  pURL.getObjectType());
+        assertEquals("login.html", pURL.elementAt(1));
+    }
+
+    @Test
+    public void testUnauthorizedWithRelativeSegment(){
+        String url = "/unauthorized/../index.html";
+        ParsedURL pURL = ParsedURL.createParsedURL(url);   //should return ROOT_URL since it's got a relative segment.
+        assertNotNull(pURL);
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant, pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.nonexistant,  pURL.getObjectType());
+
+        assertTrue(pURL.isRoot());
+
+        url="/..unauthorized/index.html";
+        pURL = ParsedURL.createParsedURL(url);   //should return ROOT_URL since it's got a relative segment.
+        assertNotNull(pURL);
+        assertEquals(ParsedURL.ACTION_TYPE.nonexistant, pURL.getActionType());
+        assertEquals(ParsedURL.OBJECT_TYPE.nonexistant,  pURL.getObjectType());
+
+        assertTrue(pURL.isRoot());
+
+    }
+
 }

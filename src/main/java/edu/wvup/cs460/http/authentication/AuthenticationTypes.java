@@ -13,6 +13,10 @@ public enum AuthenticationTypes {
         _type = val;
     }
 
+    public String typeValue(){
+        return _type;
+    }
+
     public static AuthenticationTypes typeFromValue(String val){
         if(null == val){
             return UNKNOWN;

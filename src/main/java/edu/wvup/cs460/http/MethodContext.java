@@ -25,7 +25,7 @@ public class MethodContext {
     public MethodContext(HttpRequest req, Principal principal){
         _principal = principal;
         _uri = req.getUri();
-        _parsedURL = new ParsedURL(_uri);
+        _parsedURL = ParsedURL.createParsedURL(_uri);
 
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(req.getUri());
         _queryStringParams = queryStringDecoder.getParameters();

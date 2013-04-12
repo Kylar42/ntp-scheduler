@@ -10,6 +10,7 @@ import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 public class MethodResponse {
 
     public static MethodResponse NOT_FOUND = new MethodResponse(HttpResponseStatus.NOT_FOUND);
+    public static MethodResponse BAD_REQUEST = new MethodResponse(HttpResponseStatus.BAD_REQUEST);
 
     private final HttpResponseStatus  _responseStatus;
     private final String              _responseData;

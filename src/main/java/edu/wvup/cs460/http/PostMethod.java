@@ -1,6 +1,7 @@
 package edu.wvup.cs460.http;
 
 import edu.wvup.cs460.action.ChainStatus;
+import edu.wvup.cs460.action.MethodResponse;
 import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.datamodel.CourseMetadata;
 import edu.wvup.cs460.http.roap.ContentHandlerFactory;
@@ -33,45 +34,59 @@ public class PostMethod extends AbstractHttpMethod {
 
     Logger LOG = LoggerFactory.getLogger(PostMethod.class);
 
-    public PostMethod(MethodContext context){
+    public PostMethod(MethodContext context) {
         super(context);
+    }
+
+
+    protected boolean isRequestJSon(RequestWrapper requestWrapper) {
+        String contentType = getHeaderValue(HeaderNames.ContentType, null);
+        MimeType incomingType = MimeType.typeFromStringWithoutCharset(contentType);
+        return MimeType.APP_JSON == incomingType;
+    }
+
+    protected Object parseJSonObjectFromRequest(RequestWrapper reqWrapper) {
+        if (!isRequestJSon(reqWrapper)) {
+            return null;
+        }
+        //parse JSON
+        final String jsonString = reqWrapper.getRequest().getContent().toString(CharsetUtil.UTF_8);
+        JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
+        try {
+            return parser.parse(jsonString);
+        } catch (ParseException e) {
+            LOG.error("Unable to parse JSON body from request.", e);
+        }
+        return null;
     }
 
     @Override
     public void handleRequest(RequestWrapper reqWrapper, ResponseWrapper respWrapper) {
 
         final ChainStatus authenticate = super.authenticate(respWrapper);
-        if(!authenticate.shouldContinue()) {
+        if (!authenticate.shouldContinue()) {
             return;
         }
 
         String url = context().getUri();
-        //TODO: URL based dispatcher for REST.
-        String contentType = getHeaderValue(HeaderNames.ContentType, null);
-        Object parsedJson = null;
-        MimeType incomingType = MimeType.typeFromStringWithoutCharset(contentType);
-        if(MimeType.APP_JSON == incomingType){
-            //parse JSON
-            final String jsonString = reqWrapper.getRequest().getContent().toString(CharsetUtil.UTF_8);
-            JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
-            try {
-                parsedJson = parser.parse(jsonString);
-            } catch (ParseException e) {
-                LOG.error("Unable to parse JSON body from request.", e);
-            }
+        Object parsedJson = parseJSonObjectFromRequest(reqWrapper);
+
+        if (null == parsedJson) {
+            sendBadRequestResponse(respWrapper, "POST Data without JSON body.");
+            return;
         }
+
 
         final ContentHandlerFactory.ContentHandler contentHandler = ContentHandlerFactory.contentHandlerforURL(context().getParsedURL(), HttpMethod.POST);
 
         contentHandler.handleContent(respWrapper, parsedJson, context());
 
-
-
     }
 
-
-
-
+    protected void sendBadRequestResponse(ResponseWrapper respWrapper, String message) {
+        MethodResponse toReturn = new MethodResponse(HttpResponseStatus.BAD_REQUEST, message, MimeType.TEXT_PLAIN);
+        respWrapper.writeResponse(toReturn);
+    }
 
 
 }

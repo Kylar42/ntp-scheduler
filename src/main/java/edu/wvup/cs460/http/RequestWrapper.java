@@ -17,27 +17,27 @@ public class RequestWrapper {
 
     private final HttpRequest _request;
     private final boolean     _chunked;
-    private final BlockingInputStream _stream;
+    //private final BlockingInputStream _stream;
 
 
     public RequestWrapper(HttpRequest request){
         _request = request;
         _chunked = _request.isChunked();
-        _stream = new BlockingInputStream();
+        //_stream = new BlockingInputStream();
     }
 
-    public void chunkedBytesReceived(HttpChunk chunk){
+    /*public void chunkedBytesReceived(HttpChunk chunk){
         if(chunk.getContent().readable()){
             chunk.getContent();
         }
 
-    }
+    } */
 
     public HttpRequest getRequest(){
         return _request;
     }
 
-    private class BlockingInputStream extends InputStream{
+    /*private class BlockingInputStream extends InputStream{
         CircularByteBuffer byteBuffer = new CircularByteBuffer(4096, true);
 
         @Override
@@ -49,5 +49,5 @@ public class RequestWrapper {
             }
 
         }
-    }
+    } */
 }

@@ -68,18 +68,13 @@ public class GetMethod extends AbstractHttpMethod {
         }
 
 
-        final ChainStatus authenticate = super.authenticate(respWrapper);
+        final ChainStatus authenticate = authenticate(respWrapper);
         if (!authenticate.shouldContinue()) {
             return;
         }
 
         String url = context().getUri();
         //open a file in our root.
-
-        final ChainStatus chainStatus = checkForRelativeSegments(url);
-        if (!chainStatus.shouldContinue()) {
-            return;
-        }
 
 
         File inputFile = new File(STATIC_CONTENT_ROOT, url);
@@ -89,7 +84,7 @@ public class GetMethod extends AbstractHttpMethod {
             if (newUrl.charAt(newUrl.length() - 1) != '/') {
                 newUrl.append('/');
             }
-            newUrl.append("index.html");
+            newUrl.append("index.html");//Send URL.
             //respWrapper.sendRedirect(newUrl.toString());
             //return;
             inputFile = new File(STATIC_CONTENT_ROOT, newUrl.toString());
