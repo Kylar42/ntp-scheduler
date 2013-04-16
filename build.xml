@@ -4,41 +4,51 @@
 		Build or start NTP Scheduler
     </description>
 	<!-- set global properties for this build -->
-	<property name="src" value="src/main/java"/>
-	<property name="build" value="build"/>
 	<property name="jar" value="jar"/>
 	<property name="clean" value="clean"/>
-	<property name="dist" value="dist"/>
-	<property name="resources" location="src/main/resources/"/>
-	<property name="properties" location="src/main/resources/properties"/>
-	<property name="version" value="0.9"/>
-	<property name="outputjarname" value="ntp-scheduler-${version}.jar"/>
-	<property name="outputsrcjarname" value="ntp-scheduler-${version}-src.jar"/>
-	<target name="init">
-		<!-- Create the time stamp -->
-		<tstamp/>
-		<!-- Create the build directory structure used by compile -->
-		<mkdir dir="${build}"/>
-	</target>
-	<target name="dist" depends="jar">
-		<!-- Create the time stamp -->
-		<tstamp/>
-		<!-- Create the build directory structure used by compile -->
-		<!--move file="${dist}/icloud-vcard-${version}.jar" todir="${thirdparty}"/>
-	  <move file="${dist}/icloud-vcard-${version}-src.jar" todir="${thirdparty}"/-->
-	</target>
-	<target name="compile" depends="clean,init" description="compile the source ">
-		<!-- Compile the java code from ${src} into ${build} -->
-		<javac srcdir="${src}" destdir="${build}" debug="true">
-			<classpath>
-				<!-- include any jars from lib. -->
-				<fileset dir="${resources}">
-					<include name="**/*.jar"/>
-				</fileset>
-			</classpath>
-		</javac>
-	</target>
-	<target name="help" description="Print help">
+    <property name="version" value="0.9"/>
+    <property name="dist-root" value="dist"/>
+    <property name="build-root" value="build"/>
+
+
+	<!-- properties for the NTP Server (main) build ========================================= -->
+	<property name="ntp-src-root"       value="src/main"/>
+    <property name="ntp-src-java"       location="${ntp-src-root}/java"/>
+	<property name="ntp-src-resources"  location="src/main/resources/"/>
+    <property name="ntp-src-static-content"  location="src/main/resources/static_content"/>
+	<property name="ntp-src-properties" location="src/main/resources/properties"/>
+    <property name="ntp-src-scripts"    location="src/main/resources/scripts"/>
+
+    <property name="ntp-build-dir" location="${build-root}/ntp-server"/>
+    <property name="ntp-build-jar-dir" location="${build-root}/ntp-jars"/>
+
+    <property name="ntp-dist-root"          location="${dist-root}/ntp-server"/>
+
+    <property name="ntp-outputjarname" value="ntp-scheduler-${version}.jar"/>
+    <property name="ntp-outputsrcjarname" value="ntp-scheduler-${version}-src.jar"/>
+
+    <!-- END properties for the NTP Server (main) build ========================================= -->
+
+	<!-- Properties for the Monitor project -->
+    <property name="monitor-src-root" value="src/monitor"/>
+
+    <property name="monitor-src-java"       location="${monitor-src-root}/main"/>
+	<property name="monitor-src-resources"  location="${monitor-src-root}/resources"/>
+	<property name="monitor-src-properties" location="${monitor-src-root}/resources/properties"/>
+	<property name="monitor-src-scripts"    location="${monitor-src-root}/resources/scripts"/>
+
+	<property name="monitor-build-dir" value="${build-root}/monitor"/>
+    <property name="monitor-build-jar-dir" value="${build-root}/monitor-jars"/>
+
+    <property name="monitor-dist-root" location="${dist-root}/monitor"/>
+
+    <property name="monitor-outputjarname" value="ntp-monitor-${version}.jar"/>
+    <property name="monitor-outputsrcjarname" value="ntp-monitor-${version}-src.jar"/>
+
+
+    <!-- Targets that affect both projects. -->
+
+    <target name="help" description="Print help">
 		<echo message="Ant targets:${line.separator}"/>
 		<echo message="jar     - create jar files${line.separator}"/>
 		<echo message="clean   - clean output files:${line.separator}"/>
@@ -46,46 +56,196 @@
 		<echo message="jar     - create jar files:${line.separator}"/>
 		<echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
 	</target>
-	<target name="jar" depends="compile" description="generate the distribution">
-		<!-- Create the distribution directory -->
-		<mkdir dir="${dist}"/>
-		<mkdir dir="${dist}/logs"/>
-		<mkdir dir="${dist}/properties"/>
-		<mkdir dir="${dist}/static_content"/>
 
-		<!-- Put everything in ${build} into the jar file -->
-		<!-- TODO: Put build # into external file, create 'release-build' target -->
-		<jar jarfile="${dist}/${outputjarname}" basedir="${build}"/>
-		<copy todir="${dist}">
-			<!-- include any jars from lib. -->
-			<fileset dir="${resources}">
-				<include name="**/*.jar"/>
-			</fileset>
-		</copy>
-		<copy todir="${dist}/properties">
-			<!-- include any jars from lib. -->
-			<fileset dir="${properties}">
-				<include name="**/*.properties"/>
-				<include name="**/*.xml"/>
-			</fileset>
-		</copy>
-		<copy todir="${dist}/static_content">
-			<!-- include any jars from lib. -->
-			<fileset dir="${resources}/static_content">
-				<include name="**/*"/>
-			</fileset>
-		</copy>
-		<!-- Need to copy sh file. TODO: Do this based on os type. -->
-		<copy file="command.sh" todir="${dist}"/>
-		<!-- Need to copy bat file. TODO: Do this based on os type. -->
-		<copy file="start-server.bat" todir="${dist}"/>
-		
-		<!-- Source dist -->
-		<jar jarfile="${dist}/${outputsrcjarname}" basedir="${src}" excludes="${src}/test"/>
+	<target name="init" depends="ntp-init, monitor-init">
+		<!-- Create the time stamp -->
+		<tstamp/>
 	</target>
-	<target name="clean" description="clean up">
-		<!-- Delete the ${build} and ${dist} directory trees -->
-		<delete dir="${build}"/>
-		<delete dir="${dist}"/>
-	</target>
+
+    <target name="clean" depends="ntp-clean, monitor-clean">
+        <delete dir="${dist-root}"/>
+        <delete dir="${build-root}"/>
+    </target>
+
+    <target name="compile" depends="ntp-compile, monitor-compile">
+    </target>
+
+    <target name="jar" depends="ntp-jar, monitor-jar">
+    </target>
+    <target name="dist" depends="ntp-dist, monitor-dist">
+    </target>
+
+    <!-- ENTRIES FOR NTP-SERVER BUILD ================================================== -->
+    <target name="ntp-clean" description="clean up NTP dirs">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${ntp-build-jar-dir}"/>
+        <delete dir="${ntp-build-dir}"/>
+        <delete dir="${ntp-dist-root}"/>
+    </target>
+
+    <!-- Create Directories for building. -->
+
+    <target name="ntp-init">
+        <mkdir dir="${ntp-build-jar-dir}"/>
+        <mkdir dir="${ntp-build-dir}"/>
+    </target>
+
+    <!-- Compile the NTP classes into the build root. -->
+
+    <target name="ntp-compile" depends="ntp-init" description="compile the source ">
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac srcdir="${ntp-src-java}" destdir="${ntp-build-dir}" debug="true">
+            <classpath>
+                <!-- include any jars from lib. -->
+                <fileset dir="${ntp-src-resources}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Create the ntp-server jar. -->
+
+
+    <target name="ntp-jar" depends="ntp-compile">
+        <jar jarfile="${ntp-build-jar-dir}/${ntp-outputjarname}" basedir="${ntp-build-dir}"/>
+        <jar jarfile="${ntp-build-jar-dir}/${ntp-outputsrcjarname}" basedir="${ntp-src-java}" excludes="${ntp-src-java}/test"/>
+    </target>
+
+    <target name="ntp-dist" depends="ntp-jar" description="Generate the distribution.">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${ntp-dist-root}"/>
+        <mkdir dir="${ntp-dist-root}/logs"/>
+        <mkdir dir="${ntp-dist-root}/properties"/>
+        <mkdir dir="${ntp-dist-root}/static_content"/>
+        <mkdir dir="${ntp-dist-root}/jars"/>
+
+        <!-- Copy our built NTP jars over. -->
+        <copy todir="${ntp-dist-root}/jars">
+            <fileset dir="${ntp-build-jar-dir}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <!-- Copy our resource Jars over to the jars dir. -->
+        <copy todir="${ntp-dist-root}/jars">
+            <!-- include any jars from lib. -->
+            <fileset dir="${ntp-src-resources}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <!-- Copy Properties over to the properties dir. -->
+        <copy todir="${ntp-dist-root}/properties">
+            <!-- include any jars from lib. -->
+            <fileset dir="${ntp-src-properties}">
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+            </fileset>
+        </copy>
+
+        <!-- Static content copy to static content dir. -->
+        <copy todir="${ntp-dist-root}/static_content">
+            <!-- include any jars from lib. -->
+            <fileset dir="${ntp-src-static-content}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+        <!-- Scripts should be copied to the root DIST directory. -->
+        <copy todir="${ntp-dist-root}">
+            <fileset dir="${ntp-src-scripts}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <!-- END OF ENTRIES FOR NTP-SERVER BUILD ================================================== -->
+
+    <!-- ENTRIES FOR NTP Monitor BUILD ================================================== -->
+    <target name="monitor-clean" description="clean up monitor dirs">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${monitor-build-jar-dir}"/>
+        <delete dir="${monitor-build-dir}"/>
+        <delete dir="${monitor-dist-root}"/>
+    </target>
+
+    <!-- Create Directories for building. -->
+
+    <target name="monitor-init">
+        <mkdir dir="${monitor-build-jar-dir}"/>
+        <mkdir dir="${monitor-build-dir}"/>
+    </target>
+
+    <!-- Compile the NTP classes into the build root. -->
+
+    <target name="monitor-compile" depends="monitor-init" description="compile the source ">
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac srcdir="${monitor-src-java}" destdir="${monitor-build-dir}" debug="true">
+            <classpath>
+                <!-- include any jars from lib. -->
+                <fileset dir="${monitor-src-resources}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Create the ntp-server jar. -->
+
+
+    <target name="monitor-jar" depends="monitor-compile">
+        <jar jarfile="${monitor-build-jar-dir}/${monitor-outputjarname}" basedir="${monitor-build-dir}"/>
+        <jar jarfile="${monitor-build-jar-dir}/${monitor-outputsrcjarname}" basedir="${monitor-src-java}" excludes="${monitor-src-java}/test"/>
+    </target>
+
+    <target name="monitor-dist" depends="monitor-jar" description="Generate the distribution.">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${monitor-dist-root}"/>
+        <mkdir dir="${monitor-dist-root}/logs"/>
+        <mkdir dir="${monitor-dist-root}/properties"/>
+        <mkdir dir="${monitor-dist-root}/jars"/>
+
+        <!-- Copy our built monitor jars over. -->
+        <copy todir="${monitor-dist-root}/jars">
+            <fileset dir="${monitor-build-jar-dir}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <!-- Copy our resource Jars over to the jars dir. -->
+        <copy todir="${monitor-dist-root}/jars">
+            <!-- include any jars from lib. -->
+            <fileset dir="${monitor-src-resources}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <!-- Copy Properties over to the properties dir. -->
+        <copy todir="${monitor-dist-root}/properties">
+            <!-- include any jars from lib. -->
+            <fileset dir="${monitor-src-properties}">
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+            </fileset>
+        </copy>
+
+        <!-- Scripts should be copied to the root DIST directory. -->
+        <copy todir="${monitor-dist-root}">
+            <fileset dir="${monitor-src-scripts}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- END OF ENTRIES FOR NTP-MONITOR BUILD ================================================== -->
+
+
+
+
+
+
+
+
 </project>

@@ -76,7 +76,7 @@ public class AppProperties {
     public void initPropertiesFromCommandLine(String[] args){
         //look for properties
         Properties cliProps = PropertiesHelper.parsePropsFromCommandLine(args);
-
+        mergeProperties(cliProps);
         final String mainPropsFilePath = cliProps.getProperty("main.properties");
         if(null != mainPropsFilePath){
             File mainPropsFile = new File(mainPropsFilePath);
