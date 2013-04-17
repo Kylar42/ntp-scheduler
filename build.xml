@@ -32,7 +32,7 @@
 	<!-- Properties for the Monitor project -->
     <property name="monitor-src-root" value="src/monitor"/>
 
-    <property name="monitor-src-java"       location="${monitor-src-root}/main"/>
+    <property name="monitor-src-java"       location="${monitor-src-root}/java"/>
 	<property name="monitor-src-resources"  location="${monitor-src-root}/resources"/>
 	<property name="monitor-src-properties" location="${monitor-src-root}/resources/properties"/>
 	<property name="monitor-src-scripts"    location="${monitor-src-root}/resources/scripts"/>

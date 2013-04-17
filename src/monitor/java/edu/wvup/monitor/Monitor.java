@@ -12,13 +12,14 @@ import java.util.Properties;
  */
 public class Monitor {
 
-    public Monitor(String[] args){
+    public Monitor(String[] args) {
         AppProperties.APP_PROPERTIES.initPropertiesFromCommandLine(args);
         //set up the scheduler.
         initProperties();
         initScheduler();
 
     }
+
     private void initScheduler() {
         try {
             // Grab the Scheduler instance from the Factory
@@ -28,7 +29,7 @@ public class Monitor {
             scheduler.start();
 
             NTPWatchJob.scheduleNTPWatchJob();
-           //NTPUpdaterJob.scheduleNTPUpdateJob();
+            NTPUpdaterJob.scheduleNTPUpdateJob();
         } catch (SchedulerException se) {
             se.printStackTrace();
         }

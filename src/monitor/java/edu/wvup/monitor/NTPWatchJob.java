@@ -64,8 +64,8 @@ public class NTPWatchJob implements Job {
 
         if(null == ntpProcess){
             //didn't find it. Start it up.
-            String startCommand = context.getMergedJobDataMap().getString("start.command");
-            String startCommandDir = context.getMergedJobDataMap().getString("start.command.dir");
+            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND+utils.getType().name());
+            String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
             utils.startProcess(startCommand, scDir);
@@ -80,8 +80,8 @@ public class NTPWatchJob implements Job {
 
         if(null == ntpProcess){
             //didn't find it. Start it up.
-            String startCommand = context.getMergedJobDataMap().getString("start.command");
-            String startCommandDir = context.getMergedJobDataMap().getString("start.command.dir");
+            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND+utils.getType().name());
+            String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
             utils.startProcess(startCommand, scDir);
@@ -118,13 +118,8 @@ public class NTPWatchJob implements Job {
         String serverWatchJobGroup = AppProperties.APP_PROPERTIES.getProperty("serverwatch.job.group", "serverWatchGroup");
         String serverWatchJobTriggerName = AppProperties.APP_PROPERTIES.getProperty("serverwatch.job.trigger.name", "serverWatchTrigger");
 
-        final String startCommand = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command", "command.sh");
-        final String startCommandDir = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command.dir", "..");
-
         JobDetail job = JobBuilder.newJob(NTPWatchJob.class).withIdentity(serverWatchJobName, serverWatchJobName).build();
 
-        job.getJobDataMap().put("start.command", startCommand);
-        job.getJobDataMap().put("start.command.dir", startCommandDir);
 
         final SimpleScheduleBuilder simpleScheduleBuilder =
                 SimpleScheduleBuilder.simpleSchedule().withIntervalInMinutes(1).repeatForever();

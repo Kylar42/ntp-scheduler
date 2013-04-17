@@ -1,8 +1,12 @@
 package edu.wvup.monitor;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 /**
@@ -45,5 +49,37 @@ public class Util {
             sb.append(Integer.toHexString(0xff & bytes[i]));
         }
         return sb.toString();
+    }
+
+    public static String readContentStream(final InputStream stream, int byteCount){
+        byte[] bytes = new byte[byteCount];
+        try {
+            stream.read(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return new String(bytes);
+    }
+
+    public static String readString(final InputStream input, final Charset charset) throws IOException {
+        final byte[] bytes = readBytes(input, 4096);
+        return new String(bytes, charset);
+    }
+
+    public static byte[] readBytes(final InputStream input, final int bufferSize) throws IOException {
+        final ByteArrayOutputStream output = new ByteArrayOutputStream(bufferSize);
+        bufferCopy(input, output, bufferSize);
+        return output.toByteArray();
+
+    }
+
+    public static void bufferCopy(final InputStream input, final OutputStream output, final int bufferSize) throws IOException {
+        final byte[] buffer = new byte[bufferSize];
+        int count;
+        while((count = input.read(buffer)) != -1) {
+            output.write(buffer, 0, count);
+        }
     }
 }

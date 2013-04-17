@@ -4,6 +4,8 @@ import edu.wvup.monitor.os.OSType;
 import edu.wvup.monitor.os.OSUtilFactory;
 import edu.wvup.monitor.os.OSUtils;
 import edu.wvup.monitor.os.ProcessInfo;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
@@ -21,6 +23,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import java.util.Properties;
 
@@ -35,9 +40,33 @@ public class NTPUpdaterJob implements Job {
     //We are only going to run on linux or windows.
 
 
+    private String getRunningNTPVersion(){
+        final String urlString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_URL);
+        try {
+            URL url = new URL(urlString);
+            final URLConnection urlConnection = url.openConnection();
+            urlConnection.connect();
+            final String contentType = urlConnection.getContentType();
+            if(null != contentType && contentType.contains("application/json")){
+                JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
+                JSONObject object = (JSONObject)parser.parse(urlConnection.getInputStream());
+                final Object version = object.get("version");
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+       return "0";
+    }
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+
+        //check for update.
+        getRunningNTPVersion();
+
+
+
         final Properties properties = System.getProperties();
 
         OSType type = getOSType(properties.getProperty("os.name"));

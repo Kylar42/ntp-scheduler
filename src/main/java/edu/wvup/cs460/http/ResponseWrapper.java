@@ -98,8 +98,10 @@ public class ResponseWrapper {
 
         }
 
-        response.setHeader(CONTENT_LENGTH, response.getContent().readableBytes());
-
+        if(null != content){
+            //response.setHeader(CONTENT_LENGTH, response.getContent().readableBytes());
+            response.setHeader(CONTENT_LENGTH, content.length);
+        }
         for (String headerName : headers.keySet()) {
             response.setHeader(headerName, headers.get(headerName));
         }
