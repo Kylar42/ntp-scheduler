@@ -1,5 +1,9 @@
 package edu.wvup.monitor;
 
+import edu.wvup.monitor.manifest.Manifest;
+import edu.wvup.monitor.manifest.ManifestConstants;
+import edu.wvup.monitor.manifest.ManifestDownloader;
+import edu.wvup.monitor.manifest.ManifestParser;
 import edu.wvup.monitor.os.OSUtils;
 import edu.wvup.monitor.os.ProcessInfo;
 import net.minidev.json.JSONObject;
@@ -21,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -54,25 +59,14 @@ public class NTPUpdaterJob implements Job {
 
        return "0";
     }
-    private String getNewNTPVersion(){
+    private Manifest getNewNTPVersion(){
         final String urlString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_UPDATE_URL);
         try {
-            URL url = new URL(urlString);
-            final URLConnection urlConnection = url.openConnection();
-            urlConnection.connect();
-            final String contentType = urlConnection.getContentType();
-            if(null != contentType && contentType.contains("application/json")){
-                JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
-                JSONObject object = (JSONObject)parser.parse(urlConnection.getInputStream());
-                final Object version = object.get("version");
-                if(null != version){
-                    return version.toString();
-                }
-            }
-        } catch (Throwable e) {
-            LOG.error("Unable to fetch data. Is the app running?", e);
+            return ManifestParser.parseFromURL(new URL(urlString));
+        } catch (MalformedURLException e) {
+            LOG.error("Was passed a bad URL in properties:"+urlString);
         }
-        return "0";
+        return null;
     }
 
     @Override
@@ -86,7 +80,6 @@ public class NTPUpdaterJob implements Job {
 
     }
 
-
     private void perform(JobExecutionContext context, OSUtils utils){
         //see if it's running.
         final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
@@ -96,18 +89,23 @@ public class NTPUpdaterJob implements Job {
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
             String currentVersionStr = getRunningNTPVersion();
 
-            String newVersionStr = getNewNTPVersion();
+            Manifest manifest = getNewNTPVersion();
 
-            if(null == currentVersionStr || null == newVersionStr){
-                LOG.info("Wasn't able to proceed with NTPUpdater. Invalid versions - Current:{} New: {}", currentVersionStr, newVersionStr);
+            if(null == manifest){
+                //something bad happened, but we should have logged it already.
                 return;
             }
 
-            int newVersion = 0;
+            int newVersion = manifest.getVersion();
+
+            if(null == currentVersionStr ){
+                LOG.info("Wasn't able to proceed with NTPUpdater. Invalid versions - Current:{} New: {}", currentVersionStr, newVersion);
+                return;
+            }
+
             int oldVersion = 0;
             try{
                 oldVersion = Integer.parseInt(currentVersionStr);
-                newVersion = Integer.parseInt(newVersionStr);
             }catch(NumberFormatException ignore){
                //ignored by design - tbyrne
             }
@@ -115,8 +113,13 @@ public class NTPUpdaterJob implements Job {
             if(newVersion <= oldVersion){
                 return;//we're up to date.
             }
-            utils.stopProcess(ntpProcess);
-            doUpdate(context);
+            //If we get here, we need to actually update
+
+            if(!AppProperties.APP_PROPERTIES.getPropertyAsBoolean("debug", false)){
+                utils.stopProcess(ntpProcess);
+            }
+
+            doUpdate(context, manifest);
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
             //didn't find it. Start it up.
             String startCommand = context.getMergedJobDataMap().getString("start.command");
@@ -130,7 +133,16 @@ public class NTPUpdaterJob implements Job {
     }
 
 
-    private void doUpdate(JobExecutionContext context){
+    private void doUpdate(JobExecutionContext context, Manifest manifest){
+        //Ok, we have the manifest and we know what to do.
+        //we're going to create a temporary directory where we are running, called "manifest-update-version-guid"
+        String ntpRunningDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
+        File runningDir = new File(".");
+        String newDirName = new StringBuilder("manifest-download-").append(manifest.getVersion()).append("-").append(manifest.getGuid()).toString();
+        File newDir = new File(runningDir, newDirName);
+
+        ManifestDownloader downloader = new ManifestDownloader(manifest, newDir);
+        downloader.run();
 
     }
 

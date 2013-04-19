@@ -7,8 +7,7 @@ import edu.wvup.cs460.http.WellKnownURLs;
 import org.jboss.netty.handler.codec.http.HttpResponseStatus;
 
 /**
- * User: Tom Byrne(tom.byrne@apple.com)
- * Copyright (C) 2013 Apple Inc.
+ * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
 public class AuthenticationMethodHandler implements ContentHandlerFactory.ContentHandler {

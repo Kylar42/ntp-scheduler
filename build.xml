@@ -1,43 +1,49 @@
 <?xml version="1.0"?>
 <project name="ntp-scheduler" default="help" basedir=".">
-	<description>
-		Build or start NTP Scheduler
+    <description>
+        Build or start NTP Scheduler
     </description>
-	<!-- set global properties for this build -->
-	<property name="jar" value="jar"/>
-	<property name="clean" value="clean"/>
+    <loadproperties srcFile="deploy.properties"/>
+    <propertyfile
+            file="deploy.properties"
+            comment="Properties for deployment">
+        <entry key="deploy.version" type="int" default="0" pattern="000000" operation="+"/>
+    </propertyfile>
+    <!-- set global properties for this build -->
+    <property name="jar" value="jar"/>
+    <property name="clean" value="clean"/>
     <property name="version" value="0.9"/>
     <property name="dist-root" value="dist"/>
     <property name="build-root" value="build"/>
 
 
-	<!-- properties for the NTP Server (main) build ========================================= -->
-	<property name="ntp-src-root"       value="src/main"/>
-    <property name="ntp-src-java"       location="${ntp-src-root}/java"/>
-	<property name="ntp-src-resources"  location="src/main/resources/"/>
-    <property name="ntp-src-static-content"  location="src/main/resources/static_content"/>
-	<property name="ntp-src-properties" location="src/main/resources/properties"/>
-    <property name="ntp-src-scripts"    location="src/main/resources/scripts"/>
+    <!-- properties for the NTP Server (main) build ========================================= -->
+    <property name="ntp-src-root" value="src/main"/>
+    <property name="ntp-src-java" location="${ntp-src-root}/java"/>
+    <property name="ntp-src-resources" location="src/main/resources/"/>
+    <property name="ntp-src-static-content" location="src/main/resources/static_content"/>
+    <property name="ntp-src-properties" location="src/main/resources/properties"/>
+    <property name="ntp-src-scripts" location="src/main/resources/scripts"/>
 
     <property name="ntp-build-dir" location="${build-root}/ntp-server"/>
     <property name="ntp-build-jar-dir" location="${build-root}/ntp-jars"/>
 
-    <property name="ntp-dist-root"          location="${dist-root}/ntp-server"/>
+    <property name="ntp-dist-root" location="${dist-root}/ntp-server"/>
 
     <property name="ntp-outputjarname" value="ntp-scheduler-${version}.jar"/>
     <property name="ntp-outputsrcjarname" value="ntp-scheduler-${version}-src.jar"/>
 
     <!-- END properties for the NTP Server (main) build ========================================= -->
 
-	<!-- Properties for the Monitor project -->
+    <!-- Properties for the Monitor project -->
     <property name="monitor-src-root" value="src/monitor"/>
 
-    <property name="monitor-src-java"       location="${monitor-src-root}/java"/>
-	<property name="monitor-src-resources"  location="${monitor-src-root}/resources"/>
-	<property name="monitor-src-properties" location="${monitor-src-root}/resources/properties"/>
-	<property name="monitor-src-scripts"    location="${monitor-src-root}/resources/scripts"/>
+    <property name="monitor-src-java" location="${monitor-src-root}/java"/>
+    <property name="monitor-src-resources" location="${monitor-src-root}/resources"/>
+    <property name="monitor-src-properties" location="${monitor-src-root}/resources/properties"/>
+    <property name="monitor-src-scripts" location="${monitor-src-root}/resources/scripts"/>
 
-	<property name="monitor-build-dir" value="${build-root}/monitor"/>
+    <property name="monitor-build-dir" value="${build-root}/monitor"/>
     <property name="monitor-build-jar-dir" value="${build-root}/monitor-jars"/>
 
     <property name="monitor-dist-root" location="${dist-root}/monitor"/>
@@ -49,26 +55,20 @@
     <!-- Targets that affect both projects. -->
 
     <target name="help" description="Print help">
-		<echo message="Ant targets:${line.separator}"/>
-		<echo message="jar     - create jar files${line.separator}"/>
-		<echo message="clean   - clean output files:${line.separator}"/>
-		<echo message="compile - create class files:${line.separator}"/>
-		<echo message="jar     - create jar files:${line.separator}"/>
-		<echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
-	</target>
+        <echo message="Ant targets:${line.separator}"/>
+        <echo message="jar     - create jar files${line.separator}"/>
+        <echo message="clean   - clean output files:${line.separator}"/>
+        <echo message="compile - create class files:${line.separator}"/>
+        <echo message="jar     - create jar files:${line.separator}"/>
+        <echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
+    </target>
 
-	<target name="init" depends="ntp-init, monitor-init">
-		<!-- Create the time stamp -->
-		<tstamp/>
-	</target>
+    <target name="init" depends="ntp-init, monitor-init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+    </target>
 
     <target name="clean" depends="ntp-clean, monitor-clean">
-        <condition property="propertiesFamily" value="windows" else="linux">
-            <and>
-                <os family="windows"/>
-            </and>
-        </condition>
-        <echo message="Looking for main-${propertiesFamily}.properties"/>
         <delete dir="${dist-root}"/>
         <delete dir="${build-root}"/>
     </target>
@@ -116,7 +116,8 @@
 
     <target name="ntp-jar" depends="ntp-compile">
         <jar jarfile="${ntp-build-jar-dir}/${ntp-outputjarname}" basedir="${ntp-build-dir}"/>
-        <jar jarfile="${ntp-build-jar-dir}/${ntp-outputsrcjarname}" basedir="${ntp-src-java}" excludes="${ntp-src-java}/test"/>
+        <jar jarfile="${ntp-build-jar-dir}/${ntp-outputsrcjarname}" basedir="${ntp-src-java}"
+             excludes="${ntp-src-java}/test"/>
     </target>
 
     <target name="ntp-dist" depends="ntp-jar" description="Generate the distribution.">
@@ -150,6 +151,15 @@
                 <include name="**/*.xml"/>
             </fileset>
         </copy>
+
+        <condition property="propertiesFamily" value="windows" else="linux">
+            <and>
+                <os family="windows"/>
+            </and>
+        </condition>
+        <copy file="${ntp-src-properties}/main-${propertiesFamily}.properties"
+              tofile="${ntp-dist-root}/properties/main.properties"/>
+
 
         <!-- Static content copy to static content dir. -->
         <copy todir="${ntp-dist-root}/static_content">
@@ -204,7 +214,8 @@
 
     <target name="monitor-jar" depends="monitor-compile">
         <jar jarfile="${monitor-build-jar-dir}/${monitor-outputjarname}" basedir="${monitor-build-dir}"/>
-        <jar jarfile="${monitor-build-jar-dir}/${monitor-outputsrcjarname}" basedir="${monitor-src-java}" excludes="${monitor-src-java}/test"/>
+        <jar jarfile="${monitor-build-jar-dir}/${monitor-outputsrcjarname}" basedir="${monitor-src-java}"
+             excludes="${monitor-src-java}/test"/>
     </target>
 
     <target name="monitor-dist" depends="monitor-jar" description="Generate the distribution.">
@@ -237,6 +248,13 @@
                 <include name="**/*.xml"/>
             </fileset>
         </copy>
+        <condition property="propertiesFamily" value="windows" else="linux">
+            <and>
+                <os family="windows"/>
+            </and>
+        </condition>
+        <copy file="${monitor-src-properties}/main-${propertiesFamily}.properties"
+              tofile="${monitor-dist-root}/properties/main.properties"/>
 
         <!-- Scripts should be copied to the root DIST directory. -->
         <copy todir="${monitor-dist-root}">
@@ -249,10 +267,21 @@
     <!-- END OF ENTRIES FOR NTP-MONITOR BUILD ================================================== -->
 
 
-
-
-
-
+    <target name="ntp-manifest">
+        <echo message="Creating manifest with version:${deploy.version}"/>
+        <path id="class.path">
+          <fileset dir="${monitor-dist-root}/jars">
+            <include name="**/*.jar" />
+          </fileset>
+        </path>
+        <java classname="edu.wvup.monitor.manifest.ManifestGenerator" fork="true">
+            <jvmarg value="-Dfile.encoding=utf8"/>
+            <!-- -Dsource.dir=/source/personal/ntp-scheduler/dist/ntp-server -->
+            <arg value="-Dversion=${deploy.version}"/>
+            <arg value="-Dsource.dir=${ntp-dist-root}"/>
+            <classpath refid="class.path"/>
+        </java>
+    </target>
 
 
 </project>

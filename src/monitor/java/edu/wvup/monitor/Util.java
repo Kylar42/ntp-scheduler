@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
 import java.util.Properties;
 
 /**
@@ -81,5 +83,69 @@ public class Util {
         while((count = input.read(buffer)) != -1) {
             output.write(buffer, 0, count);
         }
+    }
+
+    public static int intFromStringWithoutThrow(String intVal){
+        int toReturn = Integer.MIN_VALUE;
+        try {
+            toReturn = Integer.parseInt(intVal);
+        } catch (NumberFormatException ignore) {}
+
+        return toReturn;
+    }
+
+    public static long longFromStringWithoutThrow(String longVal){
+        long toReturn = Long.MIN_VALUE;
+        try{
+            toReturn = Long.parseLong(longVal);
+        }catch(NumberFormatException ignore){}
+        return toReturn;
+    }
+
+    public static void closeIfNotNullWithoutRethrow(OutputStream os){
+        if(null != os){
+            try{
+                os.flush();
+                os.close();
+            }catch(IOException ignore){}
+        }
+    }
+    public static void closeIfNotNullWithoutRethrow(InputStream is){
+        if(null != is){
+            try{
+                is.close();
+            }catch(IOException ignore){}
+        }
+    }
+
+    public static String md5File(File f) {
+        MessageDigest md = null;
+        InputStream is = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            is = new FileInputStream(f);
+
+            is = new DigestInputStream(is, md);
+            // read stream to EOF as normal...
+            byte[] buffer = new byte[4096];//allocate a small array.
+            while (is.read(buffer) != -1) {}//read file in chunks
+
+        } catch (Throwable ignore) {
+            //don't care.
+            ignore.printStackTrace();
+            return null;
+
+        } finally {
+            if (null != is) {
+                try {
+                    is.close();
+                } catch (IOException ignore) {
+                }
+            }
+        }
+        if (null != md) {
+            return toHexString(md.digest());
+        }
+        return null;
     }
 }

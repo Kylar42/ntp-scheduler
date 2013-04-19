@@ -28,7 +28,7 @@ public class Monitor {
             // and start it off
             scheduler.start();
 
-            NTPWatchJob.scheduleNTPWatchJob();
+            //NTPWatchJob.scheduleNTPWatchJob();
             NTPUpdaterJob.scheduleNTPUpdateJob();
         } catch (SchedulerException se) {
             se.printStackTrace();

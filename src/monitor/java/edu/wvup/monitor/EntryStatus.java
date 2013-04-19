@@ -5,5 +5,5 @@ package edu.wvup.monitor;
  * "Code early, Code often."
  */
 public enum EntryStatus {
-    NEW, REPLACE, DELETE;
+    NEW, REPLACE, DELETE, DIRECTORY;
 }

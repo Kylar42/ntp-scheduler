@@ -5,23 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/LinuxUtils.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/LinuxUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/MonitorProperties.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/MonitorProperties.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestDownloader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestTransformer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../project-docs/deliverables/sequence diagram.graffle" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/properties/main.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Manifest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/ManifestParser.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/ManifestConstants.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/ManifestGenerator.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/monitor/resources/properties/main.properties" afterPath="$PROJECT_DIR$/monitor/resources/properties/main-linux.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../project-docs/deliverables/CS460 Presentation.key" afterPath="$PROJECT_DIR$/../project-docs/deliverables/CS460 Presentation.key" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Entry.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Entry.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/EntryStatus.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/EntryStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Monitor.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Monitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/NTPUpdaterJob.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/NTPUpdaterJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/NTPWatchJob.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/NTPWatchJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSUtils.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/WindowsUtils.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/WindowsUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSType.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Util.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/Util.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../build.xml" afterPath="$PROJECT_DIR$/../build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/resources/properties/main.properties" afterPath="$PROJECT_DIR$/monitor/resources/properties/main.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/.idea/misc.xml" afterPath="$PROJECT_DIR$/monitor/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/monitor.iml" afterPath="$PROJECT_DIR$/monitor/monitor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/resources/properties/windows.properties" afterPath="$PROJECT_DIR$/monitor/resources/properties/windows.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/.idea/workspace.xml" afterPath="$PROJECT_DIR$/monitor/.idea/workspace.xml" />
     </list>
     <ignored path="ntp-scheduler.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366234864152" ignored="false" />
+    <file path="/Dummy.txt" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366395985939" ignored="false" />
     <file path="/ConnectionPool.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363657969850" ignored="false" />
     <file path="/DBSetup.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364517361530" ignored="false" />
     <file path="/DefaultHttpServerHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365722861242" ignored="false" />
@@ -37,7 +51,7 @@
     <file path="/Course.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1361927919873" ignored="false" />
     <file path="/CourseSeeder.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364914130920" ignored="false" />
     <file path="/DataStorage.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364818138155" ignored="false" />
-    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366378505198" ignored="false" />
+    <file path="/fragment.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366405050441" ignored="false" />
     <file path="/CourseMetadata.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364913387191" ignored="false" />
     <file path="/StringUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366234976085" ignored="false" />
     <file path="/MethodContext.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365693064444" ignored="false" />
@@ -68,7 +82,7 @@
     <file path="/code/source/trunk/carddav/src/mme/carddav/method/post/CardDavMultiPost.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362148513715" ignored="false" />
     <file path="/PostMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365720945528" ignored="false" />
     <file path="/MimeUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1363977890822" ignored="false" />
-    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366154555040" ignored="false" />
+    <file path="/a.dummy" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366404978816" ignored="false" />
     <file path="/HeaderNames.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365632221170" ignored="false" />
     <file path="/AbstractHttpMethod.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364821610175" ignored="false" />
     <file path="/MimeTypes.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1362336973134" ignored="false" />
@@ -172,7 +186,7 @@
     <file path="/Role.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364818626959" ignored="false" />
     <file path="/index-admin.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364819731805" ignored="false" />
     <file path="/ParsedURLTest.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365693587351" ignored="false" />
-    <file path="/AuthenticationMethodHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365772890437" ignored="false" />
+    <file path="/AuthenticationMethodHandler.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366393704555" ignored="false" />
     <file path="/TableMigrator.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1364913740777" ignored="false" />
     <file path="/login.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365720262444" ignored="false" />
     <file path="/loginpage.css" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365694102415" ignored="false" />
@@ -203,13 +217,13 @@
     <file path="/header-admin.html" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365774164975" ignored="false" />
     <file path="/header-stylesheet.css" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365774220626" ignored="false" />
     <file path="/Monitor.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366079577492" ignored="false" />
-    <file path="/Manifest.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365907543127" ignored="false" />
-    <file path="/Entry.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365907142034" ignored="false" />
-    <file path="/EntryStatus.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366149692500" ignored="false" />
-    <file path="/ManifestGenerator.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365907611789" ignored="false" />
-    <file path="/Util.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366163034055" ignored="false" />
-    <file path="/ManifestConstants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366079006282" ignored="false" />
-    <file path="/ManifestParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1365907957426" ignored="false" />
+    <file path="/Manifest.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366402897092" ignored="false" />
+    <file path="/Entry.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366403771109" ignored="false" />
+    <file path="/EntryStatus.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366403550927" ignored="false" />
+    <file path="/ManifestGenerator.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366406216850" ignored="false" />
+    <file path="/Util.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366403470612" ignored="false" />
+    <file path="/ManifestConstants.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366395235004" ignored="false" />
+    <file path="/ManifestParser.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366404730308" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/tests/AbstractCKSimTest.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366035945398" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/actions/devcenter/ImportSimActions.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366035945398" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../code/source/liverpool/cksim/src/mme/cksim/modules/tests/ImportFetchTest.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366035945398" ignored="false" />
@@ -217,19 +231,21 @@
     <file path="/WindowsUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366379062762" ignored="false" />
     <file path="/UnixUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366159063393" ignored="false" />
     <file path="/OSUtils.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366378182111" ignored="false" />
-    <file path="/OSType.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366069727491" ignored="false" />
-    <file path="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSUtilFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366154237197" ignored="false" />
+    <file path="/OSType.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366393690884" ignored="false" />
     <file path="/OSUtilFactory.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366069803426" ignored="false" />
-    <file path="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/ProcessInfo.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366071512943" ignored="false" />
     <file path="/ProcessInfo.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366069871963" ignored="false" />
-    <file path="/NTPUpdaterJob.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366236114797" ignored="false" />
-    <file path="/build.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366380106451" ignored="false" />
+    <file path="/NTPUpdaterJob.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366404844696" ignored="false" />
+    <file path="/build.xml" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366400654982" ignored="false" />
     <file path="/command.sh" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366152226227" ignored="false" />
     <file path="/dbmigrate.sh" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366152240212" ignored="false" />
     <file path="/start-server.bat" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366153290690" ignored="false" />
     <file path="/start-server.sh" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366153311522" ignored="false" />
     <file path="/MonitorProperties.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366235759661" ignored="false" />
-    <file path="/windows.properties" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366235836154" ignored="false" />
+    <file path="/windows.properties" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366401219035" ignored="false" />
+    <file path="/main-linux.properties" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366401211865" ignored="false" />
+    <file path="/ManifestDownloader.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366405381324" ignored="false" />
+    <file path="/ManifestTransformer.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366403275027" ignored="false" />
+    <file path="/ManifestException.java" changelist="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" time="1366403940978" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +260,68 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" line="77" class="edu.wvup.cs460.transform.CSVCourseImporter" package="edu.wvup.cs460.transform">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/migration/TableMigrator.java" line="14" class="edu.wvup.cs460.db.migration.TableMigrator" package="edu.wvup.cs460.db.migration">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java" line="19" class="edu.wvup.cs460.http.roap.AuthenticationMethodHandler" package="edu.wvup.cs460.http.roap">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportJob.java" line="26" class="edu.wvup.cs460.transform.CourseImportJob" package="edu.wvup.cs460.transform">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendThread" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -281,68 +358,7 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendThread" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CSVCourseImporter.java" line="77" class="edu.wvup.cs460.transform.CSVCourseImporter" package="edu.wvup.cs460.transform">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/migration/TableMigrator.java" line="14" class="edu.wvup.cs460.db.migration.TableMigrator" package="edu.wvup.cs460.db.migration">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java" line="20" class="edu.wvup.cs460.http.roap.AuthenticationMethodHandler" package="edu.wvup.cs460.http.roap">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/transform/CourseImportJob.java" line="26" class="edu.wvup.cs460.transform.CourseImportJob" package="edu.wvup.cs460.transform">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendThread" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -361,15 +377,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/properties/main.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="4" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AppProperties.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/configuration/AppProperties.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -379,19 +386,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="61" selection-start="4213" selection-end="4213" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StringUtils.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="37" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
+            <state line="51" column="12" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -400,16 +398,7 @@
       <file leaf-file-name="DBSetup.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="71" selection-start="4885" selection-end="4885" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NTPAppServer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="79" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.49183673">
+            <state line="121" column="33" selection-start="4885" selection-end="4885" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -424,10 +413,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monitor/resources/properties/main.properties">
+      <file leaf-file-name="main-linux.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monitor/resources/properties/main-linux.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="42" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+            <state line="2" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NTPAppServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="31" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OSType.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="36" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticationMethodHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="305" selection-end="305" vertical-scroll-proportion="0.10273973">
               <folding />
             </state>
           </provider>
@@ -451,8 +467,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/resources/static_content/index-search.html" />
-        <option value="$PROJECT_DIR$/main/resources/static_content/header-stylesheet.css" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/MethodFactory.java" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/configuration/AppProperties.java" />
         <option value="$PROJECT_DIR$/main/resources/scripts/command.sh" />
@@ -467,12 +481,13 @@
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java" />
         <option value="$PROJECT_DIR$/main/resources/properties/main.properties" />
         <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java" />
+        <option value="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSType.java" />
+        <option value="$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="185" />
-    <option name="y" value="102" />
+    <option name="y" value="22" />
     <option name="width" value="1680" />
     <option name="height" value="1024" />
   </component>
@@ -505,6 +520,8 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
     <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
@@ -524,8 +541,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -558,46 +573,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="junit-4.10.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="junit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="junit-4.10.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -613,68 +588,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="monitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -718,33 +631,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="monitor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="edu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="wvup" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
+              <option name="myItemId" value="monitor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -781,32 +688,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cs460" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ntp-scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs460" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -858,7 +739,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
+              <option name="myItemId" value="http" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -884,25 +765,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
+              <option name="myItemId" value="http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="199" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="OverrideImplement.combined" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="201" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="199" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="199" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/monitor" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="205" />
@@ -912,24 +799,25 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="201" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -948,6 +836,7 @@
   </component>
   <component name="RunManager" selected="Application.NTPAppServer">
     <configuration default="false" name="DBSetup" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.db.DBSetup" />
       <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dlogback.configurationFile=properties/logback.xml" />
       <option name="PROGRAM_PARAMETERS" value="-Dmain.properties=properties/main.properties" />
@@ -973,6 +862,7 @@
       <method />
     </configuration>
     <configuration default="false" name="NTPAppServer" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.NTPAppServer" />
       <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dlogback.configurationFile=main/resources/properties/logback.xml" />
       <option name="PROGRAM_PARAMETERS" value="-Dmain.properties=main/resources/properties/main.properties" />
@@ -998,6 +888,7 @@
       <method />
     </configuration>
     <configuration default="false" name="ParsedURLTest.testParsedURLNull" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ntp-scheduler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -1023,6 +914,7 @@
       <method />
     </configuration>
     <configuration default="false" name="CookieHandlerTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ntp-scheduler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -1045,6 +937,7 @@
       <method />
     </configuration>
     <configuration default="false" name="ParsedURLTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ntp-scheduler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -1074,7 +967,21 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -1101,20 +1008,8 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -1129,6 +1024,7 @@
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -1149,6 +1045,7 @@
       <method />
     </configuration>
     <configuration default="false" name="DatabaseMigrator" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.db.DatabaseMigrator" />
       <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dlogback.configurationFile=main/resources/properties/logback.xml" />
       <option name="PROGRAM_PARAMETERS" value="-Dmain.properties=main/resources/properties/main.properties" />
@@ -1172,6 +1069,7 @@
       <method />
     </configuration>
     <configuration default="false" name="CourseSeeder" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="edu.wvup.cs460.db.CourseSeeder" />
       <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dlogback.configurationFile=properties/logback.xml" />
       <option name="PROGRAM_PARAMETERS" value="-Dmain.properties=properties/main.properties" />
@@ -1197,6 +1095,7 @@
       <method />
     </configuration>
     <configuration default="false" name="All Unit Tests" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ntp-scheduler" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -1294,29 +1193,36 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="185" y="102" width="1680" height="1024" extended-state="1" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40484428" sideWeight="0.9594272" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40441176" sideWeight="0.9594272" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32410613" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16192831" sideWeight="0.5951557" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12790698" sideWeight="0.67169" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32410613" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1389,23 +1295,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/monitor/resources/scripts/start-server.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="303" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/resources/properties/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="78" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="34" column="78" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ParsedURL.java">
@@ -1417,9 +1309,7 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/main/resources/json-smart-1.1.jar!/net/minidev/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="28" selection-start="2701" selection-end="2701" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="45" column="28" selection-start="2701" selection-end="2701" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/ResponseWrapper.java">
@@ -1436,16 +1326,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/resources/properties/main.properties">
+    <entry file="file://$PROJECT_DIR$/monitor/resources/properties/main-linux.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="42" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/properties/main.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+        <state line="2" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1459,21 +1342,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor/monitor.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/util/StringUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="37" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
+        <state line="51" column="12" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="71" selection-start="4885" selection-end="4885" vertical-scroll-proportion="0.0">
+        <state line="121" column="33" selection-start="4885" selection-end="4885" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1494,7 +1375,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/NTPAppServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="79" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.49183673">
+        <state line="61" column="31" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/java/edu/wvup/monitor/os/OSType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="36" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/edu/wvup/cs460/http/roap/AuthenticationMethodHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="305" selection-end="305" vertical-scroll-proportion="0.10273973">
           <folding />
         </state>
       </provider>
@@ -1557,6 +1452,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
