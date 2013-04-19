@@ -59,7 +59,7 @@ public class NTPWatchJob implements Job {
     private void performForWindows(JobExecutionContext context){
         //see if it's running.
         OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Windows);
-        final List<ProcessInfo> strings = utils.listRunningProcesses();
+        final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
 
         if(null == ntpProcess){
@@ -75,7 +75,7 @@ public class NTPWatchJob implements Job {
     private void performForLinux(JobExecutionContext context){
         //see if it's running.
         OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Linux);
-        final List<ProcessInfo> strings = utils.listRunningProcesses();
+        final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
 
         if(null == ntpProcess){

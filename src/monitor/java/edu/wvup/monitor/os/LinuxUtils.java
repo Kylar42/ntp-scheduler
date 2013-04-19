@@ -18,7 +18,7 @@ class LinuxUtils implements OSUtils{
        return OSType.Linux;
     }
 
-    public List<ProcessInfo> listRunningProcesses(){
+    public List<ProcessInfo> listRunningJavaProcesses(){
         ArrayList<ProcessInfo> toReturn = new ArrayList<ProcessInfo>();
         try {
             String line;

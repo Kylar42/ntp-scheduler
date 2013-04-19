@@ -17,9 +17,9 @@ class WindowsUtils implements OSUtils{
     @Override
     public void stopProcess(ProcessInfo processInfo) {
         //taskkill /IM
-        String killCmd = "taskkill /IM  "+processInfo.getPid();
+        String killCmd = "taskkill /PID  "+processInfo.getPid();
 
-        ProcessBuilder builder = new ProcessBuilder(killCmd);
+        ProcessBuilder builder = new ProcessBuilder("taskkill", "/F", "/PID", processInfo.getPid());
         File out = new File(".", "kill-output.log");
         File err = new File(".", "kill-error.log");
 
@@ -36,19 +36,27 @@ class WindowsUtils implements OSUtils{
         }
     }
 
-    public List<ProcessInfo> listRunningProcesses() {
+    public List<ProcessInfo> listRunningJavaProcesses() {
         List<ProcessInfo> toReturn = new ArrayList<ProcessInfo>();
         try {
             String line;
-            Process p = Runtime.getRuntime().exec("tasklist.exe /fo csv /nh");
+            Process p = Runtime.getRuntime().exec("wmic PROCESS where \"name like '%java%'\" get Processid,Caption,Commandline");
             BufferedReader input = new BufferedReader
                     (new InputStreamReader(p.getInputStream()));
             while ((line = input.readLine()) != null) {
-                if (!line.trim().equals("")) {
+                if (line.startsWith("java.exe")) {
                     // keep only the process name
-                    line = line.substring(1);
-                    String processName = line.substring(0, line.indexOf("\""));
-                    toReturn.add(new ProcessInfo(processName, ""));//no PID.
+                    //trim
+                    line = line.trim();
+                    //let's get the end part, after the 'java.exe'
+                    int lastIndex = line.lastIndexOf(' ');
+                    if(-1 == lastIndex){
+                        continue;
+                    }
+                    String pid = line.substring(lastIndex).trim();
+                    String process = line.substring(0,lastIndex).trim();
+
+                    toReturn.add(new ProcessInfo(process, pid));
                 }
 
             }
@@ -62,13 +70,19 @@ class WindowsUtils implements OSUtils{
 
     @Override
     public Process startProcess(String command, File workingDirectory) {
-        ProcessBuilder builder = new ProcessBuilder(command);
         Process toReturn = null;
-        File out = new File(workingDirectory, "monitor-output.log");
-        File err = new File(workingDirectory, "monitor-error.log");
+        //File out = new File(workingDirectory, "monitor-output.log");
+        //File err = new File(workingDirectory, "monitor-error.log");
+
+
+        File fullFile = new File(workingDirectory, command);
+        //String fullExec = "cmd /c start "+fullFile.getAbsolutePath();
+        ProcessBuilder builder = new ProcessBuilder("cmd", "/c", "start", fullFile.getAbsolutePath());
 
         try
         {
+            //Runtime.getRuntime().exec(fullExec, new String[0], fullFile.getParentFile());
+
             builder.directory(workingDirectory);
 
             builder.redirectErrorStream();
@@ -82,5 +96,15 @@ class WindowsUtils implements OSUtils{
             System.out.println(e.getMessage());
         }
         return toReturn;
+    }
+
+    public static void  main(String[] args){
+        WindowsUtils windowsUtils = new WindowsUtils();
+        List<ProcessInfo> processInfos = windowsUtils.listRunningJavaProcesses();
+        for(ProcessInfo pi : processInfos){
+            if(pi.getProcessName().contains("NTPAppServer")){
+                windowsUtils.stopProcess(pi);
+            }
+        }
     }
 }

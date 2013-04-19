@@ -63,6 +63,12 @@
 	</target>
 
     <target name="clean" depends="ntp-clean, monitor-clean">
+        <condition property="propertiesFamily" value="windows" else="linux">
+            <and>
+                <os family="windows"/>
+            </and>
+        </condition>
+        <echo message="Looking for main-${propertiesFamily}.properties"/>
         <delete dir="${dist-root}"/>
         <delete dir="${build-root}"/>
     </target>
@@ -73,6 +79,7 @@
     <target name="jar" depends="ntp-jar, monitor-jar">
     </target>
     <target name="dist" depends="ntp-dist, monitor-dist">
+
     </target>
 
     <!-- ENTRIES FOR NTP-SERVER BUILD ================================================== -->

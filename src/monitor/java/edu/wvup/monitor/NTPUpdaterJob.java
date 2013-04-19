@@ -1,7 +1,5 @@
 package edu.wvup.monitor;
 
-import edu.wvup.monitor.os.OSType;
-import edu.wvup.monitor.os.OSUtilFactory;
 import edu.wvup.monitor.os.OSUtils;
 import edu.wvup.monitor.os.ProcessInfo;
 import net.minidev.json.JSONObject;
@@ -23,11 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * User: Tom Byrne(kylar42@gmail.com)
@@ -53,65 +49,72 @@ public class NTPUpdaterJob implements Job {
                 final Object version = object.get("version");
             }
         } catch (Throwable e) {
-            e.printStackTrace();
+           LOG.error("Unable to fetch data. Is the app running?", e);
         }
 
        return "0";
     }
+    private String getNewNTPVersion(){
+        final String urlString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_UPDATE_URL);
+        try {
+            URL url = new URL(urlString);
+            final URLConnection urlConnection = url.openConnection();
+            urlConnection.connect();
+            final String contentType = urlConnection.getContentType();
+            if(null != contentType && contentType.contains("application/json")){
+                JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
+                JSONObject object = (JSONObject)parser.parse(urlConnection.getInputStream());
+                final Object version = object.get("version");
+                if(null != version){
+                    return version.toString();
+                }
+            }
+        } catch (Throwable e) {
+            LOG.error("Unable to fetch data. Is the app running?", e);
+        }
+        return "0";
+    }
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        OSUtils osUtils = OSUtils.OSUtilsCreator.createOSUtils();
 
         //check for update.
-        getRunningNTPVersion();
+        perform(jobExecutionContext, osUtils);
 
 
-
-        final Properties properties = System.getProperties();
-
-        OSType type = getOSType(properties.getProperty("os.name"));
-
-        if(OSType.Unknown == type){
-            LOG.error("Fatal Error: can't find OS Type: "+properties.getProperty("os.name"));
-            throw new JobExecutionException("Unable to determine OS Type.");
-        }
-
-        if(OSType.Windows == type){
-            performForWindows(jobExecutionContext);
-        }else{
-            performForLinux(jobExecutionContext);
-        }
 
     }
 
-    private void performForWindows(JobExecutionContext context){
+
+    private void perform(JobExecutionContext context, OSUtils utils){
         //see if it's running.
-        OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Windows);
-        final List<ProcessInfo> strings = utils.listRunningProcesses();
+        final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
 
         if(null != ntpProcess){
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
-            utils.stopProcess(ntpProcess);
-            doUpdate(context);
-            AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
-            //didn't find it. Start it up.
-            String startCommand = context.getMergedJobDataMap().getString("start.command");
-            String startCommandDir = context.getMergedJobDataMap().getString("start.command.dir");
-            File scDir = new File(startCommandDir);
+            String currentVersionStr = getRunningNTPVersion();
 
-            utils.startProcess(startCommand, scDir);
-        }
+            String newVersionStr = getNewNTPVersion();
 
-    }
-    private void performForLinux(JobExecutionContext context){
-        //see if it's running.
-        OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Linux);
-        final List<ProcessInfo> strings = utils.listRunningProcesses();
-        ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
+            if(null == currentVersionStr || null == newVersionStr){
+                LOG.info("Wasn't able to proceed with NTPUpdater. Invalid versions - Current:{} New: {}", currentVersionStr, newVersionStr);
+                return;
+            }
 
-        if(null != ntpProcess){
-            AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
+            int newVersion = 0;
+            int oldVersion = 0;
+            try{
+                oldVersion = Integer.parseInt(currentVersionStr);
+                newVersion = Integer.parseInt(newVersionStr);
+            }catch(NumberFormatException ignore){
+               //ignored by design - tbyrne
+            }
+
+            if(newVersion <= oldVersion){
+                return;//we're up to date.
+            }
             utils.stopProcess(ntpProcess);
             doUpdate(context);
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
@@ -130,6 +133,7 @@ public class NTPUpdaterJob implements Job {
     private void doUpdate(JobExecutionContext context){
 
     }
+
     private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos){
         for(ProcessInfo pi : infos){
             if(pi.getProcessName().contains(uniqueProcessString)){
@@ -140,16 +144,8 @@ public class NTPUpdaterJob implements Job {
         return null;
     }
 
-    private OSType getOSType(String osName){
-        if(null == osName){
-            return OSType.Unknown;
-        }
-        if(osName.contains("Windows")){
-            return OSType.Windows;
-        }
 
-        return OSType.Linux;//should work for Mac too.
-    }
+
 
 
     public static void scheduleNTPUpdateJob() throws SchedulerException{
