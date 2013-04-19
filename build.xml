@@ -78,7 +78,7 @@
 
     <target name="jar" depends="ntp-jar, monitor-jar">
     </target>
-    <target name="dist" depends="ntp-dist, monitor-dist">
+    <target name="dist" depends="ntp-dist, monitor-dist, ntp-manifest">
 
     </target>
 
@@ -175,7 +175,11 @@
                 <include name="**/*"/>
             </fileset>
         </copy>
-
+	    <chmod type="file" perm="ugo+rx">
+			<fileset dir="${ntp-dist-root}">
+				<include name="**/*.sh"/>
+			</fileset>
+		</chmod>
     </target>
 
     <!-- END OF ENTRIES FOR NTP-SERVER BUILD ================================================== -->
@@ -267,7 +271,7 @@
     <!-- END OF ENTRIES FOR NTP-MONITOR BUILD ================================================== -->
 
 
-    <target name="ntp-manifest">
+    <target name="ntp-manifest" depends="ntp-dist">
         <echo message="Creating manifest with version:${deploy.version}"/>
         <path id="class.path">
           <fileset dir="${monitor-dist-root}/jars">

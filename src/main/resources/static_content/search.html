@@ -7,8 +7,8 @@
     <title>
         Course Search
     </title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="http://yandex.st/json2/2011-10-19/json2.min.js"></script>
+    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="json2.min.js"></script>
     <script type="text/javascript" src="applicationSearch.js"></script>
 </head>
 <body>
@@ -27,12 +27,20 @@
         <option value="2012">2012</option>
     </select>
     <br>
-    <input type="checkbox" name="humanities" value=""/><label>Humanities</label><br/>
+    <!-- input type="checkbox" name="humanities" value=""/><label>Humanities</label><br/>
     <input type="checkbox" name="socsci" value=""/><label>Social Science</label> <br/>
     <input type="checkbox" name="natsci" value=""/><label>Natural Science</label> <br/>
     <input type="checkbox" name="math" value=""/><label>Math</label> <br/>
     <input type="checkbox" name="communications" value=""/><label>Communications</label><br/>
-    <input type="checkbox" name="complit" value=""/><label>Computer Literacy</label> <br/>
+    <input type="checkbox" name="complit" value=""/><label>Computer Literacy</label> <br/-->
+    <input type="radio" name="searchtype" value="all" checked /><label>All</label><br/>
+    <input type="radio" name="searchtype" value="humanities"/><label>Humanities</label><br/>
+        <input type="radio" name="searchtype" value="socsci"/><label>Social Science</label> <br/>
+        <input type="radio" name="searchtype" value="natsci"/><label>Natural Science</label> <br/>
+        <input type="radio" name="searchtype" value="math"/><label>Math</label> <br/>
+        <input type="radio" name="searchtype" value="communications"/><label>Communications</label><br/>
+        <input type="radio" name="searchtype" value="complit"/><label>Computer Literacy</label> <br/>
+    <hr width="60%" align="left"/>
     <input type="checkbox" name="upperdiv" value=""/><label>Show only Upper Division Classes</label> <br/>
     <input type="checkbox" name="fullClasses" value=""/><label>Include Classes That Are Full</label> <br/>
     <input type="button" value="Go" onclick="classFind(this.form)"/>
