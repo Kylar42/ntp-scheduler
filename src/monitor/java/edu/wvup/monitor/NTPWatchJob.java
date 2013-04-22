@@ -1,5 +1,6 @@
 package edu.wvup.monitor;
 
+import edu.wvup.monitor.manifest.ManifestConstants;
 import edu.wvup.monitor.os.OSType;
 import edu.wvup.monitor.os.OSUtilFactory;
 import edu.wvup.monitor.os.OSUtils;
@@ -35,36 +36,42 @@ public class NTPWatchJob implements Job {
     //We are only going to run on linux or windows.
 
 
-
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        //check if we're updating
+        if (AppProperties.APP_PROPERTIES.getPropertyAsBoolean(ManifestConstants.UPDATING, false)) {
+            LOG.info("Was asked to check for running process, but UPDATE flag was set. Returning.");
+            return;
+        }
+
         final Properties properties = System.getProperties();
         OSType type = getOSType(properties.getProperty("os.name"));
 
 
-
-        if(OSType.Unknown == type){
-            LOG.error("Fatal Error: can't find OS Type: "+properties.getProperty("os.name"));
+        if (OSType.Unknown == type) {
+            LOG.error("Fatal Error: can't find OS Type: " + properties.getProperty("os.name"));
             throw new JobExecutionException("Unable to determine OS Type.");
         }
 
-        if(OSType.Windows == type){
+        if (OSType.Windows == type) {
             performForWindows(jobExecutionContext);
-        }else{
+        } else {
             performForLinux(jobExecutionContext);
         }
 
     }
 
-    private void performForWindows(JobExecutionContext context){
+    private void performForWindows(JobExecutionContext context) {
+
+
         //see if it's running.
         OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Windows);
         final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
 
-        if(null == ntpProcess){
+        if (null == ntpProcess) {
             //didn't find it. Start it up.
-            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND+utils.getType().name());
+            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND + utils.getType().name());
             String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
@@ -72,15 +79,16 @@ public class NTPWatchJob implements Job {
         }
 
     }
-    private void performForLinux(JobExecutionContext context){
+
+    private void performForLinux(JobExecutionContext context) {
         //see if it's running.
         OSUtils utils = OSUtilFactory.getOSUtilsForOS(OSType.Linux);
         final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
 
-        if(null == ntpProcess){
+        if (null == ntpProcess) {
             //didn't find it. Start it up.
-            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND+utils.getType().name());
+            String startCommand = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_COMMAND + utils.getType().name());
             String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
@@ -90,9 +98,9 @@ public class NTPWatchJob implements Job {
 
     }
 
-    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos){
-        for(ProcessInfo pi : infos){
-            if(pi.getProcessName().contains(uniqueProcessString)){
+    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos) {
+        for (ProcessInfo pi : infos) {
+            if (pi.getProcessName().contains(uniqueProcessString)) {
                 return pi;
             }
         }
@@ -100,11 +108,11 @@ public class NTPWatchJob implements Job {
         return null;
     }
 
-    private OSType getOSType(String osName){
-        if(null == osName){
+    private OSType getOSType(String osName) {
+        if (null == osName) {
             return OSType.Unknown;
         }
-        if(osName.contains("Windows")){
+        if (osName.contains("Windows")) {
             return OSType.Windows;
         }
 
@@ -112,7 +120,7 @@ public class NTPWatchJob implements Job {
     }
 
 
-    public static void scheduleNTPWatchJob() throws SchedulerException{
+    public static void scheduleNTPWatchJob() throws SchedulerException {
 
         String serverWatchJobName = AppProperties.APP_PROPERTIES.getProperty("serverwatch.job.name", "serverWatch");
         String serverWatchJobGroup = AppProperties.APP_PROPERTIES.getProperty("serverwatch.job.group", "serverWatchGroup");
@@ -124,7 +132,7 @@ public class NTPWatchJob implements Job {
         final SimpleScheduleBuilder simpleScheduleBuilder =
                 SimpleScheduleBuilder.simpleSchedule().withIntervalInMinutes(1).repeatForever();
 
-        Trigger trigger = TriggerBuilder.newTrigger().withIdentity(serverWatchJobTriggerName,serverWatchJobGroup).startNow().withSchedule(simpleScheduleBuilder).build();
+        Trigger trigger = TriggerBuilder.newTrigger().withIdentity(serverWatchJobTriggerName, serverWatchJobGroup).startNow().withSchedule(simpleScheduleBuilder).build();
 
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.scheduleJob(job, trigger);

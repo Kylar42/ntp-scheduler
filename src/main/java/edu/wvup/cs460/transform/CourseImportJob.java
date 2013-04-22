@@ -21,7 +21,7 @@ import org.quartz.impl.StdSchedulerFactory;
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
-public class CourseImportJob implements Job{
+public class CourseImportJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         DBContext context = new DBContext(NTPAppServer.getInstance().getAppProperties());
@@ -29,7 +29,7 @@ public class CourseImportJob implements Job{
     }
 
 
-    public static void scheduleImportJob(Scheduler scheduler) throws SchedulerException{
+    public static void scheduleImportJob(Scheduler scheduler) throws SchedulerException {
         final AppProperties appProperties = NTPAppServer.getInstance().getAppProperties();
         String importJobName = appProperties.getProperty("import.job.name", "import");
         String importJobGroup = appProperties.getProperty("import.job.group", "importGroup");
@@ -41,27 +41,8 @@ public class CourseImportJob implements Job{
 
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity(importJobTriggerName, importJobGroup).startNow().withSchedule(simpleScheduleBuilder).build();
 
-         scheduler.scheduleJob(job, trigger);
+        scheduler.scheduleJob(job, trigger);
     }
 
 
-
-    /**
-     * // define the job and tie it to our HelloJob class
-     JobDetail job = newJob(HelloJob.class)
-     .withIdentity("job1", "group1")
-     .build();
-
-     // Trigger the job to run now, and then repeat every 40 seconds
-     Trigger trigger = newTrigger()
-     .withIdentity("trigger1", "group1")
-     .startNow()
-     .withSchedule(simpleSchedule()
-     .withIntervalInSeconds(40)
-     .repeatForever())
-     .build();
-
-     // Tell quartz to schedule the job using our trigger
-     sched.scheduleJob(job, trigger);
-     */
 }

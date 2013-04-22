@@ -10,4 +10,6 @@ public class MonitorProperties {
     public static final String NTP_URL = "ntpserver.url";
     public static final String NTP_UPDATE_URL = "ntpupdate.url";
 
+    public static final String NTP_UNIQUE_STRING = "ntp.process.string";
+
 }

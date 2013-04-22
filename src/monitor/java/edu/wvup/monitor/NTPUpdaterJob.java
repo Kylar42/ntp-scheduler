@@ -37,34 +37,33 @@ import java.util.List;
 @DisallowConcurrentExecution
 @PersistJobDataAfterExecution
 public class NTPUpdaterJob implements Job {
-    Logger LOG = LoggerFactory.getLogger(NTPUpdaterJob.class);
-    //We are only going to run on linux or windows.
+    private static Logger LOG = LoggerFactory.getLogger(NTPUpdaterJob.class);
 
-
-    private String getRunningNTPVersion(){
+    private String getRunningNTPVersion() {
         final String urlString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_URL);
         try {
             URL url = new URL(urlString);
             final URLConnection urlConnection = url.openConnection();
             urlConnection.connect();
             final String contentType = urlConnection.getContentType();
-            if(null != contentType && contentType.contains("application/json")){
+            if (null != contentType && contentType.contains("application/json")) {
                 JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
-                JSONObject object = (JSONObject)parser.parse(urlConnection.getInputStream());
+                JSONObject object = (JSONObject) parser.parse(urlConnection.getInputStream());
                 final Object version = object.get("version");
             }
         } catch (Throwable e) {
-           LOG.error("Unable to fetch data. Is the app running?", e);
+            LOG.error("Unable to fetch data. Is the app running?", e);
         }
 
-       return "0";
+        return "0";
     }
-    private Manifest getNewNTPVersion(){
+
+    private Manifest getNewNTPVersion() {
         final String urlString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_UPDATE_URL);
         try {
             return ManifestParser.parseFromURL(new URL(urlString));
         } catch (MalformedURLException e) {
-            LOG.error("Was passed a bad URL in properties:"+urlString);
+            LOG.error("Was passed a bad URL in properties:" + urlString);
         }
         return null;
     }
@@ -77,49 +76,49 @@ public class NTPUpdaterJob implements Job {
         perform(jobExecutionContext, osUtils);
 
 
-
     }
 
-    private void perform(JobExecutionContext context, OSUtils utils){
+    private void perform(JobExecutionContext context, OSUtils utils) {
+
+        final String ntpProcessString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_UNIQUE_STRING, "NTPAppServer");
         //see if it's running.
         final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
-        ProcessInfo ntpProcess = findProcess("NTPAppServer", strings);
+        ProcessInfo ntpProcess = findProcess(ntpProcessString, strings);
 
-        if(null != ntpProcess){
+        if (null != ntpProcess) {
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
             String currentVersionStr = getRunningNTPVersion();
 
             Manifest manifest = getNewNTPVersion();
 
-            if(null == manifest){
+            if (null == manifest) {
                 //something bad happened, but we should have logged it already.
                 return;
             }
 
             int newVersion = manifest.getVersion();
 
-            if(null == currentVersionStr ){
+            if (null == currentVersionStr) {
                 LOG.info("Wasn't able to proceed with NTPUpdater. Invalid versions - Current:{} New: {}", currentVersionStr, newVersion);
                 return;
             }
 
             int oldVersion = 0;
-            try{
+            try {
                 oldVersion = Integer.parseInt(currentVersionStr);
-            }catch(NumberFormatException ignore){
-               //ignored by design - tbyrne
+            } catch (NumberFormatException ignore) {
+                //ignored by design - tbyrne
             }
 
-            if(newVersion <= oldVersion){
+            if (newVersion <= oldVersion) {
                 return;//we're up to date.
             }
             //If we get here, we need to actually update
 
-            if(!AppProperties.APP_PROPERTIES.getPropertyAsBoolean("debug", false)){
-                utils.stopProcess(ntpProcess);
-            }
+            stopAllNTPServerProcesses(utils, ntpProcessString);
 
             doUpdate(context, manifest);
+
             AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
             //didn't find it. Start it up.
             String startCommand = context.getMergedJobDataMap().getString("start.command");
@@ -132,8 +131,25 @@ public class NTPUpdaterJob implements Job {
 
     }
 
+    private boolean stopAllNTPServerProcesses(OSUtils osUtils, String uniqueProcessName) {
+        List<ProcessInfo> processes = osUtils.listRunningJavaProcesses();
+        ProcessInfo currentProcess = findProcess(uniqueProcessName, processes);
+        int safetyCounter = 0;
+        while (null != currentProcess && safetyCounter < 10) {//if we loop through 10 times, something has gone horribly wrong.
+            osUtils.stopProcess(currentProcess);
+            //here I've chosen to get a new process list, despite the overhead, to make sure that there are no issues with
+            //deadlocks.
+            processes = osUtils.listRunningJavaProcesses();
+            currentProcess = findProcess(uniqueProcessName, processes);
+            safetyCounter++;
+        }
 
-    private void doUpdate(JobExecutionContext context, Manifest manifest){
+        return (safetyCounter < 10);//if we looped through in less than 10, we exited because there were no more running processes.
+
+    }
+
+
+    private void doUpdate(JobExecutionContext context, Manifest manifest) {
         //Ok, we have the manifest and we know what to do.
         //we're going to create a temporary directory where we are running, called "manifest-update-version-guid"
         String ntpRunningDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
@@ -143,12 +159,11 @@ public class NTPUpdaterJob implements Job {
 
         ManifestDownloader downloader = new ManifestDownloader(manifest, newDir);
         downloader.run();
-
     }
 
-    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos){
-        for(ProcessInfo pi : infos){
-            if(pi.getProcessName().contains(uniqueProcessString)){
+    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos) {
+        for (ProcessInfo pi : infos) {
+            if (pi.getProcessName().contains(uniqueProcessString)) {
                 return pi;
             }
         }
@@ -157,10 +172,7 @@ public class NTPUpdaterJob implements Job {
     }
 
 
-
-
-
-    public static void scheduleNTPUpdateJob() throws SchedulerException{
+    public static void scheduleNTPUpdateJob() throws SchedulerException {
         String serverWatchJobName = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.name", "serverUpdater");
         String serverWatchJobGroup = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.group", "serverUpdaterGroup");
         String serverWatchJobTriggerName = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.trigger.name", "serverWatchTrigger");
@@ -176,7 +188,7 @@ public class NTPUpdaterJob implements Job {
         final SimpleScheduleBuilder simpleScheduleBuilder =
                 SimpleScheduleBuilder.simpleSchedule().withIntervalInMinutes(1).repeatForever();
 
-        Trigger trigger = TriggerBuilder.newTrigger().withIdentity(serverWatchJobTriggerName,serverWatchJobGroup).startNow().withSchedule(simpleScheduleBuilder).build();
+        Trigger trigger = TriggerBuilder.newTrigger().withIdentity(serverWatchJobTriggerName, serverWatchJobGroup).startNow().withSchedule(simpleScheduleBuilder).build();
 
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.scheduleJob(job, trigger);
