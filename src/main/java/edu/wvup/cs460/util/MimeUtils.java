@@ -21,6 +21,10 @@ public class MimeUtils {
         CONTENT_TYPES.put("json", MimeType.APP_JSON);
         CONTENT_TYPES.put("ico", MimeType.XICON);
         CONTENT_TYPES.put("jpeg", MimeType.JPEG);
+        CONTENT_TYPES.put("jpg", MimeType.JPEG);
+        CONTENT_TYPES.put("xml", MimeType.APP_XML);
+        CONTENT_TYPES.put("plist", MimeType.APP_PLIST);
+        CONTENT_TYPES.put("txt", MimeType.TEXT_PLAIN);
 
     }
 

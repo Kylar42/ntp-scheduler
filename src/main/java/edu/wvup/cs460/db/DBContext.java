@@ -22,6 +22,7 @@ public class DBContext {
 
     final String DB_READ_ONLY_USERNAME;
     final String DB_READ_ONLY_PASSWORD;
+    final int    CONNECTION_POOL_MAX_SIZE;
 
     //TODO: Init these from properties.
 
@@ -37,6 +38,10 @@ public class DBContext {
         DB_READ_WRITE_PASSWORD = toInitFrom.getProperty("db.readwrite.password", "cs460");
         DB_READ_ONLY_USERNAME = toInitFrom.getProperty("db.readonly.username", "cs460");
         DB_READ_ONLY_PASSWORD = toInitFrom.getProperty("db.readonly.password", "cs460");
+        CONNECTION_POOL_MAX_SIZE = toInitFrom.getPropertyAsInt("db.connectionpool.max.size", 10);
+
+
+
 
     }
 

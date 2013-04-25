@@ -27,8 +27,8 @@
     <file path="/OSUtilFactory.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366069803427" ignored="false" />
     <file path="/ProcessInfo.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366069871963" ignored="false" />
     <file path="/NTPUpdaterJob.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366638268838" ignored="false" />
-    <file path="/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366080951918" ignored="false" />
-    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/configuration/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366080953180" ignored="false" />
+    <file path="/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757349656" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/configuration/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757350598" ignored="false" />
     <file path="/*.regexp" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366149677864" ignored="false" />
     <file path="/build.xml" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366400654982" ignored="false" />
     <file path="/command.sh" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366152226227" ignored="false" />
@@ -41,8 +41,8 @@
     <file path="/main.properties" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366162365991" ignored="false" />
     <file path="/MonitorProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366638148794" ignored="false" />
     <file path="/a.dummy" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366639650142" ignored="false" />
-    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/UnauthorizedGetMethod.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366161314247" ignored="false" />
-    <file path="/UnauthorizedGetMethod.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366161314247" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/UnauthorizedGetMethod.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757434470" ignored="false" />
+    <file path="/UnauthorizedGetMethod.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757433103" ignored="false" />
     <file path="/ParsedURL.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366160516672" ignored="false" />
     <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/ParsedURL.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366160517175" ignored="false" />
     <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/ResponseWrapper.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366161587480" ignored="false" />
@@ -54,10 +54,16 @@
     <file path="/ManifestDownloader.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366405381324" ignored="false" />
     <file path="/ManifestTransformer.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366403275027" ignored="false" />
     <file path="/ManifestException.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366403940978" ignored="false" />
-    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/NTPAppServer.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366639265166" ignored="false" />
-    <file path="/NTPAppServer.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366639035594" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/NTPAppServer.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757390748" ignored="false" />
+    <file path="/NTPAppServer.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757389293" ignored="false" />
     <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/transform/CourseImportJob.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366639333359" ignored="false" />
     <file path="$PROJECT_DIR$/../logFile.2013-04-22.log" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366639570089" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/db/ConnectionPool.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673128940" ignored="false" />
+    <file path="/ConnectionPool.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673128634" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/db/DBContext.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366672701481" ignored="false" />
+    <file path="/DBContext.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366672547166" ignored="false" />
+    <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673724911" ignored="false" />
+    <file path="/ClassListHandler.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673715781" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,42 +78,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/java/edu/wvup/monitor/os/LinuxUtils.java" line="52" class="edu.wvup.monitor.os.LinuxUtils" package="edu.wvup.monitor.os">
         <option name="ENABLED" value="true" />
@@ -171,6 +141,42 @@
       </breakpoint>
     </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -183,7 +189,7 @@
       <file leaf-file-name="NTPUpdaterJob.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/NTPUpdaterJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="19" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.18835616">
+            <state line="39" column="19" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.017123288">
               <folding />
             </state>
           </provider>
@@ -464,8 +470,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -709,7 +715,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1024" extended-state="1" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -728,7 +734,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15911873" sideWeight="0.57497305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15789473" sideWeight="0.57497305" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -848,16 +854,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/manifest/ManifestParser.java">
+    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/NTPUpdaterJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
+        <state line="39" column="19" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.017123288">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/lang/StringBuilder.java">
+    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/MonitorProperties.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="2796" selection-end="2796" vertical-scroll-proportion="0.0">
+        <state line="12" column="70" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/resources/quartz-all-2.1.6.jar!/org/quartz/core/JobRunShell.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="16" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/manifest/ManifestParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -876,9 +896,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/resources/quartz-all-2.1.6.jar!/org/quartz/core/JobRunShell.class">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_12.jdk/Contents/Home/src.zip!/java/lang/StringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0">
+        <state line="84" column="0" selection-start="2796" selection-end="2796" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -890,13 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/manifest/ManifestDownloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="13" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/NTPWatchJob.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="9" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.0">
@@ -904,16 +917,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/MonitorProperties.java">
+    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/manifest/ManifestDownloader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="70" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/edu/wvup/monitor/NTPUpdaterJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="19" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.18835616">
+        <state line="28" column="13" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

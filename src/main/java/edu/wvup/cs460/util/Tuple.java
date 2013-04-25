@@ -6,7 +6,6 @@ import java.util.Map;
  * User: Tom Byrne(kylar42@gmail.com)
  *
  * "Code early, Code often."
- *
  * A tuple of two typed values. I'll implement Map.Entry as well to make things a bit easier for collection manipulations later.
  *
  */

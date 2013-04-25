@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  */
@@ -17,21 +19,33 @@ public class ConnectionPool {
     private final static Logger LOG = LoggerFactory.getLogger(ConnectionPool.class);
 
 
-    private final ConcurrentLinkedQueue<Connection> ROOT_CONNECTIONS = new ConcurrentLinkedQueue<Connection>() ;
-    private final ConcurrentLinkedQueue<Connection> NORMAL_CONNECTIONS = new ConcurrentLinkedQueue<Connection>() ;
+    private final int _maxConnectionCount;
+    private final ArrayBlockingQueue<Connection> ROOT_CONNECTIONS;
+    private final ArrayBlockingQueue<Connection> NORMAL_CONNECTIONS;
+    private final AtomicInteger _normalConnectionCount = new AtomicInteger(0);//to be used to determine if we should poll or not.
+    private final AtomicInteger _rootConnectionCount = new AtomicInteger(0);//to be used to determine if we should poll or not.
 
     private final DBContext _context;
 
     public ConnectionPool(DBContext context){
         _context = context;
+        _maxConnectionCount = context.CONNECTION_POOL_MAX_SIZE;
+        ROOT_CONNECTIONS = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
+        NORMAL_CONNECTIONS = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
     }
 
     /** I am going to make this just create a new one for now. */
     public synchronized Connection getConnection(){
-        if(null == NORMAL_CONNECTIONS.peek()){
+        if(null == NORMAL_CONNECTIONS.peek() && _normalConnectionCount.get() < _maxConnectionCount){
+            _normalConnectionCount.getAndIncrement();
             return newDefaultConnection();
         }else{
-            return NORMAL_CONNECTIONS.poll();
+            try {
+                return NORMAL_CONNECTIONS.take();
+            } catch (InterruptedException e) {
+                LOG.error("Interrupted exception while getting connection!", e);
+                return null;
+            }
         }
 
     }
@@ -65,19 +79,33 @@ public class ConnectionPool {
     }
 
     public Connection getRootConnection(){
-        if(null == ROOT_CONNECTIONS.peek()){
+        if(null == ROOT_CONNECTIONS.peek() && _rootConnectionCount.get() < _maxConnectionCount){
+            _rootConnectionCount.getAndIncrement();
             return newRootConnection();
         }else{
-            return ROOT_CONNECTIONS.poll();
+            try {
+                return ROOT_CONNECTIONS.take();
+            } catch (InterruptedException e) {
+                LOG.error("Exception occurred trying to take a root connection.", e);
+                return null;//catastrophic error has occurred.
+            }
         }
 
     }
     
-    public synchronized void returnConnection(Connection c){
-        NORMAL_CONNECTIONS.add(c);
+    public void returnConnection(Connection c){
+        try {
+            NORMAL_CONNECTIONS.put(c);
+        } catch (InterruptedException e) {
+            LOG.error("Interrupted Exception occurred trying to return a connection!");
+        }
     }
-    public synchronized void returnRootConnection(Connection c){
-        ROOT_CONNECTIONS.add(c);
+    public void returnRootConnection(Connection c){
+        try {
+            ROOT_CONNECTIONS.put(c);
+        } catch (InterruptedException e) {
+            LOG.error("Error occurred trying to return a root connection!");
+        }
     }
 
 }

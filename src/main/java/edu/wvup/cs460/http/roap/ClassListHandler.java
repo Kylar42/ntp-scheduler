@@ -82,6 +82,9 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
      * @return
      */
     private String constructListFromCourseInstances(List<CourseInstance> courses) {
+        if(null == courses || courses.isEmpty()){
+            return "No Results Found";
+        }
         Collections.sort(courses);
         StringBuilder sb = new StringBuilder();
         sb.append("\t\t<form method=\"post\" action=\"\" id=\"class-update\">\n");

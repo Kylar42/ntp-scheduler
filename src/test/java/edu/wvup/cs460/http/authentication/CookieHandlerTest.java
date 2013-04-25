@@ -13,8 +13,6 @@ import static org.junit.Assert.assertNotNull;
 public class CookieHandlerTest {
 
 
-
-
     @Test
     public void testCookieEncoding() throws Exception{//we don't actually want to throw an exception.
         CookieHandler handler = new CookieHandler();

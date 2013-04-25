@@ -72,16 +72,16 @@ public class NTPAppServer {
     private void initProperties(String[] args) {
         //initialize the AppProperties
         _properties.initPropertiesFromCommandLine(args);
-
+        _properties.setProperty("start.time", Long.toString(System.currentTimeMillis()));
         //initialize System properties for the Scheduler.
+        final String instanceName = _properties.getProperty("org.quartz.scheduler.instanceName", "CourseRetrievalScheduler");
+        System.setProperty("org.quartz.scheduler.instanceName", instanceName);
+        final String threadCount = _properties.getProperty("org.quartz.threadPool.threadCount", "2");
+        System.setProperty("org.quartz.threadPool.threadCount", threadCount);
+        final String jobStoreClass = _properties.getProperty("org.quartz.jobStore.class", "org.quartz.simpl.RAMJobStore");
+        System.setProperty("org.quartz.jobStore.class", jobStoreClass);// keep in RAM, as we will start a new one when the server starts.
 
-        System.setProperty("org.quartz.scheduler.instanceName", "CourseRetrievalScheduler");
-        System.setProperty("org.quartz.threadPool.threadCount", "2");
-        System.setProperty("org.quartz.jobStore.class", "org.quartz.simpl.RAMJobStore");// keep in RAM, as we will start a new one when the server starts.
 
-       /* org.quartz.scheduler.instanceName = MyScheduler
-        org.quartz.threadPool.threadCount = 3
-        org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore  */
     }
 
     //--------------------------------------------------Protected Methods

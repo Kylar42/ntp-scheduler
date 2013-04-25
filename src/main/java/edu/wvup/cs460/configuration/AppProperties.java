@@ -58,7 +58,7 @@ public class AppProperties {
         }
     }
 
-    public long getPropertyAsInt(String key, int defaultValue){
+    public int getPropertyAsInt(String key, int defaultValue){
         String val = findProperty(key);
 
         try{
@@ -72,6 +72,13 @@ public class AppProperties {
         String val = findProperty(key);
         return (null == val) ? defaultValue : Boolean.parseBoolean(val);
 
+    }
+
+    public void setProperty(String key, String value){
+        mergedProperties.setProperty(key, value);
+    }
+    public void remove(String key){
+        mergedProperties.remove(key);
     }
     public void initPropertiesFromCommandLine(String[] args){
         //look for properties

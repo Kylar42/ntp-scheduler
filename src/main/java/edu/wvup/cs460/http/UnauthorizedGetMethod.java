@@ -56,6 +56,10 @@ public class UnauthorizedGetMethod extends GetMethod{
         JSONObject toReturn = new JSONObject();
         String version = NTPAppServer.getInstance().getAppProperties().getProperty("app.version", "-1");
         toReturn.put("version", version);
+        toReturn.put("application", "NTPAppServer");
+        long upTime = System.currentTimeMillis() - NTPAppServer.getInstance().getAppProperties().getPropertyAsLong("start.time", 0);
+
+        toReturn.put("uptime", upTime);
         return toReturn;
     }
     private boolean isInUnsecureArea(ParsedURL parsedURL){
