@@ -30,7 +30,7 @@
     <file path="/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366901805258" ignored="false" />
     <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/configuration/AppProperties.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366757350598" ignored="false" />
     <file path="/*.regexp" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366149677864" ignored="false" />
-    <file path="/build.xml" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366898850042" ignored="false" />
+    <file path="/build.xml" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366907685478" ignored="false" />
     <file path="/command.sh" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366152226227" ignored="false" />
     <file path="$PROJECT_DIR$/../main/resources/scripts/command.sh" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366152226585" ignored="false" />
     <file path="$PROJECT_DIR$/../main/resources/scripts/dbmigrate.sh" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366152240787" ignored="false" />
@@ -65,7 +65,7 @@
     <file path="$PROJECT_DIR$/../main/java/edu/wvup/cs460/http/roap/ClassListHandler.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673724911" ignored="false" />
     <file path="/ClassListHandler.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366673715781" ignored="false" />
     <file path="/Updater.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366903925055" ignored="false" />
-    <file path="$PROJECT_DIR$/../../build.xml" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366898851098" ignored="false" />
+    <file path="$PROJECT_DIR$/../../build.xml" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366907756938" ignored="false" />
     <file path="/LinuxUtils.java" changelist="e0af5609-0ec6-4afd-bb90-14b6e65d149b" time="1366904898527" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -815,7 +815,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="22" width="1680" height="1024" extended-state="0" />
+    <frame x="-1" y="22" width="1680" height="1024" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />

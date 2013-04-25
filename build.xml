@@ -63,8 +63,14 @@
         <echo message="jar     - create jar files:${line.separator}"/>
         <echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
 
-        <property environment="env"/>
-        <echo message="HOME=${env.JAVA_HOME}" />
+        <condition property="propertiesFamily" value="windows" else="linux">
+            <or>
+                <equals arg1="${deploy.platform}" arg2="windows"/>
+                <os family="windows"/>
+            </or>
+        </condition>
+        <echo message="Setting Deployment Platform to: ${propertiesFamily}"/>
+
     </target>
 
     <target name="init" depends="ntp-init, monitor-init">
@@ -157,10 +163,13 @@
         </copy>
         <!-- Let's set our properties family. If we're building on Windows, we'll need to copy the windows proeprties file. -->
         <condition property="propertiesFamily" value="windows" else="linux">
-            <and>
+            <or>
+                <equals arg1="${deploy.platform}" arg2="windows"/>
                 <os family="windows"/>
-            </and>
+            </or>
         </condition>
+
+        <echo message="Setting Deployment Platform to: ${propertiesFamily}"/>
 
         <copy file="${ntp-src-properties}/main-${propertiesFamily}.properties"
               tofile="${ntp-dist-root}/properties/main.properties"/>
@@ -186,11 +195,11 @@
             <entry key="app.version" value="${deploy.version}"/>
         </propertyfile>
 
-	    <chmod type="file" perm="ugo+rx">
-			<fileset dir="${ntp-dist-root}">
-				<include name="**/*.sh"/>
-			</fileset>
-		</chmod>
+        <chmod type="file" perm="ugo+rx">
+            <fileset dir="${ntp-dist-root}">
+                <include name="**/*.sh"/>
+            </fileset>
+        </chmod>
     </target>
 
     <!-- END OF ENTRIES FOR NTP-SERVER BUILD ================================================== -->
@@ -264,11 +273,16 @@
                 <include name="**/*.xml"/>
             </fileset>
         </copy>
+        <!-- Let's set our properties family. If we're building on Windows, we'll need to copy the windows proeprties file. -->
         <condition property="propertiesFamily" value="windows" else="linux">
-            <and>
+            <or>
+                <equals arg1="${deploy.platform}" arg2="windows"/>
                 <os family="windows"/>
-            </and>
+            </or>
         </condition>
+
+        <echo message="Setting Deployment Platform to: ${propertiesFamily}"/>
+
         <copy file="${monitor-src-properties}/main-${propertiesFamily}.properties"
               tofile="${monitor-dist-root}/properties/main.properties"/>
 
@@ -286,9 +300,9 @@
     <target name="ntp-manifest" depends="ntp-dist">
         <echo message="Creating manifest with version:${deploy.version}"/>
         <path id="class.path">
-          <fileset dir="${monitor-dist-root}/jars">
-            <include name="**/*.jar" />
-          </fileset>
+            <fileset dir="${monitor-dist-root}/jars">
+                <include name="**/*.jar"/>
+            </fileset>
         </path>
         <java classname="edu.wvup.monitor.manifest.ManifestGenerator" fork="true">
             <jvmarg value="-Dfile.encoding=utf8"/>
