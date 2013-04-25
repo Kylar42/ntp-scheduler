@@ -75,7 +75,7 @@ public class NTPWatchJob implements Job {
             String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
-            utils.startProcess(startCommand, scDir);
+            utils.startProcess(startCommand, scDir, true);
         }
 
     }
@@ -92,7 +92,7 @@ public class NTPWatchJob implements Job {
             String startCommandDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
             File scDir = new File(startCommandDir);
 
-            utils.startProcess(startCommand, scDir);
+            utils.startProcess(startCommand, scDir, true);
         }
 
 

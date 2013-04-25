@@ -15,6 +15,7 @@
     <property name="version" value="0.9"/>
     <property name="dist-root" value="dist"/>
     <property name="build-root" value="build"/>
+    <property name="build.compiler" value="modern"/>
 
 
     <!-- properties for the NTP Server (main) build ========================================= -->
@@ -61,6 +62,9 @@
         <echo message="compile - create class files:${line.separator}"/>
         <echo message="jar     - create jar files:${line.separator}"/>
         <echo message="dist    - copy dist files into pre-set directory:${line.separator}"/>
+
+        <property environment="env"/>
+        <echo message="HOME=${env.JAVA_HOME}" />
     </target>
 
     <target name="init" depends="ntp-init, monitor-init">
@@ -151,12 +155,13 @@
                 <include name="**/*.xml"/>
             </fileset>
         </copy>
-
+        <!-- Let's set our properties family. If we're building on Windows, we'll need to copy the windows proeprties file. -->
         <condition property="propertiesFamily" value="windows" else="linux">
             <and>
                 <os family="windows"/>
             </and>
         </condition>
+
         <copy file="${ntp-src-properties}/main-${propertiesFamily}.properties"
               tofile="${ntp-dist-root}/properties/main.properties"/>
 
@@ -175,6 +180,12 @@
                 <include name="**/*"/>
             </fileset>
         </copy>
+        <!-- look for the deployed main.properties file and add the app.version to it. -->
+        <propertyfile
+                file="${ntp-dist-root}/properties/main.properties">
+            <entry key="app.version" value="${deploy.version}"/>
+        </propertyfile>
+
 	    <chmod type="file" perm="ugo+rx">
 			<fileset dir="${ntp-dist-root}">
 				<include name="**/*.sh"/>
@@ -203,6 +214,7 @@
 
     <target name="monitor-compile" depends="monitor-init" description="compile the source ">
         <!-- Compile the java code from ${src} into ${build} -->
+        <echo message="Build.compiler=${build.compiler}"/>
         <javac srcdir="${monitor-src-java}" destdir="${monitor-build-dir}" debug="true">
             <classpath>
                 <!-- include any jars from lib. -->

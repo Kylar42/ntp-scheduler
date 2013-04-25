@@ -1,6 +1,7 @@
 package edu.wvup.monitor.os;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
@@ -69,13 +70,16 @@ class WindowsUtils implements OSUtils{
     }
 
     @Override
-    public Process startProcess(String command, File workingDirectory) {
+    public Process startProcess(String command, File workingDirectory, boolean modIfNecessary) {
         Process toReturn = null;
         //File out = new File(workingDirectory, "monitor-output.log");
         //File err = new File(workingDirectory, "monitor-error.log");
 
 
         File fullFile = new File(workingDirectory, command);
+
+
+
         //String fullExec = "cmd /c start "+fullFile.getAbsolutePath();
         ProcessBuilder builder = new ProcessBuilder("cmd", "/c", "start", fullFile.getAbsolutePath());
 

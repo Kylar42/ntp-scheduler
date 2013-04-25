@@ -28,7 +28,7 @@ public class Monitor {
             // and start it off
             scheduler.start();
 
-            //NTPWatchJob.scheduleNTPWatchJob();
+            NTPWatchJob.scheduleNTPWatchJob();
             NTPUpdaterJob.scheduleNTPUpdateJob();
         } catch (SchedulerException se) {
             se.printStackTrace();
@@ -45,7 +45,8 @@ public class Monitor {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
+        Thread.sleep(5000);
         new Monitor(args);
     }
 }

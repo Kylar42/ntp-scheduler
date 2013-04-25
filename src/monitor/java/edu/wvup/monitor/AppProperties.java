@@ -58,7 +58,7 @@ public class AppProperties {
         }
     }
 
-    public long getPropertyAsInt(String key, int defaultValue){
+    public int getPropertyAsInt(String key, int defaultValue){
         String val = findProperty(key);
 
         try{

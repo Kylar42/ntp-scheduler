@@ -4,21 +4,27 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
  */
-class LinuxUtils implements OSUtils{
+class LinuxUtils implements OSUtils {
+
+    private final Set<PosixFilePermission> executeSet = PosixFilePermissions.fromString("rwxr-xr-x");
 
     @Override
     public OSType getType() {
-       return OSType.Linux;
+        return OSType.Linux;
     }
 
-    public List<ProcessInfo> listRunningJavaProcesses(){
+    public List<ProcessInfo> listRunningJavaProcesses() {
         ArrayList<ProcessInfo> toReturn = new ArrayList<ProcessInfo>();
         try {
             String line;
@@ -31,15 +37,14 @@ class LinuxUtils implements OSUtils{
 
                     // keep only the process name
                     String owner = line.substring(0, 15);//don't need this, will remove.
-                    String pid = line.substring(15,21).trim();
+                    String pid = line.substring(15, 21).trim();
                     String processName = line.substring(77);
                     toReturn.add(new ProcessInfo(processName, pid));
                 }
 
             }
             input.close();
-        }
-        catch (Exception err) {
+        } catch (Exception err) {
             err.printStackTrace();
         }
         return toReturn;
@@ -47,20 +52,17 @@ class LinuxUtils implements OSUtils{
 
     @Override
     public void stopProcess(ProcessInfo processInfo) {
-        String killCmd = "kill -9 "+processInfo.getPid();
+        String killCmd = "kill -9 " + processInfo.getPid();
 
-        try
-        {
+        try {
             Runtime.getRuntime().exec(killCmd);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
-    public Process startProcess(String command, File workingDirectory) {
+    public Process startProcess(String command, File workingDirectory, boolean modIfNecessary) {
 
         File fullFile = new File(workingDirectory, command);
         ProcessBuilder builder = new ProcessBuilder(fullFile.getAbsolutePath(), "&");
@@ -68,17 +70,19 @@ class LinuxUtils implements OSUtils{
         //File out = new File("/tmp/monitor-output.log");
         //File err = new File("/tmp/monitor-error.log");
 
-        try
-        {
+        try {
+            if (!Files.isExecutable(fullFile.toPath()) && modIfNecessary) {
+                Files.setPosixFilePermissions(fullFile.toPath(), executeSet);
+            }
+
+
             builder.directory(workingDirectory);
 
             //builder.redirectErrorStream();
             //builder.redirectError(err);
             //builder.redirectOutput(out);
             toReturn = builder.start();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return toReturn;

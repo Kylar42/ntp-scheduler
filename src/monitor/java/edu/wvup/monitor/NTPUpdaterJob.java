@@ -4,6 +4,7 @@ import edu.wvup.monitor.manifest.Manifest;
 import edu.wvup.monitor.manifest.ManifestConstants;
 import edu.wvup.monitor.manifest.ManifestDownloader;
 import edu.wvup.monitor.manifest.ManifestParser;
+import edu.wvup.monitor.manifest.Updater;
 import edu.wvup.monitor.os.OSUtils;
 import edu.wvup.monitor.os.ProcessInfo;
 import net.minidev.json.JSONObject;
@@ -24,6 +25,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -49,7 +51,8 @@ public class NTPUpdaterJob implements Job {
             if (null != contentType && contentType.contains("application/json")) {
                 JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
                 JSONObject object = (JSONObject) parser.parse(urlConnection.getInputStream());
-                final Object version = object.get("version");
+                final Object version = object.get("app.version");
+                return null == version ? "0" : version.toString();
             }
         } catch (Throwable e) {
             LOG.error("Unable to fetch data. Is the app running?", e);
@@ -84,13 +87,9 @@ public class NTPUpdaterJob implements Job {
         //see if it's running.
         final List<ProcessInfo> strings = utils.listRunningJavaProcesses();
         ProcessInfo ntpProcess = findProcess(ntpProcessString, strings);
-
         if (null != ntpProcess) {
-            AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
             String currentVersionStr = getRunningNTPVersion();
-
             Manifest manifest = getNewNTPVersion();
-
             if (null == manifest) {
                 //something bad happened, but we should have logged it already.
                 return;
@@ -114,24 +113,79 @@ public class NTPUpdaterJob implements Job {
                 return;//we're up to date.
             }
             //If we get here, we need to actually update
+            AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, true);
+            try {
 
-            stopAllNTPServerProcesses(utils, ntpProcessString);
+                doUpdate(context, manifest);
 
-            doUpdate(context, manifest);
 
-            AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
-            //didn't find it. Start it up.
-            String startCommand = context.getMergedJobDataMap().getString("start.command");
-            String startCommandDir = context.getMergedJobDataMap().getString("start.command.dir");
-            File scDir = new File(startCommandDir);
-
-            utils.startProcess(startCommand, scDir);
+            } finally {
+                AppProperties.APP_PROPERTIES.setPropertyAsBoolean(ManifestConstants.UPDATING, false);
+            }
         }
 
 
     }
 
-    private boolean stopAllNTPServerProcesses(OSUtils osUtils, String uniqueProcessName) {
+
+
+
+    private void doUpdate(JobExecutionContext context, Manifest manifest) {
+        //Ok, we have the manifest and we know what to do.
+        final String ntpRunningDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
+        final String ntpProcessString = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_UNIQUE_STRING, "NTPAppServer");
+
+        File runningDir = new File(".");
+        String newDirName = new StringBuilder("manifest-download-").append(manifest.getVersion()).append("-").append(manifest.getGuid()).toString();
+        File newDir = new File(runningDir, newDirName);
+
+        ManifestDownloader downloader = new ManifestDownloader(manifest, newDir);
+        boolean successful = downloader.performDownload();
+        if (successful) {
+            File stagingDir = downloader.getStagingDirectory();
+            stopAllNTPServerProcesses(ntpProcessString);
+            try{
+                Updater updater = new Updater(stagingDir, new File(ntpRunningDir));
+                updater.performUpdate();
+            }catch(Throwable t){
+                t.printStackTrace();
+                //Ok, if we got here on an uncaught exception, something went wrong, and it's possible that we didn't copy all the files, or left things in a corrupt state.
+                //this is probably our worst possible scenario. We need to pop up a modal alert so that someone can see it.
+                LOG.error("Worst possible thing happened. Contact the system administrator or Tom Byrne at kylar42@gmail.com.");
+                JOptionPane.showMessageDialog(null, "Fatal Error occurred during update. Contact Tom Byrne immediately!", "Fatal Update Error", JOptionPane.ERROR_MESSAGE);
+            }finally{
+                startNTPProcess(context);//we want to re-start, almost for sure.
+            }
+
+        }
+
+    }
+
+
+
+
+    //---------------------------------------------------------------Utility Methods for starting and stopping the NTPServer
+
+    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos) {
+        for (ProcessInfo pi : infos) {
+            if (pi.getProcessName().contains(uniqueProcessString)) {
+                return pi;
+            }
+        }
+        return null;
+    }
+
+    private void startNTPProcess(JobExecutionContext context) {
+        OSUtils utils = OSUtils.OSUtilsCreator.createOSUtils();
+        String startCommand = context.getMergedJobDataMap().getString("start.command");
+        String startCommandDir = context.getMergedJobDataMap().getString("start.command.dir");
+        File scDir = new File(startCommandDir);
+
+        utils.startProcess(startCommand, scDir, true);
+    }
+
+    private boolean stopAllNTPServerProcesses(String uniqueProcessName) {
+        OSUtils osUtils = OSUtils.OSUtilsCreator.createOSUtils();
         List<ProcessInfo> processes = osUtils.listRunningJavaProcesses();
         ProcessInfo currentProcess = findProcess(uniqueProcessName, processes);
         int safetyCounter = 0;
@@ -143,42 +197,22 @@ public class NTPUpdaterJob implements Job {
             currentProcess = findProcess(uniqueProcessName, processes);
             safetyCounter++;
         }
-
         return (safetyCounter < 10);//if we looped through in less than 10, we exited because there were no more running processes.
 
     }
 
 
-    private void doUpdate(JobExecutionContext context, Manifest manifest) {
-        //Ok, we have the manifest and we know what to do.
-        //we're going to create a temporary directory where we are running, called "manifest-update-version-guid"
-        String ntpRunningDir = AppProperties.APP_PROPERTIES.getProperty(MonitorProperties.NTP_START_DIRECTORY);
-        File runningDir = new File(".");
-        String newDirName = new StringBuilder("manifest-download-").append(manifest.getVersion()).append("-").append(manifest.getGuid()).toString();
-        File newDir = new File(runningDir, newDirName);
-
-        ManifestDownloader downloader = new ManifestDownloader(manifest, newDir);
-        downloader.run();
-    }
-
-    private ProcessInfo findProcess(String uniqueProcessString, List<ProcessInfo> infos) {
-        for (ProcessInfo pi : infos) {
-            if (pi.getProcessName().contains(uniqueProcessString)) {
-                return pi;
-            }
-        }
-
-        return null;
-    }
-
-
+    //----------------------------------------------------------------------------------Static method, called to set up the job.
     public static void scheduleNTPUpdateJob() throws SchedulerException {
+        OSUtils osUtils = OSUtils.OSUtilsCreator.createOSUtils();
         String serverWatchJobName = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.name", "serverUpdater");
         String serverWatchJobGroup = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.group", "serverUpdaterGroup");
         String serverWatchJobTriggerName = AppProperties.APP_PROPERTIES.getProperty("serverupdate.job.trigger.name", "serverWatchTrigger");
 
-        final String startCommand = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command", "command.sh");
-        final String startCommandDir = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command.dir", "..");
+        final String startCommand = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command."+osUtils.getType().toString(), "command.sh");
+        final String startCommandDir = AppProperties.APP_PROPERTIES.getProperty("ntpserver.command.dir", "../ntp-server");
+
+        final int intervalForUpdateJob = AppProperties.APP_PROPERTIES.getPropertyAsInt("ntpserver.update.interval.inminutes", 1);
 
         JobDetail job = JobBuilder.newJob(NTPUpdaterJob.class).withIdentity(serverWatchJobName, serverWatchJobName).build();
 

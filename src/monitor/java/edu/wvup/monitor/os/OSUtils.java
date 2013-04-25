@@ -18,7 +18,7 @@ public interface OSUtils {
 
     public List<ProcessInfo> listRunningJavaProcesses();
 
-    public Process startProcess(String command, File directory);
+    public Process startProcess(String command, File directory, boolean chmodIfNecessary);
 
     public void stopProcess(ProcessInfo processInfo);
 

@@ -55,7 +55,7 @@ public class UnauthorizedGetMethod extends GetMethod{
     private JSONObject createInfoObject(){
         JSONObject toReturn = new JSONObject();
         String version = NTPAppServer.getInstance().getAppProperties().getProperty("app.version", "-1");
-        toReturn.put("version", version);
+        toReturn.put("app.version", version);
         toReturn.put("application", "NTPAppServer");
         long upTime = System.currentTimeMillis() - NTPAppServer.getInstance().getAppProperties().getPropertyAsLong("start.time", 0);
 
