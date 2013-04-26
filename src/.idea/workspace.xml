@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e81a678-aadd-4c4a-9bb7-da3cad07f8f0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/json-path-0.8.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/resources/log4jdbc4-1.2.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../project-docs/deliverables/Final Project Paper.pages" afterPath="$PROJECT_DIR$/../project-docs/deliverables/Final Project Paper.pages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" afterPath="$PROJECT_DIR$/main/java/edu/wvup/cs460/db/DBSetup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestGenerator.java" afterPath="$PROJECT_DIR$/monitor/java/edu/wvup/monitor/manifest/ManifestGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../deploy.properties" afterPath="$PROJECT_DIR$/../deploy.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ntp-scheduler.iml" afterPath="$PROJECT_DIR$/ntp-scheduler.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor/.idea/workspace.xml" afterPath="$PROJECT_DIR$/monitor/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../README.md" afterPath="$PROJECT_DIR$/../README.md" />
     </list>
     <ignored path="ntp-scheduler.iws" />
     <ignored path=".idea/workspace.xml" />
