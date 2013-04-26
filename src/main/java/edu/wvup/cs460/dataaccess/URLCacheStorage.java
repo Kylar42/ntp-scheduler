@@ -17,6 +17,8 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Impl of StorageInstance for our URLCache table. This is currently used, but doesn't work due
+ * to the way WVUP is re-doing the HTML every 5 minutes. Snarfblatt.
  */
 public class URLCacheStorage implements DataStorage.StorageInstance<Tuple<String, String>> {
 

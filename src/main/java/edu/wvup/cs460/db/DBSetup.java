@@ -12,16 +12,20 @@ import java.sql.SQLException;
 
 /**
  * User: Tom Byrne(kylar42@gmail.com)
+ * "If I cannot see, it is because I am being stood upon by giants."
+ *
+ * This is the main class that will do all the database setup, all it needs is the database to be installed, and the username and password of the admin user.
+ *
  */
 public class DBSetup {
-    
-    //private static final DBSetup INSTANCE = new DBSetup();
 
+    private static final Logger LOG = LoggerFactory.getLogger(DBSetup.class);
+
+    //=========================================================Data Members
     private final DBContext         _context;
     private final ConnectionPool    _connectionPool;
     private final DBSetupSQLStrings _sqlStrings;
 
-    private static final Logger LOG = LoggerFactory.getLogger(DBSetup.class);
 
     private DBSetup(AppProperties props){
         _context = new DBContext(props);
@@ -34,7 +38,11 @@ public class DBSetup {
         return _context;
     }
 
+    //=========================================================
 
+    /**
+     * This method creates the db for all our tables.
+     */
     public void createOrSetupDB(){
         LOG.info("Attempting to create DB");
         Connection myConnection = _connectionPool.getRootConnection();
@@ -48,6 +56,11 @@ public class DBSetup {
             _connectionPool.returnRootConnection(myConnection);
         }
     }
+
+    /**
+     * This method will drop our read/write user.
+     * Used in testing.
+     */
     public void dropUser(){
         Connection myConnection =  _connectionPool.getRootConnection();
         try{
@@ -60,6 +73,10 @@ public class DBSetup {
             _connectionPool.returnRootConnection(myConnection);
         }
     }
+
+    /**
+     * Create our application's Read/write user.
+     */
     public void createUser(){
         Connection myConnection =  _connectionPool.getRootConnection();
         try{
@@ -75,8 +92,10 @@ public class DBSetup {
             _connectionPool.returnRootConnection(myConnection);
         }
     }
-    
 
+    /**
+     * Create all the appropriate tables for our application.
+     */
     public void createOrSetupTables(){
         Connection myConnection =  _connectionPool.getConnection();
         try{
@@ -102,6 +121,9 @@ public class DBSetup {
         }
     }
 
+    /**
+     * Seed base info for each table we created.
+     */
     public void seedVersionsTable(){
         DataStorage storage = new DataStorage(_context);
         for(String tableName : DBSetupSQLStrings.DATABASE_TABLES){
@@ -109,6 +131,10 @@ public class DBSetup {
         }
     }
 
+    /**
+     * Drop the db and all associated tables.
+     * Used for testing. BEWARE THIS METHOD!
+     */
     public void dropDB(){
         Connection myConnection =  _connectionPool.getRootConnection();
         try{
@@ -122,6 +148,11 @@ public class DBSetup {
         }
     }
 
+    /**
+     * Entry point for database setup. Note that the drop statements are commented out. Don't uncomment them
+     * unless you want a full reset of everything.
+     * @param args
+     */
     public static void main(String[] args) {
         AppProperties props = new AppProperties();
         props.initPropertiesFromCommandLine(args);

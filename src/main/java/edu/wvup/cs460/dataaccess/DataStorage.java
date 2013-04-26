@@ -20,12 +20,20 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This class is the main entry point for all Database operations.
+ * Requests for StorageInstance implementations come here, and the appropriate
+ * Implementation is returned.
  */
 public class DataStorage {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataStorage.class);
 
-    //------------------------------------------------------------------generic
+    //------------------------------------------------------------------generic storage
+
+    /**
+     * Generic interface that defines the API all our implementations will presenbt.
+     * @param <T>
+     */
     public interface StorageInstance<T>{
         boolean insert(T object);
         boolean update(T object);
@@ -34,7 +42,7 @@ public class DataStorage {
         List<T> retrieveList(Object context);
     }
 
-    //------------------------------------------------------------------delegates
+    //------------------------------------------------------------------
 
     private ConnectionPool          _sharedPool;
 
@@ -73,7 +81,8 @@ public class DataStorage {
     public StorageInstance<Tuple<String, Integer>> tableVersionStorage(){
         return _tableVersionsStorage;
     }
-
+    // I took out the code that uses the user table, but I'm leaving it in
+    // since it's forseeable that we could use it.
     public StorageInstance<Tuple<String, String>> userStorage(){
         return _userStorage;
     }

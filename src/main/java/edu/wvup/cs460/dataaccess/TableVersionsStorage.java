@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Implementation of StorageInstance for our table versioning table.
+ *
  */
 public class TableVersionsStorage implements DataStorage.StorageInstance<Tuple<String, Integer>> {
 

@@ -25,6 +25,7 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Content handler for class lists. Can retrieve a class list from the UI form.
  */
 public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
 
@@ -45,6 +46,13 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         }
     }
 
+
+    /**
+     * Take the passed in JSON, query the database for the matching list of classes. Format them and write them back to the client.
+     *
+     * @param respWrapper
+     * @param parsedJson
+     */
     private void doClassSearch(ResponseWrapper respWrapper, Object parsedJson) {
         Map<String, String> values = new HashMap<String, String>();
 
@@ -72,6 +80,8 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
     }
 
     /**
+     * This constructs an HTML table from the list of courses retrieved from the DB.
+     *
      * course_instance.crn, course_instance.type, course_instance.subject, course_instance.course_number,
      * course_instance.course_title, course_instance.credits, course_instance.days, course_instance.time,
      * course_instance.instructor, course_instance.room, course_instance.start_date, course_instance.end_date,
@@ -85,9 +95,9 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         if(null == courses || courses.isEmpty()){
             return "No Results Found";
         }
-        Collections.sort(courses);
+        Collections.sort(courses);// so they're listed alphabetically by height.
         StringBuilder sb = new StringBuilder();
-        sb.append("\t\t<form method=\"post\" action=\"\" id=\"class-update\">\n");
+        //sb.append("\t\t<form method=\"post\" action=\"\" id=\"class-update\">\n");
         sb.append("<table id=\"gen-table\">");
         sb.append("<thead>");
         sb.append("<th scope=\"col\">CRN</th>");
@@ -133,6 +143,11 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         return sb.toString();
     }
 
+    /**
+     * Convenience Method to format a date.
+     * @param date
+     * @return
+     */
     private String getFormattedDate(Date date){
         if(null == date){
             return "";
@@ -140,6 +155,12 @@ public class ClassListHandler implements ContentHandlerFactory.ContentHandler {
         SimpleDateFormat format = new SimpleDateFormat(StringUtils.TABLE_DATE_OUTPUT_STRING);
         return format.format(date);
     }
+
+    /**
+     * Convenience method to format the term-string from the course instance.
+     * @param termString
+     * @return
+     */
     private String getFormattedTermString(String termString){
         if(null == termString || -1 == termString.indexOf("(")){
             return "";

@@ -14,14 +14,18 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @Author Tom Byrne kylar42@gmail.com
  * "Code early, Code often."
+ * Class for dealing with all aspects of HTTP cookies.
  */
 public class CookieHandler {
     private static Logger LOG = LoggerFactory.getLogger(CookieHandler.class);
+
+    //========================================================================
+
     private static final String COOKIE_VERSION = "NTP1";
     private static final ConcurrentHashMap<String, String> COOKIE_CACHE = new ConcurrentHashMap<String, String>(4096);//hold 4K cookies. Can't imagine going bigger than that with expiration. famous last words.
 
     /**
-     * This can only return one item: A real authentication context usable for this request
+     * This can only return one item: A real authentication context usable for this request. Will throw otherwise.
      *
      * @param cookieKey
      * @return The found and decoded authentication context.
@@ -42,12 +46,23 @@ public class CookieHandler {
         return authenticationContext;
     }
 
-
+    /**
+     * Find this cookie in the cache and remove it.
+     * @param cookieKey
+     * @return
+     */
     public boolean dropCookieFromCache(String cookieKey){
         final String remove = COOKIE_CACHE.remove(cookieKey);
         return null != remove;//true if there was something there.
     }
 
+    /**
+     * Helper method to encode an authenticationcontext into a string value for a cookie.
+     * @param context
+     * @param goodForInMillis
+     * @param ipAddr
+     * @return
+     */
     private static String encodeCookieValue(AuthenticationContext context, long goodForInMillis, String ipAddr) {
         StringBuilder sb = new StringBuilder();
         long expiresAt = System.currentTimeMillis() + goodForInMillis;
@@ -65,6 +80,11 @@ public class CookieHandler {
         return new String(Base64.encodeBase64(sb.toString().getBytes()));
     }
 
+    /**
+     * Helper method to do URLEncoding
+     * @param value
+     * @return
+     */
     private static String urlEncode(String value) {
         if (null == value || value.isEmpty()) {
             return "";
@@ -77,6 +97,11 @@ public class CookieHandler {
         }
     }
 
+    /**
+     * Helper method to do URLDecoding
+     * @param value
+     * @return
+     */
     private static String urlDecode(String value) {
         if (null == value || value.isEmpty()) {
             return "";
@@ -89,6 +114,12 @@ public class CookieHandler {
         }
     }
 
+    /**
+     * Decode a cookie value retrieved from the cache into an AuthenticationContext.
+     * @param encodedValue
+     * @return
+     * @throws AuthenticationException
+     */
     private AuthenticationContext decodeCookieValue(String encodedValue) throws AuthenticationException {
         if (null == encodedValue) {
             //fark.
@@ -133,6 +164,13 @@ public class CookieHandler {
         }
     }
 
+    /**
+     * Create a new cookie and store it in the cache.
+     * @param context
+     * @param expires
+     * @param ipAddr
+     * @return
+     */
     public String createAndStoreCookie(AuthenticationContext context, long expires, String ipAddr) {
         String encodedCookieValue = encodeCookieValue(context, expires, ipAddr);
         UUID uuid = UUID.randomUUID();

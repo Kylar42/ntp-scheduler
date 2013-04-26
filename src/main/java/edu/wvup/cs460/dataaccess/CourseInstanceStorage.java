@@ -18,6 +18,8 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Implementation of a StorageInstance for CourseInstance Data objects.
+ * @see edu.wvup.cs460.dataaccess.DataStorage.StorageInstance
  */
 public class CourseInstanceStorage implements DataStorage.StorageInstance<CourseInstance> {
 
@@ -186,6 +188,11 @@ public class CourseInstanceStorage implements DataStorage.StorageInstance<Course
         return toReturn;
     }
 
+    /**
+     * This is a class to create a dynamic where clause for looking up instances based on a form request from the UI.
+     * @param requests
+     * @return
+     */
     private static String whereClause(Map<String, String> requests) {
         StringBuilder toReturn = new StringBuilder();
         boolean hasStarted = false;
@@ -227,6 +234,12 @@ public class CourseInstanceStorage implements DataStorage.StorageInstance<Course
         return toReturn.toString();
     }
 
+    /**
+     * Determines if we should ignore a piece of data for our where clause.
+     * @param key
+     * @param map
+     * @return
+     */
     private static boolean shouldIgnoreForWhere(String key, Map<String, String> map) {
         if ("fullClasses".equalsIgnoreCase(key)) {
             return true;
@@ -237,38 +250,5 @@ public class CourseInstanceStorage implements DataStorage.StorageInstance<Course
         return false;
     }
 
-    private static String whereClause2(Map<String, String> requests) {
-        StringBuilder toReturn = new StringBuilder();
-        boolean hasStarted = false;
 
-        if (!requests.containsKey("fullClasses")) {
-            hasStarted = true;
-            toReturn.append(" course_instance.seats_available > 0 ");
-        }
-
-        for (String key : requests.keySet()) {   //
-            if (!"fullClasses".equalsIgnoreCase(key)) {
-                if (hasStarted) {
-                    toReturn.append(" AND ");
-                } else {
-                    hasStarted = true;
-                }
-            }
-            if (key.equals("term")) {
-                toReturn.append(" course_instance.term='").append(requests.get(key)).append("'");
-            } else if ("classname".equalsIgnoreCase(key)) {
-                toReturn.append(" lower(course_instance.subject) like lower('%").append(requests.get(key)).append("%') ");
-            } else if ("year".equalsIgnoreCase(key)) {
-                toReturn.append(" course_instance.year='").append(requests.get(key)).append("'");
-            } else if ("fullClasses".equalsIgnoreCase(key)) {
-                //do nothing.
-            } else if ("searchType".equalsIgnoreCase(key)) {
-                String value = requests.get(key);
-                toReturn.append(" course_meta.").append(value).append("=True");
-            }
-        }
-
-
-        return toReturn.toString();
-    }
 }

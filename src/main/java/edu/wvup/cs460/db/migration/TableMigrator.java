@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This is a class that will hold specific migrations for tables that require code to update.
  */
 public class TableMigrator {
 

@@ -3,6 +3,9 @@ package edu.wvup.cs460.http.authentication;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Enum stating the different types of authentication that we will accept.
+ * Note that I've included DIGEST in here, but there is no code to support it. We'll actually treat
+ * digest as unauthorized.
  */
 public enum AuthenticationTypes {
 

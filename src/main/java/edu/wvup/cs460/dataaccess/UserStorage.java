@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Impl of StorageInstance for Users. Keeping this, even though I removed the user create/update.
  */
 public class UserStorage implements DataStorage.StorageInstance<Tuple<String, String>> {
 

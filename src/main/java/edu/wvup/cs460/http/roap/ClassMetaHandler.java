@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Content handler to fetch and update CourseMetadata from the UI.
  */
 public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
 
@@ -44,14 +45,20 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         }
     }
 
+    /**
+     * Convenience method to flip set a boolean in a CourseMetadata object.
+     * TODO: See about moving this into the CourseMetadata object.
+     * @param courseMeta
+     * @param field
+     * @param newValue
+     */
     private void setCourseMeta(CourseMetadata courseMeta, String field, String newValue) {
         //assuming that newValue is going to be "on"
 
         boolean newVal = "on".equalsIgnoreCase(newValue);
         if (!newVal) {
             //bad. what do we do?
-            LOG.error("We recieved a value we didn't understand!");
-
+            LOG.error("We received a value we didn't understand!");
         }
 
         if ("isMath".equals(field)) {
@@ -71,10 +78,20 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         }
     }
 
+    /**
+     * Convenience method to write auth exception.
+     * @param responseWrapper
+     */
     private void writeAuthenticationError(ResponseWrapper responseWrapper){
         responseWrapper.writeResponse(HttpResponseStatus.OK, "<p>You do not have the proper credentials to perform this operation.<p>", MimeType.TEXT_HTML);
     }
 
+    /**
+     * This gets called whem the client submits the form to update Metadata objects. We need to organize them and update the DB.
+     * @param respWrapper
+     * @param parsedJson
+     * @param context
+     */
     private void doClassMetaUpdate(ResponseWrapper respWrapper, Object parsedJson, MethodContext context) {
         //here we're checking to see if this is a valid principal.
 
@@ -106,7 +123,7 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
                 }
             }
 
-
+            //Iterate through the set of subjects, and update the database with our CourseMetadata objects.
             for (String subject : courseMetaMap.keySet()) {
                 final Map<String, CourseMetadata> subjectMap = courseMetaMap.get(subject);
                 for (CourseMetadata courseMeta : subjectMap.values()) {
@@ -114,12 +131,19 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
                 }
             }
 
-
+            //write a simple response back so the client knows we were successful.
             respWrapper.writeResponse(HttpResponseStatus.OK, "<p>Updated<p>", MimeType.TEXT_HTML);
 
         }
     }
 
+    /**
+     * Retrieve a CourseMetadata object from our map of maps, given a subject and class number.
+     * @param subject
+     * @param classNumber
+     * @param courseMetaMap
+     * @return
+     */
     private CourseMetadata courseForClass(String subject, String classNumber, Map<String, Map<String, CourseMetadata>> courseMetaMap) {
         CourseMetadata toReturn;
         //see if the class exists first.
@@ -142,6 +166,12 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         return toReturn;
     }
 
+    /**
+     * Called when the UI attempts to get a list of CourseMetadata objects to update. Search the DB, then create a dynamic form to return.
+     * @param respWrapper
+     * @param parsedJson
+     * @param context
+     */
     private void doClassSearch(ResponseWrapper respWrapper, Object parsedJson, MethodContext context) {
 
         //here we're checking to see if this is a valid principal.
@@ -175,6 +205,12 @@ public class ClassMetaHandler implements ContentHandlerFactory.ContentHandler {
         }
     }
 
+    /**
+     * Create a dynamic HTML form that embeds the coursemeta information, so that when it's re-submitted, we can easily
+     * parse out the info.
+     * @param courses
+     * @return
+     */
     private String constructDynamicFormFromCourseMeta(List<CourseMetadata> courses) {
         Collections.sort(courses);
         StringBuilder sb = new StringBuilder();

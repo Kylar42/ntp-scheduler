@@ -5,6 +5,7 @@ import java.util.Date;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Data Object that represents a course instance.
  */
 public class CourseInstance implements Comparable<CourseInstance>{
     private final String _crn;

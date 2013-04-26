@@ -5,6 +5,8 @@ import edu.wvup.cs460.util.StringUtils;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Data object that represents Metadata about a Course.
+ *
  */
 public final class CourseMetadata implements Comparable<CourseMetadata> {
 

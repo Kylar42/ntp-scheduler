@@ -3,6 +3,7 @@ package edu.wvup.cs460.db;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Constant Strings for our database setup.
  */
 final class DBSetupSQLStrings {
     final String DB_CREATE;// = "CREATE DATABASE "+ DBContext.dbName+";";

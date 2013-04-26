@@ -3,6 +3,7 @@ package edu.wvup.cs460.action;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This enum represents the result of a call in a chain. It has two major portions: Success/Failure, and Continue/Do Not Continue.
  */
 public enum ChainStatus {
 

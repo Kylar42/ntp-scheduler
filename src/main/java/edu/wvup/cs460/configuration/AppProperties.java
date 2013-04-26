@@ -12,17 +12,24 @@ import java.util.Properties;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * A class that holds all of the properties for an application, and provides a single entry point for
+ * property retrieval.
  */
 public class AppProperties {
 
+    private static final Logger LOG = LoggerFactory.getLogger(AppProperties.class);
 
+    //This will be the properties object that holds all the accumulated properties.
     private Properties mergedProperties = new Properties();
-    private Logger LOG = LoggerFactory.getLogger(AppProperties.class);
 
     public AppProperties(){
 
     }
 
+    /**
+     * Add all properties from the passed in object to our AppProperties.
+     * @param p
+     */
     /* friendly */ void mergeProperties(Properties p){
         //Iterate to enforce string
         for(String key : p.stringPropertyNames()){
@@ -77,9 +84,17 @@ public class AppProperties {
     public void setProperty(String key, String value){
         mergedProperties.setProperty(key, value);
     }
+
     public void remove(String key){
         mergedProperties.remove(key);
     }
+
+    /**
+     * This will take in the properties from the command line, as passed into a main method, and
+     * do two things: Add any properties to our properties object, and look for a main properties file definition, and
+     * load that file, if found.
+     * @param args
+     */
     public void initPropertiesFromCommandLine(String[] args){
         //look for properties
         Properties cliProps = PropertiesHelper.parsePropsFromCommandLine(args);

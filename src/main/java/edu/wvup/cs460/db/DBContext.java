@@ -7,6 +7,7 @@ import java.util.Properties;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * A contextual object that creates a set of constants for DB Access from passed in properties.
  */
 public class DBContext {
     final String DB_ROOT_URL;

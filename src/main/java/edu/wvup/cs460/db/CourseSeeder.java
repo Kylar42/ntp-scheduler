@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This is the entry point for parsing and inserting all the courses into the database.
  */
 public class CourseSeeder {
 
@@ -40,6 +41,7 @@ public class CourseSeeder {
         }
     }
 
+    // Convenience method to update mod dates/md5's of imported HTML.
     private void writeModDates(DataStorage storageInstance, List<CourseImportContext> contexts) {
         for (CourseImportContext context : contexts) {
             Tuple<String, String> lastModData = new Tuple<String, String>(context.getPath(), context.getContentMD5());

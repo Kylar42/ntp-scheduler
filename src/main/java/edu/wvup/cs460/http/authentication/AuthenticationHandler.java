@@ -13,12 +13,18 @@ import java.util.Set;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Handler that performs cookie lookup and does authentication.
  */
 public class AuthenticationHandler {
 
     private CookieHandler _cookieHandler = new CookieHandler();//only one instance, since AuthenticationHandler should only exist in one place.
 
+    //========================================================================
 
+    /**
+     * Take all NTP cookies from this set of headers and drop them from our cache.
+     * @param headers
+     */
     public void removeAllCookiesFromCache(List<Map.Entry<String, String>> headers){
         if(null == headers){
             return;//my work here is done.
@@ -36,6 +42,12 @@ public class AuthenticationHandler {
         }
     }
 
+    /**
+     * Search the set of headers and find our NTP cookie. Then look it up in our cache
+     * and return the proper principal.
+     * @param headers
+     * @return
+     */
     public Principal authenticateFromCookie(List<Map.Entry<String, String>> headers) {
         //look for a cookie.
         //TODO: Handle multiple cookies.
@@ -92,6 +104,12 @@ public class AuthenticationHandler {
         return Principal.UNAUTHORIZED;
     }
 
+    /**
+     * Convenience method to get a set of headers from the list.
+     * @param headerName
+     * @param headers
+     * @return
+     */
     private Collection<String> headersFromList(HeaderNames headerName, List<Map.Entry<String, String>> headers) {
         ArrayList<String> toReturn = new ArrayList<String>();
         for (Map.Entry<String, String> header : headers) {
@@ -103,6 +121,12 @@ public class AuthenticationHandler {
         return toReturn;
     }
 
+    /**
+     * Convenience method to get the first header with a specific name from all headers.
+     * @param headerName
+     * @param headers
+     * @return
+     */
     private String firstInList(HeaderNames headerName, List<Map.Entry<String, String>> headers) {
         for (Map.Entry<String, String> header : headers) {
             if (headerName.getFormattedValue().equals(header.getKey())) {

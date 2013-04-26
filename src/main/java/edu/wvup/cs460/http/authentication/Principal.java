@@ -3,6 +3,7 @@ package edu.wvup.cs460.http.authentication;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This represents a user's abilites (roles) in the system.
  */
 public class Principal {
 

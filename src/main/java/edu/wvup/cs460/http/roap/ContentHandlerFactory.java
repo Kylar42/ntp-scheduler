@@ -9,6 +9,7 @@ import org.jboss.netty.handler.codec.http.HttpMethod;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Factory to return the proper ContentHandler, based on the URI and request.
  */
 public class ContentHandlerFactory {
 
@@ -47,6 +48,9 @@ public class ContentHandlerFactory {
     }
 
 
+    /**
+     * Our default handler.
+     */
     public static class UnknownContentHandler implements ContentHandler {
         @Override
         public void handleContent(ResponseWrapper responseWrapper, Object content, MethodContext context) {

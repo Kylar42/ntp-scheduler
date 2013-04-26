@@ -6,10 +6,10 @@ import edu.wvup.cs460.util.StringUtils;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Helper method to parse out an AuthenticationContext from a HTTP Authorization: header.
+ * This was used when we accepted Basic auth, but I've temporarily removed that ability.
  */
 public class AuthHeaderParser {
-
-
 
     public AuthenticationContext parse(String header){
         //should start with "basic"

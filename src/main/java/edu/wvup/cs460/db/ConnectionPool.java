@@ -1,6 +1,5 @@
 package edu.wvup.cs460.db;
 
-import edu.wvup.cs460.configuration.AppProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,33 +7,47 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * @user Tom Byrne (kylar42@gmail.com)
+ * "If I cannot see, it is because I am being stood upon by giants."
+ *
+ * This is a ConnectionPool implemetation. It is thread-safe, and bounded, and calls to
+ * get a connection will block until a connection is available.
  */
 
 public class ConnectionPool {
 
     private final static Logger LOG = LoggerFactory.getLogger(ConnectionPool.class);
 
-
+    //==========================================================================================
+    //Data Members
     private final int _maxConnectionCount;
+
     private final ArrayBlockingQueue<Connection> ROOT_CONNECTIONS;
     private final ArrayBlockingQueue<Connection> NORMAL_CONNECTIONS;
+
     private final AtomicInteger _normalConnectionCount = new AtomicInteger(0);//to be used to determine if we should poll or not.
     private final AtomicInteger _rootConnectionCount = new AtomicInteger(0);//to be used to determine if we should poll or not.
 
     private final DBContext _context;
 
+    //==========================================================================================
     public ConnectionPool(DBContext context){
-        _context = context;
+        _context            = context;
         _maxConnectionCount = context.CONNECTION_POOL_MAX_SIZE;
-        ROOT_CONNECTIONS = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
-        NORMAL_CONNECTIONS = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
+
+        ROOT_CONNECTIONS    = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
+        NORMAL_CONNECTIONS  = new ArrayBlockingQueue<Connection>(_maxConnectionCount);
     }
 
-    /** I am going to make this just create a new one for now. */
+    /**
+     * This is a synchronized call to get a standard connection, and by using the take() method of the
+     * BlockingQueue, it will block until a connection is available.
+     * If a connection is requested, and one does not exist, and we have created less than the max, we'll create a new one.
+     * @return A connection for DB operations.
+     */
     public synchronized Connection getConnection(){
         if(null == NORMAL_CONNECTIONS.peek() && _normalConnectionCount.get() < _maxConnectionCount){
             _normalConnectionCount.getAndIncrement();
@@ -49,7 +62,11 @@ public class ConnectionPool {
         }
 
     }
-    
+
+    /**
+     * Create a standard DBConnection, using our readwrite user.
+     * @return
+     */
     private Connection newDefaultConnection(){
         try {
             Class.forName(_context.DB_CLASS);
@@ -64,6 +81,10 @@ public class ConnectionPool {
         return null;
     }
 
+    /**
+     * Create a new connection to the DB using our root user and password.
+     * @return
+     */
     private Connection newRootConnection(){
         try {
             Class.forName(_context.DB_CLASS);
@@ -77,6 +98,14 @@ public class ConnectionPool {
         }
         return null;
     }
+    /**
+     * This is a synchronized call to get a root connection, and by using the take() method of the
+     * BlockingQueue, it will block until a connection is available.
+     * If a connection is requested, and one does not exist, and we have created less than the max, we'll create a new one.
+     * These connections can be used to perform administration functions like creating and dropping tables and users.
+     * This is used by the DBSetup functionality.
+     * @return A connection for administrator DB operations.
+     */
 
     public Connection getRootConnection(){
         if(null == ROOT_CONNECTIONS.peek() && _rootConnectionCount.get() < _maxConnectionCount){
@@ -92,7 +121,12 @@ public class ConnectionPool {
         }
 
     }
-    
+
+    /**
+     * Non-blocking call to return a connection to the pool. If any threads are waiting for a connection, they will
+     * be immediately notified.
+     * @param c
+     */
     public void returnConnection(Connection c){
         try {
             NORMAL_CONNECTIONS.put(c);
@@ -100,6 +134,11 @@ public class ConnectionPool {
             LOG.error("Interrupted Exception occurred trying to return a connection!");
         }
     }
+    /**
+      * Non-blocking call to return a root/admin connection to the pool. If any threads are waiting for a connection, they will
+      * be immediately notified.
+      * @param c
+      */
     public void returnRootConnection(Connection c){
         try {
             ROOT_CONNECTIONS.put(c);

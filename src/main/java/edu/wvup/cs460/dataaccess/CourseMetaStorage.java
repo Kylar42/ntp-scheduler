@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Implementation of StorageInstance for CourseMetadata objects.
+ * @see edu.wvup.cs460.dataaccess.DataStorage.StorageInstance
  */
 public class CourseMetaStorage implements DataStorage.StorageInstance<CourseMetadata> {
 
