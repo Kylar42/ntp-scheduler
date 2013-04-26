@@ -18,6 +18,8 @@ import java.util.UUID;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This class will generate a manifest file that is suitable for consumption by the NTPUpdaterJob.
+ * @see edu.wvup.monitor.NTPUpdaterJob
  */
 public class ManifestGenerator {
 
@@ -25,6 +27,12 @@ public class ManifestGenerator {
 
     }
 
+    /**
+     * Main entry - will descend into this directory and create a Manifest file with entries for each subfile and subdirectory.
+     * @param directory
+     * @param urlRoot
+     * @param version
+     */
     public void generateFromDirectory(File directory, String urlRoot, int version) {
         final long manifestTime = System.currentTimeMillis();
         final Collection<File> files = recursiveFindFilesFromDir(directory);
@@ -81,6 +89,13 @@ public class ManifestGenerator {
 
     }
 
+    /**
+     * Utility method to find a relative path. A bit hacky.
+     * TODO: Replace with Path.relativize usages.
+     * @param rootDir
+     * @param newDir
+     * @return
+     */
     private String getPathRelativeTo(File rootDir, File newDir) {
         String rootDirStr = rootDir.getAbsolutePath();
         String newDirStr = newDir.getAbsolutePath();
@@ -92,6 +107,11 @@ public class ManifestGenerator {
         return newDirStr.substring(rootDirStr.length());
     }
 
+    /**
+     * Recursive method to create an aggregate of all files(but not directories) that exist in all levels below the passed-in directory.
+     * @param directory
+     * @return
+     */
     private Collection<File> recursiveFindFilesFromDir(File directory) {
         ArrayList<File> toReturn = new ArrayList<File>();
         for (File f : directory.listFiles()) {
@@ -103,6 +123,11 @@ public class ManifestGenerator {
         return toReturn;
     }
 
+    /**
+     * Main method so that this can be called via our build system.
+     * Does some basic sanity checking on the command line args, then creates our generator.
+     * @param args
+     */
     public static void main(String args[]) {
         final Properties properties = Util.parsePropsFromCommandLine(args);
         final String sourceDir = properties.getProperty("source.dir");
@@ -135,11 +160,10 @@ public class ManifestGenerator {
             System.out.println("Unable to parse version - must be an int. Please Specify -Dversion=[INTVALUE]");
             System.exit(-2);
         }
+        String urlBase = properties.getProperty("url.base", "http://localhost:8000/");
 
 
-        //Woohoo! Let's generate our "manifest".
-
-        new ManifestGenerator().generateFromDirectory(sourceDirectory, "http://localhost:8000/", newVersionInt);
+        new ManifestGenerator().generateFromDirectory(sourceDirectory, urlBase, newVersionInt);
 
     }
 }

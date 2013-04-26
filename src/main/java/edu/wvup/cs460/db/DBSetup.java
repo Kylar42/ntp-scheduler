@@ -23,10 +23,6 @@ public class DBSetup {
 
     private static final Logger LOG = LoggerFactory.getLogger(DBSetup.class);
 
-
-    //insert into course_meta (subject, course_number, humanities, natsci, socsci, math, communications, complit)"+
-    //" values (?, ?, ?, ?, ?, ?, ?, ?)";
-
     private DBSetup(AppProperties props){
         _context = new DBContext(props);
         _sqlStrings = new DBSetupSQLStrings(_context);
