@@ -17,6 +17,8 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ *
+ * This will be the base class for all our HTTP Methods.
  */
 public abstract class AbstractHttpMethod {
 
@@ -33,6 +35,12 @@ public abstract class AbstractHttpMethod {
 
     public abstract void handleRequest(RequestWrapper requestWrapper, ResponseWrapper responseWrapper);
 
+
+    /**
+     * easy implementation. If we're not authorized, send back an unauthorized response.
+     * @param responseWrapper
+     * @return
+     */
     protected ChainStatus authenticate(ResponseWrapper responseWrapper){
         //if it's unauthenticated, send back a 401.
         final Principal principal = _context.getPrincipal();
@@ -43,6 +51,11 @@ public abstract class AbstractHttpMethod {
         return ChainStatus.PASS_CONTINUE;
     }
 
+    /**
+     * A little protection against relativeURL hacks.
+     * @param url
+     * @return
+     */
     protected ChainStatus checkForRelativeSegments(String url) {
         if (null != url && url.contains(".."))
 
@@ -53,11 +66,21 @@ public abstract class AbstractHttpMethod {
         return ChainStatus.PASS_CONTINUE;
     }
 
+    /**
+     * Convenience method to get a header value.
+     * @param header
+     * @param defaultValue
+     * @return
+     */
     protected String getHeaderValue(HeaderNames header, String defaultValue) {
         final String toReturn = _context.getHeaders().get(header.getFormattedValue());
         return (null == toReturn || toReturn.isEmpty()) ? defaultValue : toReturn;
     }
 
+    /**
+     * Convenience method to get the storage service.
+     * @return
+     */
     protected DataStorage getStorageService(){
         return NTPAppServer.getInstance().getStorageService();
     }

@@ -27,6 +27,8 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This code is a big ball of suck. It does it's best to parse out CourseInstances from WVUP's web site
+ * but it's big, and it's ugly.
  */
 public class HTMLScraperImporter implements CourseImporter {
 
@@ -70,6 +72,7 @@ public class HTMLScraperImporter implements CourseImporter {
             try {
                 final HttpURLConnection httpConnection;
                 URLConnection urlConnection = url.openConnection();
+
                 //first things first - check to see if we got a 200, 304 or other.
                 if (urlConnection instanceof HttpURLConnection) {
                     httpConnection = (HttpURLConnection) urlConnection;
@@ -95,7 +98,7 @@ public class HTMLScraperImporter implements CourseImporter {
                 InputStream is = new DigestInputStream(urlConnection.getInputStream(), md);
 
 
-                //Here I need to get
+                //Here I need to read in the data from the URL.
                 BufferedReader br = new BufferedReader(new InputStreamReader(is));
                 String line = br.readLine();
                 while (line != null) {
@@ -106,13 +109,13 @@ public class HTMLScraperImporter implements CourseImporter {
                 LOG.error("Unable to properly retrieve data from URL[" + url + "] for Import");
             }
             LOG.info("Finished receiving data from:" + url);
-            //Store Date.
 
             //OK, we got the data, but let's see if it's the same as what we had last time before we go parse it.
             String newMD5 = StringUtils.toHexString(md.digest());
 
             //if there's no previous MD5, or if they're not equal, then parse away!
             if(null == lastMD5ForURL || !lastMD5ForURL.equals(newMD5)) {
+                //parse and add it to our list.
                 List<CourseInstance> parsed = parseFromHTML(builder.toString());
                 toReturn.add(new CourseImportContext(newMD5, url.toExternalForm(), parsed));
                 LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
@@ -147,6 +150,13 @@ public class HTMLScraperImporter implements CourseImporter {
         }
     }
 
+    /**
+     * Here's our huge bit of parsing code. Basically it takes the entire
+     * HTML page and goes through it piece by piece trying to find known start/end pieces for each Course.
+     * I ported this from a Python program that I had written earlier.
+     * @param htmlBody
+     * @return
+     */
     private List<CourseInstance> parseFromHTML(String htmlBody) {
         List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
         try {
@@ -156,6 +166,7 @@ public class HTMLScraperImporter implements CourseImporter {
             String courseTerm = htmlBody.substring(ndx + 17, endNdx);
             courseTerm = courseTerm.trim();
             String[] split = courseTerm.split(" ");
+
             //first is term, second is year.
             final String term = split[0];
             final String year = split[1];
@@ -179,6 +190,8 @@ public class HTMLScraperImporter implements CourseImporter {
              outputFile.close()
 
              */
+
+            //look for the start
             int startNdx = htmlBody.indexOf("<a name=\"TOP\">Main Campus\"");
             startNdx = htmlBody.indexOf("<span id=\"", startNdx);
             startNdx = htmlBody.indexOf("<tr>", startNdx);
@@ -201,12 +214,20 @@ public class HTMLScraperImporter implements CourseImporter {
                 }
             }
         } catch (Throwable t) {
+
             LOG.error("A really bad error occurred while trying to parse HTML.", t);
         }
 
         return toReturn;
     }
 
+    /**
+     * Pull apart just the class text.
+     * @param classText
+     * @param term
+     * @param year
+     * @return
+     */
     private CourseInstance pullApart(String classText, String term, String year) {
         CourseInstance toReturn = null;
         int startNdx = classText.indexOf("<tr>") + 4;
@@ -393,6 +414,11 @@ public class HTMLScraperImporter implements CourseImporter {
         return toReturn;
     }
 
+    /**
+     * Convenience method to return a short or known value if it throws.
+     * @param val
+     * @return
+     */
     private short parseShort(String val) {
         short toReturn = Short.MIN_VALUE;
         try {
@@ -401,6 +427,8 @@ public class HTMLScraperImporter implements CourseImporter {
         }
         return toReturn;
     }
+
+    // Convenience method to return a Date or new value if it can't parse.
 
     private Date parseDateFromTerm(String term) {
         if (null == term || term.isEmpty()) {
@@ -417,6 +445,11 @@ public class HTMLScraperImporter implements CourseImporter {
         return parseDate(split[1]);
     }
 
+    /**
+     * Parse the date from the known published format.
+     * @param strDate
+     * @return
+     */
     private Date parseDate(String strDate) {
         final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yy");
         try {
@@ -427,6 +460,7 @@ public class HTMLScraperImporter implements CourseImporter {
         }
     }
 
+    //these are the URL's we're going to look at.
     String[] url_list = {
             "http://www.wvup.edu/schedules/fall.htm",
             "http://www.wvup.edu/schedules/fall_jcc.htm",
@@ -436,6 +470,7 @@ public class HTMLScraperImporter implements CourseImporter {
             "http://www.wvup.edu/schedules/summer_jcc.htm",
     };
 
+    //Convenience method to get the URL's as URL objects, not as Strings.
     private List<URL> findURLs() {
         ArrayList<URL> urlList = new ArrayList<URL>();
         for (String s : url_list) {

@@ -41,6 +41,7 @@ import static org.jboss.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Wrapper for the response, including the Channel Context to write to.
  */
 public class ResponseWrapper {
 
@@ -86,26 +87,38 @@ public class ResponseWrapper {
         writeResponse(status, content.getBytes(), contentType, headers);
     }
 
+    /**
+     * Main call to write a response. It sets the content type and length,
+     * writes the content, sets the cookies.
+     *
+     * @param status
+     * @param content
+     * @param contentType
+     * @param headers
+     */
     public void writeResponse(HttpResponseStatus status, byte[] content, MimeType contentType, Map<String, String> headers) {
         // Decide whether to close the connection or not.
         boolean keepAlive = isKeepAlive(_request);
 
         // Build the response object.
         HttpResponse response = new DefaultHttpResponse(HTTP_1_1, status);
-
+        //Set the content type header
         if (null != contentType && MimeType.UNKNOWN != contentType) {
             response.setHeader(CONTENT_TYPE, contentType.formattedString());
 
         }
-
+        //set hte content length
         if(null != content){
             //response.setHeader(CONTENT_LENGTH, response.getContent().readableBytes());
             response.setHeader(CONTENT_LENGTH, content.length);
         }
+
+        //set the rest of the headers passed in.
         for (String headerName : headers.keySet()) {
             response.setHeader(headerName, headers.get(headerName));
         }
 
+        //set connection keepalive header.
         if (keepAlive) {
             // Add keep alive header as per:
             // - http://www.w3.org/Protocols/HTTP/1.1/draft-ietf-http-v11-spec-01.html#Connection
@@ -128,7 +141,7 @@ public class ResponseWrapper {
                 }
             }
         }
-
+        //Add new cookies.
         if(!_newCookies.isEmpty()){
             CookieEncoder cookieEncoder = new CookieEncoder(true);
             for (Cookie cookie : _newCookies) {
@@ -136,12 +149,6 @@ public class ResponseWrapper {
                 response.addHeader(SET_COOKIE, cookieEncoder.encode());
             }
         }
-        // Browser sent no cookie.  Add some.
-        //CookieEncoder cookieEncoder = new CookieEncoder(true);
-        //cookieEncoder.addCookie("key1", "value1");
-        //response.addHeader(SET_COOKIE, cookieEncoder.encode());
-        //cookieEncoder.addCookie("key2", "value2");
-        //response.addHeader(SET_COOKIE, cookieEncoder.encode());
 
 
         //set response.
@@ -156,7 +163,10 @@ public class ResponseWrapper {
         }
     }
 
-
+    /**
+     * Commented out on purpose. We're not allowing basic auth right now.
+     * @param realm
+     */
     public void writeUnauthorizedResponse(final String realm) {
         //redirect to login page.
         /*

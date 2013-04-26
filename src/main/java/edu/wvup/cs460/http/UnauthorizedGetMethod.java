@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This is an extention of our HTTP Get method, but allows very specific
+ * requests to be served to an unauthorized principal. This is basically our Login Page and our info request/heartbeat
+ *
  */
 public class UnauthorizedGetMethod extends GetMethod{
 
@@ -20,6 +23,13 @@ public class UnauthorizedGetMethod extends GetMethod{
         super(context);
     }
 
+    /**
+     * This is the real difference in the GET method. We're going to check to see if the request is for something in the
+     * "unauthorized" area, and if so, we're going to tell it to continue.
+     * If not, then let's redirect back to the login page.
+     * @param responseWrapper
+     * @return
+     */
     @Override
     protected final ChainStatus authenticate(ResponseWrapper responseWrapper) {
         //here we'll check that the requested URI is inside the "unauthorized" area, where we can read without any junk.
@@ -52,6 +62,11 @@ public class UnauthorizedGetMethod extends GetMethod{
         super.handleRequest(reqWrapper, respWrapper);
     }
 
+    /**
+     * We allow this to come through without any authorization so that the Monitor app can get info without needing credentials.
+     * It can also be used as a heartbeat.
+     * @return
+     */
     private JSONObject createInfoObject(){
         JSONObject toReturn = new JSONObject();
         String version = NTPAppServer.getInstance().getAppProperties().getProperty("app.version", "-1");

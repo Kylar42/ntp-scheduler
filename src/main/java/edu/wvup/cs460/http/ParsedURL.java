@@ -5,6 +5,8 @@ import edu.wvup.cs460.util.StringUtils;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * This is an object that parses the URL for contextual information. We need this for
+ * URL based REST Dispatching.
  */
 public class ParsedURL {
 
@@ -45,15 +47,13 @@ public class ParsedURL {
 
     public static final ParsedURL ROOT_URL = new ParsedURL("/");
 
-    OBJECT_TYPE _objectType;
-    ACTION_TYPE _actionType;
-    String[]     _remaining;
-    String[]       _fullURL;
+    private OBJECT_TYPE _objectType;
+    private ACTION_TYPE _actionType;
+    private String[]     _remaining;
+    private String[]       _fullURL;
 
 
     private ParsedURL(String requestURL){
-
-
 
         // /OBJECTTYPE/ACTION/other
 

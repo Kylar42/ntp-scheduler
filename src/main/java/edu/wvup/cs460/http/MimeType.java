@@ -3,6 +3,7 @@ package edu.wvup.cs460.http;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Enum for MimeTypes. We'll need these for serving up static content, or the browser won't be able to interpret it.
  */
 public enum MimeType {
 

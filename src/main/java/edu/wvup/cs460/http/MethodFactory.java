@@ -56,10 +56,7 @@ public class MethodFactory {
         if(httpRequest.getMethod().equals(HttpMethod.POST)){
             return new PostMethod(context);
         }
-        final String uri = httpRequest.getUri();
-        if(uri.startsWith("/search/")){
-            return new DynamicGetMethod(context);
-        }
+
         return new GetMethod(context);
     }
 

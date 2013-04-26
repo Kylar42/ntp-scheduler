@@ -21,6 +21,11 @@ import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 
+/**
+ * The main class and entry point of our NTP server.
+ *
+ */
+
 public class NTPAppServer {
 
 
@@ -54,6 +59,9 @@ public class NTPAppServer {
         initAppServer();
     }
 
+    /**
+     * Set up the course importer and make sure that the scheduler is running.
+     */
     private void initCourseRetrievalScheduler() {
         try {
             // Grab the Scheduler instance from the Factory
@@ -69,6 +77,10 @@ public class NTPAppServer {
         }
     }
 
+    /**
+     * Intialize our proeprties subsystem via the command line properties and the main properties file (if designated)
+     * @param args
+     */
     private void initProperties(String[] args) {
         //initialize the AppProperties
         _properties.initPropertiesFromCommandLine(args);
@@ -85,6 +97,12 @@ public class NTPAppServer {
     }
 
     //--------------------------------------------------Protected Methods
+
+    /**
+     * We're going to insist that we are run in UTF8 mode, so if they didn't set it and it's not the default,
+     * we're going to refuse to start.
+     *
+     */
     protected void checkFileEncoding() {
         //check that file encoding is set to UTF8, and blow up otherwise.
         final Charset UTF8 = Charset.forName("UTF-8");
@@ -93,12 +111,18 @@ public class NTPAppServer {
         }
     }
 
+    /**
+     * Initalize our datastorage (and connection pool).
+     */
     protected void initDataStorage() {
         DBContext context = new DBContext(_properties);
         _storageService = new DataStorage(context);
 
     }
 
+    /**
+     * Initialize the server, sockets and
+     */
     protected void initAppServer() {
         // Configure the server.
 
@@ -115,8 +139,8 @@ public class NTPAppServer {
             bootstrap.bind(new InetSocketAddress(80));
         } catch (Throwable t) {
             LOG.error("Unable to bind to port 80, falling back to 8080.");
+            bootstrap.bind(new InetSocketAddress(8080));
         }
-        bootstrap.bind(new InetSocketAddress(8080));
 
     }
 

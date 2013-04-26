@@ -49,7 +49,11 @@ public class AuthenticationMethod extends PostMethod{
         doLoginActions(respWrapper, jsonBody);
     }
 
-
+    /**
+     * Set a cookie for expiration, drop ours from the cache, send a redirect to the login page.
+     * @param reqWrapper
+     * @param respWrapper
+     */
     private void doLogoutActions(RequestWrapper reqWrapper, ResponseWrapper respWrapper){
         //we need to remove all the cookies set, set a new expired cookie, and drop any passed in cookies out of the cache.
         _handler.removeAllCookiesFromCache(reqWrapper.getRequest().getHeaders());
@@ -62,7 +66,11 @@ public class AuthenticationMethod extends PostMethod{
         return;
     }
 
-
+    /**
+     * Read the username/password out of the body, authenticate and redirect to landing page.
+     * @param respWrapper
+     * @param jsonBody
+     */
     private void doLoginActions(ResponseWrapper respWrapper, Object jsonBody) {
         if(null == jsonBody){
             sendBadRequestResponse(respWrapper, "POST Data without JSON body.");
@@ -104,6 +112,11 @@ public class AuthenticationMethod extends PostMethod{
         sendBadRequestResponse(respWrapper, "Bad Request.");
     }
 
+    /**
+     * Send back the redirect for the landing page.
+     * @param p
+     * @return
+     */
     private String getRedirectForUser(Principal p){
         //Going to do a little hack for now.
         if(Principal.READ_USER == p){

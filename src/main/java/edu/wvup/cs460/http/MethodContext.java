@@ -11,6 +11,7 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Context that a Method needs to run. Contains the URI, ParsedURL, Headers, Principal.
  */
 public class MethodContext {
 

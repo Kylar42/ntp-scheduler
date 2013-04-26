@@ -3,6 +3,7 @@ package edu.wvup.cs460.http;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Constants file to define our "Well KNown" Urls for login, logout and landing pages
  */
 public final class WellKnownURLs {
 

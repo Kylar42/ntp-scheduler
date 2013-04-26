@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * HTTP Get Method implementation. Only works for authenticated Principals.
  */
 public class GetMethod extends AbstractHttpMethod {
 
@@ -27,6 +28,13 @@ public class GetMethod extends AbstractHttpMethod {
 
     private static final File STATIC_CONTENT_ROOT = initStaticContentRoot();
 
+    //=========================================================================
+
+    /**
+     * This is a special method that ONLY gets called once, during the static initialization
+     * of this class. It uses our properties to find the root for our static content.
+     * @return
+     */
     private static final File initStaticContentRoot() {
         //let's see if there's something in the properties.
         String path = NTPAppServer.getInstance().getAppProperties().getProperty("static.content.root", null);
@@ -59,24 +67,22 @@ public class GetMethod extends AbstractHttpMethod {
     @Override
     public void handleRequest(RequestWrapper reqWrapper, ResponseWrapper respWrapper) {
 
-        //check one specific issue.
-
+        // IF there is a handler for our content, based on the URL, dispatch to it.
         final ContentHandlerFactory.ContentHandler contentHandler = ContentHandlerFactory.contentHandlerforURL(context().getParsedURL(), HttpMethod.GET);
         if(null != contentHandler && ContentHandlerFactory.UNKNOWN_HANDLER != contentHandler){
             contentHandler.handleContent(respWrapper, null, context());
             return;
         }
 
-
+        //check auth
         final ChainStatus authenticate = authenticate(respWrapper);
         if (!authenticate.shouldContinue()) {
             return;
         }
 
         String url = context().getUri();
+
         //open a file in our root.
-
-
         File inputFile = new File(STATIC_CONTENT_ROOT, url);
         if (inputFile.isDirectory()) {
             //redirect to class-update.html.

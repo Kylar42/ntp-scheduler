@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Context to hold info about a set of courses imported, and where they came from.
  */
 public class CourseImportContext {
 

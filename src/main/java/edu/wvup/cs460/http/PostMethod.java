@@ -29,6 +29,7 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Class for handling HTTP Post.
  */
 public class PostMethod extends AbstractHttpMethod {
 
@@ -38,13 +39,22 @@ public class PostMethod extends AbstractHttpMethod {
         super(context);
     }
 
-
+    /**
+     * Convenience method for determining if the request content type is JSON.
+     * @param requestWrapper
+     * @return
+     */
     protected boolean isRequestJSon(RequestWrapper requestWrapper) {
         String contentType = getHeaderValue(HeaderNames.ContentType, null);
         MimeType incomingType = MimeType.typeFromStringWithoutCharset(contentType);
         return MimeType.APP_JSON == incomingType;
     }
 
+    /**
+     * Convenience Method to parse the content of a request into a JSON object.
+     * @param reqWrapper
+     * @return
+     */
     protected Object parseJSonObjectFromRequest(RequestWrapper reqWrapper) {
         if (!isRequestJSon(reqWrapper)) {
             return null;
@@ -83,6 +93,11 @@ public class PostMethod extends AbstractHttpMethod {
 
     }
 
+    /**
+     * Convenience method to send a response if they didn't send us the right data.
+     * @param respWrapper
+     * @param message
+     */
     protected void sendBadRequestResponse(ResponseWrapper respWrapper, String message) {
         MethodResponse toReturn = new MethodResponse(HttpResponseStatus.BAD_REQUEST, message, MimeType.TEXT_PLAIN);
         respWrapper.writeResponse(toReturn);

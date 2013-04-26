@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * A set of Utils for creating MimeTypes and dealing with ContentTypes from files.
  */
 public class MimeUtils {
 

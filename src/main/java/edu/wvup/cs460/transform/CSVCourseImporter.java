@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * User: Tom Byrne(kylar42@gmail.com)
  * "Code early, Code often."
+ * Temporary code that was used to import from some pre-generated CSV files into CourseInstances.
  */
 public class CSVCourseImporter implements CourseImporter {
     private static Logger LOG = LoggerFactory.getLogger(CSVCourseImporter.class);
