@@ -30,13 +30,13 @@ import java.util.List;
  * This code is a big ball of suck. It does it's best to parse out CourseInstances from WVUP's web site
  * but it's big, and it's ugly.
  */
-public class HTMLScraperImporter implements CourseImporter {
+public class OldHTMLScraperImporter implements CourseImporter {
 
-    private static Logger LOG = LoggerFactory.getLogger(HTMLScraperImporter.class);
+    private static Logger LOG = LoggerFactory.getLogger(OldHTMLScraperImporter.class);
 
     private final MessageDigest md;
 
-    public HTMLScraperImporter() {
+    public OldHTMLScraperImporter() {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
@@ -114,12 +114,12 @@ public class HTMLScraperImporter implements CourseImporter {
             String newMD5 = StringUtils.toHexString(md.digest());
 
             //if there's no previous MD5, or if they're not equal, then parse away!
-            if (null == lastMD5ForURL || !lastMD5ForURL.equals(newMD5)) {
+            if(null == lastMD5ForURL || !lastMD5ForURL.equals(newMD5)) {
                 //parse and add it to our list.
                 List<CourseInstance> parsed = parseFromHTML(builder.toString());
                 toReturn.add(new CourseImportContext(newMD5, url.toExternalForm(), parsed));
                 LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
-            } else {
+            }else{
                 LOG.info("MD5 of incoming content matched DB. We did not parse or insert.");
             }
 
@@ -154,7 +154,6 @@ public class HTMLScraperImporter implements CourseImporter {
      * Here's our huge bit of parsing code. Basically it takes the entire
      * HTML page and goes through it piece by piece trying to find known start/end pieces for each Course.
      * I ported this from a Python program that I had written earlier.
-     *
      * @param htmlBody
      * @return
      */
@@ -189,34 +188,29 @@ public class HTMLScraperImporter implements CourseImporter {
              startIndex = pageText.find("<tr>", startIndex)
              outputFile.flush()
              outputFile.close()
-             <a name="TOP">Main Campus
 
              */
 
             //look for the start
-            int startNdx = htmlBody.indexOf("name=\"TOP\"");
+            int startNdx = htmlBody.indexOf("<a name=\"TOP\">Main Campus\"");
             startNdx = htmlBody.indexOf("<span id=\"", startNdx);
-            startNdx = htmlBody.indexOf("<tr", startNdx);
+            startNdx = htmlBody.indexOf("<tr>", startNdx);
             while (-1 < startNdx) {
 
                 endNdx = htmlBody.indexOf("</tr>", startNdx);
                 String classEntry = htmlBody.substring(startNdx, endNdx);
                 CourseInstance courseInstance = pullApart(classEntry, term, year);
-
                 if (null != courseInstance) {
                     toReturn.add(courseInstance);
-                    if (courseInstance.getCrn().equals("5704")) {
-                        System.out.print("Yay!");
-                    }
                 }
                 int tableEnd = htmlBody.indexOf("/table>", endNdx);
-                startNdx = htmlBody.indexOf("<tr", endNdx);
+                startNdx = htmlBody.indexOf("<tr>", endNdx);
                 if (tableEnd < startNdx) {
                     startNdx = htmlBody.indexOf("<span id=\"", endNdx);
                     if (-1 == startNdx) {
                         continue;//break.
                     }
-                    startNdx = htmlBody.indexOf("<tr", startNdx);
+                    startNdx = htmlBody.indexOf("<tr>", startNdx);
                 }
             }
         } catch (Throwable t) {
@@ -229,7 +223,6 @@ public class HTMLScraperImporter implements CourseImporter {
 
     /**
      * Pull apart just the class text.
-     *
      * @param classText
      * @param term
      * @param year
@@ -237,7 +230,7 @@ public class HTMLScraperImporter implements CourseImporter {
      */
     private CourseInstance pullApart(String classText, String term, String year) {
         CourseInstance toReturn = null;
-        int startNdx = classText.indexOf("<tr") + 4;
+        int startNdx = classText.indexOf("<tr>") + 4;
         startNdx = classText.indexOf("<td>", startNdx) + 4;
         while (-1 < startNdx) {
             int endNdx = classText.indexOf("</td>");
@@ -263,15 +256,12 @@ public class HTMLScraperImporter implements CourseImporter {
             boolean crosslisted = "X".equalsIgnoreCase(tmp);
 
             //----------------------------------------------- CRN
-            //<td style="margin: 0px; padding: 0px 5px;"> 1409
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
 
-            tmpSI = classText.indexOf("<td", tmpEI) + 4;
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
-
-            //normally the end for this would be </td> but the html is malformed, and there's just another <td next.
+            //normally the end for this would be </td> but the html is malformed, and there's just another <td> next.
             //but sometimes, there's a <span id> next.
             int tmpA = classText.indexOf("<span", tmpSI);
-            int tmptd = classText.indexOf("<td", tmpSI);
+            int tmptd = classText.indexOf("<td>", tmpSI);
             if (tmpA > -1 && tmpA < tmptd) {
                 tmpEI = tmpA;
             } else {
@@ -282,19 +272,13 @@ public class HTMLScraperImporter implements CourseImporter {
             String crn = tmp;
 
             //----------------------------------------------- Subject
-            //Looks like <td style="margin: 0px; padding: 0px 5px;"> ACCT </td>
-
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            tmpSI = tmptd + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String subject = tmp;
 
             //----------------------------------------------- Course
-            //<td style="margin: 0px; padding: 0px 5px;"> 201 </td>
-
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String course = tmp;
@@ -302,13 +286,10 @@ public class HTMLScraperImporter implements CourseImporter {
 
             //-----------------------------------------------Title.
             // Going to be a bit more interesting here.
-            //#<td style="margin: 0px; padding: 0px 5px;"> <a onmouseover="TagToTip('ACCT201', TITLE, 'ACCT 201', WIDTH, 240, TITLEBGCOLOR, '#1c2a3f', SHADOW, true, BORDERCOLOR,
-            // '#1c2a3f')"onmouseout="UnTip()"> PRIN OF ACCOUNTING 1 </a><br/>
-            //<a onmouseover="Tip(' Lecture ', WIDTH, 200, SHADOW, true, BORDERCOLOR, '#1c2a3f')"onmouseout="UnTip()">
-            // <span style="font-style: italic"> &nbsp;&nbsp;&nbsp;&nbsp;(Lecture) </span> </td>
+            //#<td> <a onmouseover="TagToTip('ACCT201', TITLE, 'ACCT 201', WIDTH, 240, TITLEBGCOLOR, '#00386B', SHADOW, true, BORDERCOLOR, '#00386B')"
+            //#onmouseout="UnTip()"> PRIN OF ACCOUNTING 1 </a>
 
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             //#now need to find the end of the <a
 
             tmpSI = classText.indexOf(">", tmpSI) + 1;
@@ -325,27 +306,23 @@ public class HTMLScraperImporter implements CourseImporter {
             short credithours = parseShort(tmp);
 
             //-----------------------------------------------Days
-            //<td style="margin: 0px; padding: 0px 5px;"> T R </td>
-
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            //<td> T R </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String coursedays = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
 
             //-----------------------------------------------Times
-            //<td style="margin: 0px; padding: 0px 5px;"> 1100 - 1215 pm </td>
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            //<td> 1100 - 1215 pm </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String times = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
             //-----------------------------------------------instructor
-            //<td style="margin: 0px; padding: 0px 5px;"> Morgan S </td>
-            tmpSI = classText.indexOf("<td", tmpEI);
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            //<td> Morgan S </td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             // there may be a <a href= "mailto:first.last@wvup.edu" >
             tmpA = classText.indexOf("<a ", tmpSI);
             tmptd = classText.indexOf("</td>", tmpSI);
@@ -359,10 +336,9 @@ public class HTMLScraperImporter implements CourseImporter {
             String instructor = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
             //-----------------------------------------------classroom
-            //<td style="margin: 0px; padding: 0px 5px;">
-            // <a onmouseover="Tip(' Classroom (MAIN CAMPUS) ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#1c2a3f')"onmouseout="UnTip()"> 1330 (MAIN) </a></td>
-            tmpSI = classText.indexOf("<td", tmpEI) + 4;
-            tmpSI = classText.indexOf(">", tmpSI) + 1;
+            //<td> <a onmouseover="Tip(' Classroom (MAIN CAMPUS) ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
+            //onmouseout="UnTip()"> 1330 (MAIN) </a></td>
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             //now need to find the end of the <a
             tmpSI = classText.indexOf(">", tmpSI) + 1;
             tmpEI = classText.indexOf("<", tmpSI);
@@ -371,8 +347,7 @@ public class HTMLScraperImporter implements CourseImporter {
 
 
             //-----------------------------------------------startdate
-            //<td> <p align="center"> 19-AUG-13 </td>
-
+            //<td> <p align="center"> 14-JAN-13 </td>
             tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpSI = classText.indexOf("center\">", tmpSI) + 8;
             tmpEI = classText.indexOf("</td>", tmpSI);
@@ -381,11 +356,12 @@ public class HTMLScraperImporter implements CourseImporter {
             //todo make a real date.
 
             //-----------------------------------------------Seats available
-            //td> <a onmouseover="Tip(' Seats Available: 3 <br/>
-            // \Waitlist: 0 ', WIDTH, 120, SHADOW, true, BORDERCOLOR, '#1c2a3f')"onmouseout="UnTip()"> <p align="center"> <p align="center">3 </a> </td>
+            //#<td> <a onmouseover="Tip(' Seats Available: 3 <br/>\
+            //#Waitlist: 0 ', WIDTH, 0, SHADOW, true, BORDERCOLOR, '#00386B')"
+            //#onmouseout="UnTip()"> <p align="center"> <p align="center">3 </a> </td>
 
             //note that there MAY be an empty bit here, so let's just check
-            tmpSI = classText.indexOf("<td", tmpEI) + 4;
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             int tmpEndNDX = classText.indexOf("</td>", tmpSI);
             int nextCenter = classText.indexOf("center\">", tmpSI) + 8;
             if (tmpEndNDX < tmpSI || nextCenter < tmpSI) {
@@ -418,8 +394,7 @@ public class HTMLScraperImporter implements CourseImporter {
 
             //-----------------------------------------------campus
             //#<td> Main </td>
-            tmpSI = classText.indexOf("<td", tmpEI) + 4;
-            tmpSI = classText.indexOf(">", tmpSI);
+            tmpSI = classText.indexOf("<td>", tmpEI) + 4;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String campus = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
@@ -429,7 +404,7 @@ public class HTMLScraperImporter implements CourseImporter {
                                           termlength, campus, term, year);
 
 
-            LOG.debug(toReturn.toString());
+            //System.out.println(toReturn);
 
             startNdx = classText.indexOf("<tr>", endNdx);
 
@@ -441,7 +416,6 @@ public class HTMLScraperImporter implements CourseImporter {
 
     /**
      * Convenience method to return a short or known value if it throws.
-     *
      * @param val
      * @return
      */
@@ -473,7 +447,6 @@ public class HTMLScraperImporter implements CourseImporter {
 
     /**
      * Parse the date from the known published format.
-     *
      * @param strDate
      * @return
      */
