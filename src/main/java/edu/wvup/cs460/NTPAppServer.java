@@ -5,7 +5,6 @@ import edu.wvup.cs460.dataaccess.DataStorage;
 import edu.wvup.cs460.db.DBContext;
 import edu.wvup.cs460.http.HttpServerPipelineFactory;
 import edu.wvup.cs460.transform.CourseImportJob;
-import edu.wvup.cs460.util.PropertiesHelper;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.quartz.Scheduler;
@@ -14,11 +13,14 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
+import javax.swing.*;
+import java.net.Inet4Address;
 import java.net.InetSocketAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
 import java.nio.charset.Charset;
-import java.util.Properties;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.concurrent.Executors;
 
 /**
@@ -40,6 +42,10 @@ public class NTPAppServer {
 
     private DataStorage _storageService;
 
+    private int     _boundPort = 80;
+
+    private String  _boundAddress;
+
     protected NTPAppServer() {
         LOG.info("Creating NTPAppServer.");
     }
@@ -57,6 +63,12 @@ public class NTPAppServer {
         initDataStorage();
         initCourseRetrievalScheduler();
         initAppServer();
+        writeInfoDialog();
+    }
+
+    private void writeInfoDialog(){
+        String serverInfo = "http:/"+_boundAddress+":"+_boundPort;
+        JOptionPane.showMessageDialog(null, "This server is running on: "+serverInfo,"Server Information", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -136,10 +148,33 @@ public class NTPAppServer {
 
         // Bind and start to accept incoming connections.
         try {
-            bootstrap.bind(new InetSocketAddress(80));
+            final InetSocketAddress inetSocketAddress = new InetSocketAddress(_boundPort);
+            bootstrap.bind(inetSocketAddress);
         } catch (Throwable t) {
             LOG.error("Unable to bind to port 80, falling back to 8080.");
-            bootstrap.bind(new InetSocketAddress(8080));
+            _boundPort = 8080;
+            final InetSocketAddress inetSocketAddress = new InetSocketAddress(_boundPort);
+            bootstrap.bind(inetSocketAddress);
+        }
+        setBoundInterface();
+    }
+
+    private void setBoundInterface(){
+        try {
+            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+            while(networkInterfaces.hasMoreElements()){
+                NetworkInterface networkInterface = networkInterfaces.nextElement();
+                List<InterfaceAddress> interfaceAddresses = networkInterface.getInterfaceAddresses();
+                for(InterfaceAddress ia : interfaceAddresses){
+                    String s = ia.getAddress().toString();
+                    if((ia.getAddress() instanceof Inet4Address) && (!s.startsWith("127.")) ){
+                        _boundAddress = s;
+                        return;//first non-localhost
+                    }
+                }
+            }
+        } catch (Throwable e) {
+            LOG.warn("Unable to fetch Socket address.", e);
         }
 
     }

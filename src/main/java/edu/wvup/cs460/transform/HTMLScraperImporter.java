@@ -60,14 +60,14 @@ public class HTMLScraperImporter implements CourseImporter {
          }
          byte[] digest = md.digest();
          */
-        LOG.info("Beginning Course Retrieval.");
+        LOG.debug("Beginning Course Retrieval.");
         final List<CourseImportContext> toReturn = new ArrayList<CourseImportContext>();
         final List<URL> urls = findURLs();
         for (URL url : urls) {
             String lastMD5ForURL = findMD5(urlCacheSigs, url.toExternalForm());
             LOG.debug("Found MD5: {} for url:{}", url.toExternalForm(), lastMD5ForURL);
 
-            LOG.info("Retrieving Courses from:" + url);
+            LOG.debug("Retrieving Courses from:" + url);
             StringBuilder builder = new StringBuilder();
             try {
                 final HttpURLConnection httpConnection;
@@ -85,7 +85,7 @@ public class HTMLScraperImporter implements CourseImporter {
 
                 final int responseCode = httpConnection.getResponseCode();
                 if (HttpResponseStatus.NOT_MODIFIED.getCode() == responseCode) {
-                    LOG.info("Data at URL has not changed since we last checked it. URL:" + url);
+                    LOG.debug("Data at URL has not changed since we last checked it. URL:" + url);
                     continue;//jump out of loop.
                 }
 
@@ -108,7 +108,7 @@ public class HTMLScraperImporter implements CourseImporter {
             } catch (IOException ioe) {
                 LOG.error("Unable to properly retrieve data from URL[" + url + "] for Import");
             }
-            LOG.info("Finished receiving data from:" + url);
+            LOG.debug("Finished receiving data from:" + url);
 
             //OK, we got the data, but let's see if it's the same as what we had last time before we go parse it.
             String newMD5 = StringUtils.toHexString(md.digest());
@@ -118,9 +118,9 @@ public class HTMLScraperImporter implements CourseImporter {
                 //parse and add it to our list.
                 List<CourseInstance> parsed = parseFromHTML(builder.toString());
                 toReturn.add(new CourseImportContext(newMD5, url.toExternalForm(), parsed));
-                LOG.info("Data Parsed. I was able to find: " + parsed.size() + " courses.");
+                LOG.debug("Data Parsed. I was able to find: " + parsed.size() + " courses.");
             } else {
-                LOG.info("MD5 of incoming content matched DB. We did not parse or insert.");
+                LOG.debug("MD5 of incoming content matched DB. We did not parse or insert.");
             }
 
         }
