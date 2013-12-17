@@ -65,7 +65,7 @@ public class HTMLScraperImporter implements CourseImporter {
         final List<URL> urls = findURLs();
         for (URL url : urls) {
             String lastMD5ForURL = findMD5(urlCacheSigs, url.toExternalForm());
-            LOG.debug("Found MD5: {} for url:{}", url.toExternalForm(), lastMD5ForURL);
+            LOG.debug("Found MD5: {} for url:{}", lastMD5ForURL, url.toExternalForm());
 
             LOG.debug("Retrieving Courses from:" + url);
             StringBuilder builder = new StringBuilder();
@@ -163,7 +163,7 @@ public class HTMLScraperImporter implements CourseImporter {
         try {
             //OK first things, let's find the course term.
             int ndx = htmlBody.indexOf("Course Schedule - ");
-            int endNdx = htmlBody.indexOf("<", ndx + 16);
+            int endNdx = htmlBody.indexOf("\"", ndx + 16);
             String courseTerm = htmlBody.substring(ndx + 17, endNdx);
             courseTerm = courseTerm.trim();
             String[] split = courseTerm.split(" ");
@@ -205,9 +205,9 @@ public class HTMLScraperImporter implements CourseImporter {
 
                 if (null != courseInstance) {
                     toReturn.add(courseInstance);
-                    if (courseInstance.getCrn().equals("5704")) {
-                        System.out.print("Yay!");
-                    }
+                    //if (courseInstance.getCrn().equals("5704")) {
+                    //    System.out.print("Yay!");
+                    //}
                 }
                 int tableEnd = htmlBody.indexOf("/table>", endNdx);
                 startNdx = htmlBody.indexOf("<tr", endNdx);
@@ -419,7 +419,7 @@ public class HTMLScraperImporter implements CourseImporter {
             //-----------------------------------------------campus
             //#<td> Main </td>
             tmpSI = classText.indexOf("<td", tmpEI) + 4;
-            tmpSI = classText.indexOf(">", tmpSI);
+            tmpSI = classText.indexOf(">", tmpSI)+1;
             tmpEI = classText.indexOf("</td>", tmpSI);
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String campus = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
