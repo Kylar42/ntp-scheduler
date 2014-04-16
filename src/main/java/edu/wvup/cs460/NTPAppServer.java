@@ -167,7 +167,7 @@ public class NTPAppServer {
                 List<InterfaceAddress> interfaceAddresses = networkInterface.getInterfaceAddresses();
                 for(InterfaceAddress ia : interfaceAddresses){
                     String s = ia.getAddress().toString();
-                    if((ia.getAddress() instanceof Inet4Address) && (!s.startsWith("127.")) ){
+                    if((ia.getAddress() instanceof Inet4Address) && (!s.contains("127.")) ){
                         _boundAddress = s;
                         return;//first non-localhost
                     }

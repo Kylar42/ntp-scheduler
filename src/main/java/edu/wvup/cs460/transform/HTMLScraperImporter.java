@@ -162,9 +162,10 @@ public class HTMLScraperImporter implements CourseImporter {
         List<CourseInstance> toReturn = new ArrayList<CourseInstance>();
         try {
             //OK first things, let's find the course term.
-            int ndx = htmlBody.indexOf("Course Schedule - ");
-            int endNdx = htmlBody.indexOf("\"", ndx + 16);
-            String courseTerm = htmlBody.substring(ndx + 17, endNdx);
+            int ndx = htmlBody.indexOf("Course Schedule");
+            ndx = htmlBody.indexOf("\"", ndx+17);
+            int endNdx = htmlBody.indexOf("\"", ndx+1);
+            String courseTerm = htmlBody.substring(ndx+1, endNdx);
             courseTerm = courseTerm.trim();
             String[] split = courseTerm.split(" ");
 
@@ -418,9 +419,12 @@ public class HTMLScraperImporter implements CourseImporter {
 
             //-----------------------------------------------campus
             //#<td> Main </td>
-            tmpSI = classText.indexOf("<td", tmpEI) + 4;
+            tmpSI = classText.indexOf("<td", tmpEI) + 3;
             tmpSI = classText.indexOf(">", tmpSI)+1;
             tmpEI = classText.indexOf("</td>", tmpSI);
+            if("1090".equals(crn)){
+                System.out.println("Stop");
+            }
             tmp = classText.substring(tmpSI, tmpEI).trim();
             String campus = "&nbsp;".equalsIgnoreCase(tmp) ? "" : tmp;
 
